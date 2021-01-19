@@ -28,4 +28,10 @@ public class ReturnMsg {
         this.error = error;
         this.errorMessage = errorMessage;
     }
+
+    public ReturnMsg(String code, boolean error, Object data) {
+        this.code = code;
+        this.error = error;
+        this.data = data;
+    }
 }

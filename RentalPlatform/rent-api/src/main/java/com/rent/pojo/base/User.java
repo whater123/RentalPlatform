@@ -28,6 +28,7 @@ public class User {
     private String userRealName;
     private String userIdNumber;
     private Date userRegisterTime;
+    private int userAccountMoney;
     @TableField(exist = false)
     private String userVerification;
 }

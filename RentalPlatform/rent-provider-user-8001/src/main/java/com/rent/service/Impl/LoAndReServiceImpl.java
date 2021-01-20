@@ -9,6 +9,7 @@ import com.rent.service.LoginAndRegisterService;
 import com.rent.util.HttpUtils;
 import com.rent.util.MD5util;
 import com.rent.util.VerificationUtil;
+import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,7 +87,14 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
         if (o==null){
             return false;
         }
-        return randomCode.trim().equals(o);
+        boolean equals = randomCode.trim().equals(o);
+        if (equals){
+            redisTemplate.delete(userPhone);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
@@ -196,6 +204,35 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
         user.setUserIdNumber(null);
         user.setUserRealName(null);
         return user;
+    }
+
+    @Override
+    public boolean userUpdatePassword(User user) {
+        User user1 = getUser(user);
+        if (user1==null){
+            return false;
+        }
+        user1.setUserPassword(MD5util.code(user.getUserPassword()));
+        int i = userMapper.updateById(user1);
+        return i==1;
+    }
+
+    @Override
+    public User getUser(User user) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        if (user.getUserId()!=0){
+            queryWrapper.eq("user_id",user.getUserId());
+            return userMapper.selectOne(queryWrapper);
+        }
+        if (user.getUserPhone()!=null){
+            queryWrapper.eq("user_phone",user.getUserPhone());
+            return userMapper.selectOne(queryWrapper);
+        }
+        if (user.getUserIdNumber()!=null){
+            queryWrapper.eq("user_id_number",user.getUserIdNumber());
+            return userMapper.selectOne(queryWrapper);
+        }
+        return null;
     }
 
     /*

@@ -51,14 +51,28 @@ public interface LoginAndRegisterService {
     /**
      * 用户登录
      * @param loginMsg 登录输入
-     * @return 是否正确
+     * @return 登录用户信息，登录失败则返回null
      */
     User userLogin(LoginMsg loginMsg);
 
     /**
-     * 对返回的数据敏处理
+     * 对返回的数据脱敏处理
      * @param user 返回数据
      * @return 脱敏后数据
      */
     User returnHandle(User user);
+
+    /**
+     * 更新用户密码
+     * @param user 用户手机号和修改后的密码
+     * @return 是否成功
+     */
+    boolean userUpdatePassword(User user);
+
+    /**
+     * 根据id或手机号或身份证号获取到用户信息
+     * @param user 用户不完整的信息
+     * @return 完整的用户信息,未找到则返回null
+     */
+    User getUser(User user);
 }

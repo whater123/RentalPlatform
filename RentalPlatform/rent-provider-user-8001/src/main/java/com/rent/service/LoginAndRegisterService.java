@@ -75,4 +75,6 @@ public interface LoginAndRegisterService {
      * @return 完整的用户信息,未找到则返回null
      */
     User getUser(User user);
+
+
 }

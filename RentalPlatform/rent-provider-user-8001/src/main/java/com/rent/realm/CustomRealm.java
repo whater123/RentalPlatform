@@ -49,7 +49,7 @@ public class CustomRealm extends AuthorizingRealm {
         if (user==null){
             throw new AccountException("302");
         }
-        return new SimpleAuthenticationInfo(token.getPrincipal(), password, getName());
+        return new SimpleAuthenticationInfo(user.getUserId(), password, getName());
     }
 
     /**

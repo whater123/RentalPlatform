@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.Map;
 
 /**
@@ -136,6 +137,27 @@ public class LoAndReController {
                 return new ReturnMsg("500",true,"后端逻辑错误或数据库错误");
             }
             else {
+                return new ReturnMsg("0",false);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @PostMapping(path = "/loginOut",produces = "application/json;charset=UTF-8")
+    public ReturnMsg loginOut(Principal principal){
+        try{
+            if (principal==null){
+                return new ReturnMsg("1",true);
+            }
+            Subject subject = SecurityUtils.getSubject();
+            boolean authenticated = subject.isAuthenticated();
+            if (!authenticated){
+                return new ReturnMsg("1",true);
+            }
+            else {
+                subject.logout();
                 return new ReturnMsg("0",false);
             }
         }catch (Exception e){

@@ -45,7 +45,7 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
         queryWrapper.eq("user_name",user.getUserName()).or()
                     .eq("user_id_number",user.getUserIdNumber()).or()
                     .eq("user_phone",user.getUserPhone());
-        User user1 = userMapper.selectOne(queryWrapper);
+        List<User> user1 = userMapper.selectList(queryWrapper);
         return user1!=null;
     }
 
@@ -233,6 +233,12 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
             return userMapper.selectOne(queryWrapper);
         }
         return null;
+    }
+
+    @Override
+    public boolean userUpdateInfro(User user) {
+
+        return false;
     }
 
     /*

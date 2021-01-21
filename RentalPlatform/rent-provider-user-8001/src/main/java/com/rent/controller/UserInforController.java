@@ -33,6 +33,5 @@ public class UserInforController {
             return new ReturnMsg("306",true);
         }
         return null;
-
     }
 }

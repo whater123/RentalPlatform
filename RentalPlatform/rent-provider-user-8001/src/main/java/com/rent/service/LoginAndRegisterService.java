@@ -76,5 +76,10 @@ public interface LoginAndRegisterService {
      */
     User getUser(User user);
 
-
+    /**
+     * 根据id修改用户个人信息
+     * @param user 含id的用户，手机或用户名只要不为空的都会被更新
+     * @return  是否更新成功
+     */
+    boolean userUpdateInfro(User user);
 }

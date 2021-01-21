@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e4592bd-8498-4ada-9c25-1f764d12e4a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/ShiroController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/UserInforController.java" afterDir="false" />
+    <list default="true" id="2e4592bd-8498-4ada-9c25-1f764d12e4a1" name="Default Changelist" comment="user v4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/config/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/LoAndReController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/LoAndReController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/realm/CustomRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/realm/CustomRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/UserInforController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/UserInforController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/LoAndReServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/LoAndReServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/LoginAndRegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/LoginAndRegisterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/config/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/config/ShiroConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/LoAndReController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/LoAndReController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/realm/CustomRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/realm/CustomRealm.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +112,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -148,22 +142,25 @@
       <workItem from="1611119065880" duration="7530000" />
       <workItem from="1611127422077" duration="1516000" />
       <workItem from="1611130567736" duration="809000" />
-      <workItem from="1611142296248" duration="6174000" />
+      <workItem from="1611142296248" duration="7224000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="361" y="74" key="#Project_Structure" timestamp="1610962723168">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="74" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1610962723168" />
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1611123070638">
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1611216644469">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1611123070638" />
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1611216644469" />
     <state x="792" y="343" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1610955160954">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

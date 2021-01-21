@@ -20,18 +20,29 @@ public class UserInforController {
 
     @PostMapping("/changeInformation")
     public ReturnMsg changeInformation(@RequestBody User user){
-        if (user.getUserName()==null&&user.getUserPhone()==null){
-            return new ReturnMsg("101",true,"需要修改信息为空");
+        try{
+            if (user.getUserName()==null&&user.getUserPhone()==null){
+                return new ReturnMsg("101",true,"需要修改信息为空");
+            }
+            if (user.getUserName().contains(" ")){
+                return new ReturnMsg("101",true,"用户名中不能包含空格！");
+            }
+            if (loginAndRegisterService.userCount(user)>1){
+                return new ReturnMsg("304",true);
+            }
+            if (!loginAndRegisterService.userCheckVerification(user.getUserPhone(),user.getUserVerification())){
+                return new ReturnMsg("306",true);
+            }
+            boolean b = loginAndRegisterService.userUpdateInfro(user);
+            if (!b){
+                return new ReturnMsg("500",true,"后端逻辑错误或数据库错误");
+            }
+            else {
+                return new ReturnMsg("0",false);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
         }
-        if (user.getUserName().contains(" ")){
-            return new ReturnMsg("101",true,"用户名中不能包含空格！");
-        }
-        if (loginAndRegisterService.userIsRepeat(user)){
-            return new ReturnMsg("304",true);
-        }
-        if (!loginAndRegisterService.userCheckVerification(user.getUserPhone(),user.getUserVerification())){
-            return new ReturnMsg("306",true);
-        }
-        return null;
     }
 }

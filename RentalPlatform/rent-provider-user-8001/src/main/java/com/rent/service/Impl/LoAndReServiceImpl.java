@@ -40,13 +40,13 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
     RedisTemplate<String,Object> redisTemplate;
 
     @Override
-    public boolean userIsRepeat(User user) {
+    public int userCount(User user) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
         queryWrapper.eq("user_name",user.getUserName()).or()
                     .eq("user_id_number",user.getUserIdNumber()).or()
                     .eq("user_phone",user.getUserPhone());
         List<User> user1 = userMapper.selectList(queryWrapper);
-        return user1!=null;
+        return user1.size();
     }
 
     @Override
@@ -237,8 +237,15 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
 
     @Override
     public boolean userUpdateInfro(User user) {
-
-        return false;
+        User user1 = getUser(user);
+        if (user.getUserPhone()!=null){
+            user1.setUserPhone(user.getUserPhone());
+        }
+        if (user.getUserName()!=null){
+            user1.setUserName(user.getUserName());
+        }
+        int i = userMapper.updateById(user1);
+        return i==1;
     }
 
     /*

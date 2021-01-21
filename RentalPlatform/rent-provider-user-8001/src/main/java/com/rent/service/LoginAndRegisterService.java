@@ -11,11 +11,11 @@ import java.util.Map;
  */
 public interface LoginAndRegisterService {
     /**
-     * 判断用户名,身份证号码,手机号是否重复
-     * @param user 注册用户
-     * @return 是否重复
+     * 返回用户名,身份证号码,手机号相同的用户有几个
+     * @param user 判断用户的用户名,身份证号码,手机号信息
+     * @return 相符合个数
      */
-    boolean userIsRepeat(User user);
+    int userCount(User user);
 
     /**
      * 用户短信验证

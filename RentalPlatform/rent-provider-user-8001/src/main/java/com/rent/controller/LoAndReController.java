@@ -39,7 +39,7 @@ public class LoAndReController {
             if (user.getUserName().contains(" ")){
                 return new ReturnMsg("101",true,"用户名中不能包含空格！");
             }
-            if (loginAndRegisterService.userIsRepeat(user)){
+            if (loginAndRegisterService.userCount(user)>0){
                 return new ReturnMsg("304",true);
             }
             if (!loginAndRegisterService.userCheckVerification(user.getUserPhone(),user.getUserVerification())){
@@ -124,7 +124,7 @@ public class LoAndReController {
     @PostMapping(path = "/changePassword",produces = "application/json;charset=UTF-8")
     public ReturnMsg changePassword(@RequestBody User user){
         try{
-            boolean b = loginAndRegisterService.userIsRepeat(user);
+            boolean b = loginAndRegisterService.userCount(user)>0;
             if (!b){
                 return new ReturnMsg("307",true);
             }

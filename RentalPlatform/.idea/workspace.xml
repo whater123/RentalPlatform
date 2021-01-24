@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e4592bd-8498-4ada-9c25-1f764d12e4a1" name="Default Changelist" comment="" />
+    <list default="true" id="2e4592bd-8498-4ada-9c25-1f764d12e4a1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/Contact.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/ContactController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/ContactService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/ContactServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/rent-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/rent-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/MyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/MyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/config/ShiroConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/LoAndReController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/LoAndReController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/ShiroController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/UserInforController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/UserInforController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/realm/CustomRealm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/LoAndReServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/LoAndReServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/LoginAndRegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/LoginAndRegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/config/ShiroConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/LoAndReController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/LoAndReController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/ShiroController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/UserInforController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/UserInforController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/realm/CustomRealm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/LoAndReServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/LoAndReServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/LoginAndRegisterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/LoginAndRegisterService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/itoo-gateway.jar" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/itoo-gateway.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/itoo-gateway.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/itoo-gateway.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +73,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/untitled" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -78,9 +106,10 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.UserProvider_8001">
-    <configuration name="ManagerProvider_8001" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="ManagerProvider_8002" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="rent-provider-manager-8002" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.rent.ManagerProvider_8002" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -93,7 +122,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.ManagerProvider_8001" />
+      <item itemvalue="Spring Boot.ManagerProvider_8002" />
       <item itemvalue="Spring Boot.UserProvider_8001" />
     </list>
   </component>
@@ -144,6 +173,9 @@
       <workItem from="1611142296248" duration="7224000" />
       <workItem from="1611232943516" duration="1538000" />
       <workItem from="1611234630688" duration="651000" />
+      <workItem from="1611293075076" duration="738000" />
+      <workItem from="1611294481733" duration="7773000" />
+      <workItem from="1611451189234" duration="5517000" />
     </task>
     <task id="LOCAL-00001" summary="user test">
       <created>1611220323168</created>
@@ -167,10 +199,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="74" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1611234653174" />
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1611216644469">
+    <state x="223" y="70" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611294308420">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1611216644469" />
+    <state x="223" y="70" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1611294308420" />
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1611454126289">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1611454126289" />
     <state x="792" y="343" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1610955160954">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -187,42 +223,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="385" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1611215836426" />
-    <state x="614" y="167" key="FileChooserDialogImpl" timestamp="1611213519231">
+    <state x="614" y="167" key="FileChooserDialogImpl" timestamp="1611453724215">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="614" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1611213519231" />
-    <state width="1057" height="153" key="GridCell.Tab.0.bottom" timestamp="1611245645260">
+    <state x="614" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1611453724215" />
+    <state width="1493" height="158" key="GridCell.Tab.0.bottom" timestamp="1611456484267">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1057" height="153" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1611245645260" />
-    <state width="1057" height="153" key="GridCell.Tab.0.center" timestamp="1611245645260">
+    <state width="1493" height="158" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1611456484267" />
+    <state width="1493" height="158" key="GridCell.Tab.0.center" timestamp="1611456484267">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1057" height="153" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1611245645260" />
-    <state width="1057" height="153" key="GridCell.Tab.0.left" timestamp="1611245645260">
+    <state width="1493" height="158" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1611456484267" />
+    <state width="1493" height="158" key="GridCell.Tab.0.left" timestamp="1611456484267">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1057" height="153" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1611245645260" />
-    <state width="1057" height="153" key="GridCell.Tab.0.right" timestamp="1611245645260">
+    <state width="1493" height="158" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1611456484267" />
+    <state width="1493" height="158" key="GridCell.Tab.0.right" timestamp="1611456484267">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1057" height="153" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1611245645260" />
-    <state width="1057" height="153" key="GridCell.Tab.1.bottom" timestamp="1611245645260">
+    <state width="1493" height="158" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1611456484267" />
+    <state width="1057" height="138" key="GridCell.Tab.1.bottom" timestamp="1611456473970">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1057" height="153" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1611245645260" />
-    <state width="1057" height="153" key="GridCell.Tab.1.center" timestamp="1611245645260">
+    <state width="1057" height="138" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1611456473970" />
+    <state width="1057" height="138" key="GridCell.Tab.1.center" timestamp="1611456473970">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1057" height="153" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1611245645260" />
-    <state width="1057" height="153" key="GridCell.Tab.1.left" timestamp="1611245645260">
+    <state width="1057" height="138" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1611456473970" />
+    <state width="1057" height="138" key="GridCell.Tab.1.left" timestamp="1611456473970">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1057" height="153" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1611245645260" />
-    <state width="1057" height="153" key="GridCell.Tab.1.right" timestamp="1611245645260">
+    <state width="1057" height="138" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1611456473970" />
+    <state width="1057" height="138" key="GridCell.Tab.1.right" timestamp="1611456473970">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1057" height="153" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1611245645260" />
+    <state width="1057" height="138" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1611456473970" />
     <state x="496" y="119" key="Maven.ArtifactSearchDialog" timestamp="1610962179748">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -235,5 +271,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="166" y="137" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1610971225515" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1611454010440">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1611454010440" />
   </component>
 </project>

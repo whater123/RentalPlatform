@@ -21,10 +21,13 @@ public class UserInforController {
     @PostMapping("/changeInformation")
     public ReturnMsg changeInformation(@RequestBody User user){
         try{
+            if (!loginAndRegisterService.userExtendToken(user.getUserId())){
+                return new ReturnMsg("301",true);
+            }
             if (user.getUserName()==null&&user.getUserPhone()==null){
                 return new ReturnMsg("101",true,"需要修改信息为空");
             }
-            if (user.getUserName().contains(" ")){
+            if (user.getUserName()!=null&&user.getUserName().contains(" ")){
                 return new ReturnMsg("101",true,"用户名中不能包含空格！");
             }
             if (loginAndRegisterService.userCount(user)>1){

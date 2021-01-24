@@ -94,30 +94,22 @@ public class LoAndReController {
             if (loginMsg.getLoginAccount()==null||loginMsg.getLoginPassword()==null){
                 return new ReturnMsg("302",true);
             }
-//            User user = loginAndRegisterService.userLogin(loginMsg);
-//            if (user==null){
-//                return new ReturnMsg("302",true);
-//            }
-//            else {
-//                return new ReturnMsg("0",false,loginAndRegisterService.returnHandle(user));
-//            }
-            //使用shiro
-            Subject subject = SecurityUtils.getSubject();
-            // 在认证提交前准备 token（令牌）
-            UsernamePasswordToken token = new UsernamePasswordToken(loginMsg.getLoginAccount(), loginMsg.getLoginPassword());
-            // 执行认证登陆，直接跳到认证方法内，没有异常才执行下面的程序，有异常直接被全局捕捉然后返回json信息了
-            subject.login(token);
-
             User user = loginAndRegisterService.userLogin(loginMsg);
-            return new ReturnMsg("0",false,loginAndRegisterService.returnHandle(user));
-
-        }catch (Exception e){
-            if (e.getMessage().contains("Authentication failed for token submission")) {
+            if (user==null){
                 return new ReturnMsg("302",true);
             }
             else {
-                return new ReturnMsg("500",true,e.getMessage());
+                return new ReturnMsg("0",false,loginAndRegisterService.returnHandle(user));
             }
+            //使用shiro
+//            Subject subject = SecurityUtils.getSubject();
+//            // 在认证提交前准备 token（令牌）
+//            UsernamePasswordToken token = new UsernamePasswordToken(loginMsg.getLoginAccount(), loginMsg.getLoginPassword());
+//            // 执行认证登陆，直接跳到认证方法内，没有异常才执行下面的程序，有异常直接被全局捕捉然后返回json信息了
+//            subject.login(token);
+
+        }catch (Exception e){
+            return new ReturnMsg("500",true,e.getMessage());
         }
     }
 
@@ -146,19 +138,31 @@ public class LoAndReController {
     }
 
     @PostMapping(path = "/loginOut",produces = "application/json;charset=UTF-8")
-    public ReturnMsg loginOut(Principal principal){
+    public ReturnMsg loginOut(@RequestBody User user){
         try{
-            if (principal==null){
-                return new ReturnMsg("1",true);
-            }
-            Subject subject = SecurityUtils.getSubject();
-            boolean authenticated = subject.isAuthenticated();
-            if (!authenticated){
+            boolean b = loginAndRegisterService.deleteUserToken(user.getUserId());
+            if (!b){
                 return new ReturnMsg("1",true);
             }
             else {
-                subject.logout();
                 return new ReturnMsg("0",false);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @PostMapping(path = "/login2",produces = "application/json;charset=UTF-8")
+    public ReturnMsg login2(@RequestBody User user){
+        try{
+            User user1 = loginAndRegisterService.userLoginWithoutPassword(user.getUserToken());
+            if (user1==null){
+                return new ReturnMsg("1",true);
+            }
+            else {
+                user1.setUserToken(null);
+                return new ReturnMsg("0",false,loginAndRegisterService.returnHandle(user1));
             }
         }catch (Exception e){
             e.printStackTrace();

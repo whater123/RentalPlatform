@@ -49,7 +49,7 @@ public interface LoginAndRegisterService {
     boolean userInsert(User user);
 
     /**
-     * 用户登录
+     * 用户登录，并且把token存在redis中，：U+id，uuid，7D
      * @param loginMsg 登录输入
      * @return 登录用户信息，登录失败则返回null
      */
@@ -82,4 +82,25 @@ public interface LoginAndRegisterService {
      * @return  是否更新成功
      */
     boolean userUpdateInfro(User user);
+
+    /**
+     * 延长用户的令牌有效时间，在每次请求发送都要执行此方法
+     * @param userId 用户id
+     * @return 未登录返回false
+     */
+    boolean userExtendToken(int userId);
+
+    /**
+     * 用户免密登录
+     * @param uuid 生成的认证秘钥
+     * @return 用户信息
+     */
+    User userLoginWithoutPassword(String uuid);
+
+    /**
+     * 删除用户token
+     * @param userId userId
+     * @return 是否成功
+     */
+    boolean deleteUserToken(int userId);
 }

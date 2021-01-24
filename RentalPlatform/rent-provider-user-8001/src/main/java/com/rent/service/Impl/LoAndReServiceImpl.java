@@ -194,7 +194,14 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
             queryWrapper.eq("user_name",loginMsg.getLoginAccount())
                         .eq("user_password",MD5util.code(loginMsg.getLoginPassword()));
         }
-        return userMapper.selectOne(queryWrapper);
+        User user = userMapper.selectOne(queryWrapper);
+        if (user!=null){
+            ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
+            String uuid = String.valueOf(UUID.randomUUID());
+            opsForValue.set("U"+ user.getUserId(),uuid,7L,TimeUnit.DAYS);
+            user.setUserToken(uuid);
+        }
+        return user;
     }
 
     @Override
@@ -245,6 +252,54 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
         }
         int i = userMapper.updateById(user1);
         return i==1;
+    }
+
+    @Override
+    public boolean userExtendToken(int userId) {
+        ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
+        Object o = opsForValue.get("U" + userId);
+        if (o==null){
+            return false;
+        }
+        else {
+            opsForValue.set("U" + userId,String.valueOf(o),7L,TimeUnit.DAYS);
+            return true;
+        }
+    }
+
+    @Override
+    public User userLoginWithoutPassword(String uuid) {
+        ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
+        Set<String> keys = redisTemplate.keys("*");
+        System.out.println(keys);
+        if (keys==null){
+            return null;
+        }
+        for (String key : keys) {
+            // 获取key对应值
+            if (!key.startsWith("U")){
+                continue;
+            }
+            String value = String.valueOf(opsForValue.get(key));
+            System.out.println(value);
+            System.out.println(uuid);
+            if (value.equals(uuid)){
+                int substring = Integer.parseInt(key.substring(1));
+                userExtendToken(substring);
+                return getUser(new User(substring));
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean deleteUserToken(int userId) {
+        if (!redisTemplate.hasKey("U"+userId)){
+            return false;
+        }
+        else {
+            return redisTemplate.delete("U" + userId);
+        }
     }
 
     /*

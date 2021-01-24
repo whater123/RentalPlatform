@@ -31,4 +31,10 @@ public class User {
     private int userAccountMoney;
     @TableField(exist = false)
     private String userVerification;
+    @TableField(exist = false)
+    private String userToken;
+
+    public User(int userId) {
+        this.userId = userId;
+    }
 }

@@ -1,51 +1,69 @@
 package com.rent.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.rent.dao.PictureMapper;
-import com.rent.pojo.base.Picture;
 import com.rent.pojo.view.ReturnMsg;
-import com.rent.service.PictureService;
+import com.rent.service.UtilsService;
+import com.rent.util.MyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/manager/utils")
 public class UtilsController {
     @Autowired
-    PictureService pictureService;
-
+    UtilsService utilsService;
     @Autowired
     PictureMapper pictureMapper;
 
-    @RequestMapping(path = "/uploadPhotos",produces = "application/json;charset=UTF-8")
-    public ReturnMsg uploadPhotos(MultipartFile[] photos){
-        ArrayList<String> pictureList = new ArrayList<String>();
-        for (MultipartFile f :
-                photos) {
-            String fileName = pictureService.fileUpload(f);
-            if(!"500".equals(fileName)){
-                pictureList.add(fileName);
-            }
+    @RequestMapping(path = "/uploadPictures",produces = "application/json;charset=UTF-8")
+    public ReturnMsg uploadPictures(MultipartFile[] pictures, HttpServletRequest request){
+        if(pictures.length == 0){
+            return new ReturnMsg("406",true,"不接受，参数不齐");
         }
-        String pictureId = UUID.randomUUID().toString();
-        for (String pictureName :
-                pictureList) {
-            Picture picture = new Picture(pictureId, pictureName);
-            pictureMapper.insert(picture);
+        if(!utilsService.isFilesPicture(pictures)){
+            return new ReturnMsg("406",true,"不接受，参数不合法");
         }
-
-
-        return new ReturnMsg();
+        ArrayList<String> list = utilsService.uploadFiles(pictures);
+        return new ReturnMsg("200",false,
+                "共计" + pictures.length + "个文件，成功上传" + list.get(0) + "个图片",
+                utilsService.getPictureUrls(list.get(1), request));
     }
-    @RequestMapping("/")
-    public String nmsl(){
-        return "nmsl";
+
+    @RequestMapping(path = "/uploadPicture",produces = "application/json;charset=UTF-8")
+    public ReturnMsg uploadPicture(MultipartFile picture, HttpServletRequest request){
+        if(picture == null){
+            return new ReturnMsg("406",true,"不接受，参数不齐");
+        }
+        MultipartFile[] pictures = new MultipartFile[1];
+        pictures[0] = picture;
+        return uploadPictures(pictures,request);
+    }
+
+    @RequestMapping(value = "/getPicture", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] getPicture(String pictureName) throws IOException {
+        return utilsService.getPhoto(pictureName);
+    }
+
+    @RequestMapping(path = "/getPictureUrlList",produces = "application/json;charset=UTF-8")
+    public ReturnMsg uploadPicture(@RequestBody String json, HttpServletRequest request){
+        if(MyUtil.jsonHasVoid(json,"pictureId")){
+            return new ReturnMsg("406",true,"不接受，参数不齐");
+        }
+        String pictureId = JSON.parseObject(json).getString("pictureId");
+        if(!utilsService.isPictureIdExist(pictureId)){
+            return new ReturnMsg("400",true,"所查找的图组id不存在");
+        }
+        return new ReturnMsg("200",false,"查询成功", utilsService.getPictureUrls(pictureId,request));
     }
 
 }

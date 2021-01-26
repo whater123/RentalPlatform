@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyController {
     @RequestMapping("/")
     public String rsndm(){
-        return "rsndm";
+        return "燃烧你的梦";
     }
 }

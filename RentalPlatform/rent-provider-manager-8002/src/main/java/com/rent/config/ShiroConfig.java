@@ -1,5 +1,6 @@
 package com.rent.config;
 
+import com.rent.constant.SystemConstant;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,8 +12,7 @@ import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
-    private final String LOGINURL = "";
-    private final String UNAUTHORIZEDURL = "";
+
 
 
     @Bean
@@ -28,10 +28,13 @@ public class ShiroConfig {
             role：拥有某个角色权限才能访问
         * */
         Map<String, String> filterMap = new LinkedHashMap<String, String>();
+//        filterMap.put("/manager/enterprise/*","roles[enterprise_manager]");
+//        filterMap.put("/manager/*","anon");
+//        filterMap.put("/**","authc");
 
         bean.setFilterChainDefinitionMap(filterMap);
-        bean.setLoginUrl(LOGINURL);
-        bean.setUnauthorizedUrl(UNAUTHORIZEDURL);
+        bean.setLoginUrl(SystemConstant.LOGIN_URL);
+        bean.setUnauthorizedUrl(SystemConstant.UNAUTHORIZED_URL);
 
         return bean;
     }

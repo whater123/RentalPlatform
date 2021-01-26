@@ -1,5 +1,7 @@
 package com.rent.util;
+
 import org.springframework.cache.annotation.Cacheable;
+
 import java.util.Random;
 import java.util.regex.Pattern;
 

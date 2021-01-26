@@ -66,7 +66,7 @@ public class LoAndReController {
         try {
             user.setUserPhone(user.getUserPhone().trim());
             if (user.getUserPhone().length()!=11){
-                return new ReturnMsg("1",true);
+                return new ReturnMsg("1",true,"验证码发送失败");
             }
             VerificationUtil verificationUtil = new VerificationUtil();
             String code = verificationUtil.getIntCode();
@@ -142,7 +142,7 @@ public class LoAndReController {
         try{
             boolean b = loginAndRegisterService.deleteUserToken(user.getUserId());
             if (!b){
-                return new ReturnMsg("1",true);
+                return new ReturnMsg("1",true,"未登录");
             }
             else {
                 return new ReturnMsg("0",false);
@@ -158,7 +158,7 @@ public class LoAndReController {
         try{
             User user1 = loginAndRegisterService.userLoginWithoutPassword(user.getUserToken());
             if (user1==null){
-                return new ReturnMsg("1",true);
+                return new ReturnMsg("1",true,"token错误");
             }
             else {
                 user1.setUserToken(null);

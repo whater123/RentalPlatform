@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.File;
 import java.util.Date;
 
 /**
@@ -33,8 +34,15 @@ public class User {
     private String userVerification;
     @TableField(exist = false)
     private String userToken;
+    @TableField(exist = false)
+    private File userPhoto;
 
     public User(int userId) {
         this.userId = userId;
+    }
+
+    public User(int userId, File userPhoto) {
+        this.userId = userId;
+        this.userPhoto = userPhoto;
     }
 }

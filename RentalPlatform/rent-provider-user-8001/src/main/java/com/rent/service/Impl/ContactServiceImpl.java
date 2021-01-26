@@ -45,6 +45,10 @@ public class ContactServiceImpl implements ContactService {
              */
             HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
             JSONObject jsonObject = JSONObject.parseObject(EntityUtils.toString(response.getEntity()));
+            String msg = jsonObject.getObject("msg", String.class);
+            if (!"ok".equals(msg)){
+                return null;
+            }
             Object result = jsonObject.getObject("result", Object.class);
             JSONObject jsonObject1 = JSONObject.parseObject(result.toString());
             String address = jsonObject1.getObject("address", String.class);

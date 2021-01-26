@@ -1,13 +1,18 @@
 package com.rent.service.Impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.rent.dao.ContactMapper;
+import com.rent.pojo.base.Contact;
 import com.rent.service.ContactService;
 import com.rent.util.HttpUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +20,9 @@ import java.util.Map;
  */
 @Service
 public class ContactServiceImpl implements ContactService {
+    @Autowired
+    ContactMapper contactMapper;
+
     @Override
     public String userGetAddress(String lat, String lng) {
         String host = "https://jisujwddz.market.alicloudapi.com";
@@ -58,5 +66,39 @@ public class ContactServiceImpl implements ContactService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public boolean insertContact(Contact contact) {
+        int insert = contactMapper.insert(contact);
+        return insert==1;
+    }
+
+    @Override
+    public List<Contact> getAllContact(String userIdAddU) {
+        QueryWrapper<Contact> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("contact_receive_id",userIdAddU);
+        List<Contact> contacts = contactMapper.selectList(queryWrapper);
+        for (int i = 0; i < contacts.size(); i++) {
+            contacts.set(i,returnHandle(contacts.get(i)));
+        }
+        return contacts;
+    }
+
+    @Override
+    public boolean deleteContact(int contactId) {
+        int delete = contactMapper.deleteById(contactId);
+        return delete==1;
+    }
+
+    @Override
+    public boolean updateContact(Contact contact) {
+        int i = contactMapper.updateById(contact);
+        return i==1;
+    }
+
+    private Contact returnHandle(Contact contact){
+        contact.setContactReceiveId(null);
+        return contact;
     }
 }

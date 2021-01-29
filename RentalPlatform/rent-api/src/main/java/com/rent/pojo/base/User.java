@@ -23,7 +23,7 @@ public class User {
     private int userId;
     private String userName;
     private String userPassword;
-    private int userPictureId;
+    private String userPictureId;
     private int userCreditScore;
     private String userPhone;
     private String userRealName;
@@ -34,15 +34,8 @@ public class User {
     private String userVerification;
     @TableField(exist = false)
     private String userToken;
-    @TableField(exist = false)
-    private File userPhoto;
 
     public User(int userId) {
         this.userId = userId;
-    }
-
-    public User(int userId, File userPhoto) {
-        this.userId = userId;
-        this.userPhoto = userPhoto;
     }
 }

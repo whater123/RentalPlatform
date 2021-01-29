@@ -1,5 +1,6 @@
 com\rent\util\HttpUtils.class
 com\rent\util\MD5util.class
+com\rent\pojo\redisPojo\GoodsPoint.class
 com\rent\pojo\base\User.class
 com\rent\util\HttpUtils$1.class
 com\rent\util\MyUtil.class

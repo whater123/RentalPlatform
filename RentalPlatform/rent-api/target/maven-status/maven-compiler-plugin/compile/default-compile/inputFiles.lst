@@ -3,10 +3,13 @@ E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\A
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\HttpUtils.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\MyUtil.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\LoginMsg.java
+E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\EnterpriseGoods.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\VerificationUtil.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\constant\SystemConstant.java
+E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\redisPojo\GoodsPoint.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\EnterpriseAuthentication.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\User.java
+E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\enumeration\SortWayEnum.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\Enterprise.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\Contact.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\ReturnMsg.java

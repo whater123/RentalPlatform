@@ -22,8 +22,8 @@ public class ContactController {
     @Autowired
     LoginAndRegisterService loginAndRegisterService;
 
-    @GetMapping(path = "/getAutoAddress",produces = "application/json;charset=UTF-8")
-    public ReturnMsg getAutoAddress(@RequestBody AddressMsg addressMsg, HttpServletRequest request){
+    @GetMapping(path = "/getAutoAddress/{lat}/{lng}",produces = "application/json;charset=UTF-8")
+    public ReturnMsg getAutoAddress(@PathVariable("lat") String lat,@PathVariable("lng") String lng, HttpServletRequest request){
         try{
             String userId = request.getHeader("UserId");
             if ("".equals(userId)){
@@ -34,15 +34,17 @@ public class ContactController {
                 return new ReturnMsg("301",true);
             }
 
-            if (addressMsg==null||addressMsg.getLat()==null||addressMsg.getLng()==null){
+            if (lat==null||lng==null){
                 return new ReturnMsg("1",true,"参数不齐");
             }
-            String s = contactService.userGetAddress(addressMsg.getLat(), addressMsg.getLng());
+            String s = contactService.userGetAddress(lat, lng);
             if (s==null|| "nullnull".equals(s)){
                 return new ReturnMsg("1",true,"地址获取失败");
             }
             else {
-                return new ReturnMsg("0",false,s);
+                ReturnMsg returnMsg = new ReturnMsg("0", false);
+                returnMsg.setData(new AddressMsg(s));
+                return returnMsg;
             }
         }catch (Exception e){
             e.printStackTrace();

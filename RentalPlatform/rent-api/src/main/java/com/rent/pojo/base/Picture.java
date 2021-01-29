@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author w
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,4 +15,8 @@ import lombok.NoArgsConstructor;
 public class Picture {
     String pictureId;
     String pictureName;
+
+    public Picture(String pictureId) {
+        this.pictureId = pictureId;
+    }
 }

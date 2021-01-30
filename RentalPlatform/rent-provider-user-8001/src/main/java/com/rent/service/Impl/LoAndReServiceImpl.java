@@ -306,7 +306,7 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
 
     private int getRandomScore(){
         Random n = new Random();
-        int i = n.nextInt(256)+595;
-        return (int) ((double)i/850*100+50);
+        int i = n.nextInt(151)+550;
+        return (int) ((double)i/850*200+50);
     }
 }

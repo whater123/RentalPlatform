@@ -1,6 +1,5 @@
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\config\ThreadPoolConfig.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\ContactController.java
-E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\Impl\GoodsServiceImpl.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\Impl\ContactServiceImpl.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\Impl\LoAndReServiceImpl.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\GoodsMapper.java
@@ -14,8 +13,9 @@ E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\r
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\ContactService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\UserImformationService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\UserMapper.java
+E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\Impl\RecommendServiceImpl.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\config\CORSFilter.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\UserInforController.java
-E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\GoodsService.java
+E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\RecommendService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\LoginAndRegisterService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\LoAndReController.java

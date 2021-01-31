@@ -6,6 +6,7 @@ import com.rent.pojo.base.EnterpriseGoods;
 import com.rent.pojo.view.SimpleGoods;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author w
@@ -67,18 +68,10 @@ public interface RecommendService {
     List<EnterpriseGoods> getTestSixGoods();
 
     /**
-     * 获取商品的详细信息
-     * @param goodsId 商品id
-     * @return 详细信息
-     */
-    EnterpriseGoods getGoodsImformation(int goodsId);
-
-    /**
      * 获取详情页面下方的推荐列表，用于完成任务
      * @param goodsId 商品id
      * @return 6个商品
      */
     List<EnterpriseGoods> getLastList(int goodsId);
 
-    List<SimpleGoods> returnHandle(List<EnterpriseGoods> enterpriseGoods);
 }

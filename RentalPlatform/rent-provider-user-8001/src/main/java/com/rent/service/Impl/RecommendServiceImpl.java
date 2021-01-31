@@ -6,6 +6,7 @@ import com.rent.enumeration.SortWayEnum;
 import com.rent.pojo.base.Enterprise;
 import com.rent.pojo.base.EnterpriseGoods;
 import com.rent.pojo.view.SimpleGoods;
+import com.rent.service.GoodsService;
 import com.rent.service.RecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
@@ -24,6 +25,8 @@ public class RecommendServiceImpl implements RecommendService {
     RedisTemplate<String,Object> redisTemplate;
     @Autowired
     GoodsMapper goodsMapper;
+    @Autowired
+    GoodsService goodsService;
 
 
     @Override
@@ -167,24 +170,8 @@ public class RecommendServiceImpl implements RecommendService {
     }
 
     @Override
-    public EnterpriseGoods getGoodsImformation(int goodsId) {
-        EnterpriseGoods enterpriseGoods = goodsMapper.selectById(goodsId);
-        ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
-        if (opsForValue.get("goods")==null){
-            return enterpriseGoods;
-        }
-        else {
-            Map<Integer,EnterpriseGoods> goods = (Map<Integer, EnterpriseGoods>) opsForValue.get("goods");
-            assert goods != null;
-            EnterpriseGoods enterpriseGoods1 = goods.get(enterpriseGoods.getGoodsId());
-            enterpriseGoods.setPoint(enterpriseGoods1.getPoint());
-        }
-        return enterpriseGoods;
-    }
-
-    @Override
     public List<EnterpriseGoods> getLastList(int goodsId) {
-        EnterpriseGoods goodsImformation = getGoodsImformation(goodsId);
+        EnterpriseGoods goodsImformation = goodsService.getGoodsImformation(goodsId);
         if (goodsImformation==null){
             return null;
         }
@@ -205,29 +192,5 @@ public class RecommendServiceImpl implements RecommendService {
         return true;
     }
 
-    //private int goodsId;
-    //    private int entpId;
-    //    private String goodsPicture;
-    //    private String goodsTitle;
-    //    private String goodsIntroduce;
-    //    private double goodsNewLevel;
-    //    private int goodsSold;
 
-    @Override
-    public List<SimpleGoods> returnHandle(List<EnterpriseGoods> enterpriseGoods){
-        List<SimpleGoods> list = new ArrayList<>();
-        if (enterpriseGoods==null){
-            return null;
-        }
-        for (EnterpriseGoods en :enterpriseGoods) {
-            list.add(new SimpleGoods(en.getGoodsId(),
-                    en.getEntpId(),
-                    en.getGoodsPicture(),
-                    en.getGoodsTitle(),
-                    en.getGoodsIntroduce(),
-                    en.getGoodsNewLevel(),
-                    en.getGoodsSold()));
-        }
-        return list;
-    }
 }

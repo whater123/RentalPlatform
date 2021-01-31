@@ -139,7 +139,7 @@ public class ContactController {
             contact.setContactId(Integer.parseInt(contactId));
             boolean b1 = contactService.updateContact(contact);
             if (!b1){
-                return new ReturnMsg("1",true,"id参数无效");
+                return new ReturnMsg("1",true,"修改失败");
             }
             else {
                 return new ReturnMsg("0",false);
@@ -149,5 +149,4 @@ public class ContactController {
             return new ReturnMsg("500",true,e.getMessage());
         }
     }
-
 }

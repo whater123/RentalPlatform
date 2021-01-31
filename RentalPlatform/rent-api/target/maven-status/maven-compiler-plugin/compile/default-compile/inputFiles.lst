@@ -4,7 +4,9 @@ E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\HttpUt
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\MyUtil.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\enumeration\CategoryEnum.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\LoginMsg.java
+E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\JsonToMapUtil.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\EnterpriseGoods.java
+E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\GoodsAttribute.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\VerificationUtil.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\constant\SystemConstant.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\redisPojo\GoodsPoint.java

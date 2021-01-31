@@ -34,5 +34,7 @@ public class EnterpriseGoodsEntity {
     double goodsNewLevel;
     @TableField(exist = false)
     private String addNumber;
+    @TableField(exist = false)
+    private String goodsRegularPricePerUnit;
 }
 

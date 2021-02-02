@@ -2,6 +2,7 @@ package com.rent.controller;
 
 import com.rent.pojo.base.EnterpriseGoods;
 import com.rent.pojo.base.EnterpriseGoodsEntity;
+import com.rent.pojo.base.User;
 import com.rent.pojo.view.GoodsAttribute;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.pojo.view.SimpleGoods;
@@ -27,12 +28,12 @@ public class GoodsController {
     @Autowired
     GoodsService goodsService;
 
-    @GetMapping("/getRecommendations")
-    public ReturnMsg getRecommendations(){
+    @GetMapping("/getRecommendations/{userId}")
+    public ReturnMsg getRecommendations(@PathVariable("userId") String userId){
         try{
-            List<EnterpriseGoods> testSixGoods = recommendService.getTestSixGoods();
-            if (testSixGoods.size()<6){
-                return new ReturnMsg("1",true,"数据过少");
+            List<EnterpriseGoods> testSixGoods = recommendService.getTestSixGoods(userId);
+            if (testSixGoods==null||testSixGoods.size()<6){
+                return new ReturnMsg("1",true,"您已经刷到底了！");
             }
             else {
                 return new ReturnMsg("0",false,goodsService.returnHandle(testSixGoods));

@@ -3,6 +3,7 @@ package com.rent.service.Impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.GoodsMapper;
 import com.rent.enumeration.SortWayEnum;
+import com.rent.memoryBase.UserWatchedFilter;
 import com.rent.pojo.base.Enterprise;
 import com.rent.pojo.base.EnterpriseGoods;
 import com.rent.pojo.view.SimpleGoods;
@@ -159,13 +160,46 @@ public class RecommendServiceImpl implements RecommendService {
     }
 
     @Override
-    public List<EnterpriseGoods> getTestSixGoods() {
+    public List<EnterpriseGoods> getTestSixGoods(String userId) {
         List<EnterpriseGoods> enterpriseGoodsList = goodsMapper.selectList(null);
         if (enterpriseGoodsList.size()<=6){
             return enterpriseGoodsList;
-        }
-        else {
-            return enterpriseGoodsList.subList(0,6);
+        } else {
+            List<EnterpriseGoods> list = new ArrayList<>();
+            Set<Integer> set = new TreeSet<>();
+            enterpriseGoodsList.forEach(u->{
+                set.add(u.getGoodsId());
+            });
+            Set<Integer> set2 = UserWatchedFilter.USER_WATCHED.get(userId);
+            //保证set2有东西才取差集
+            if (set2!=null&&!set2.isEmpty()){
+                set.removeAll(set2);
+            }
+            //保证取差集后还有东西才进行下一步
+            if (set.isEmpty()){
+                return null;
+            }
+            //未被推荐到的商品列表
+            List<EnterpriseGoods> enterpriseGoods = goodsMapper.selectBatchIds(set);
+            if (enterpriseGoods.size()<6){
+                return null;
+            }
+            Set<Integer> set1 = new TreeSet<>();
+            for (int i = 0; i < 6; i++) {
+                Random random = new Random();
+                int i1 = random.nextInt(enterpriseGoods.size());
+                list.add(enterpriseGoods.get(i1));
+                set1.add(enterpriseGoods.get(i1).getGoodsId());
+                enterpriseGoods.remove(i1);
+            }
+            //保证该用户看的列表不为null才进行添加操作
+            if (set2==null){
+                set2 = new TreeSet<>();
+            }
+            set2.addAll(set1);
+            //将本次推荐列表添加至过滤器中
+            UserWatchedFilter.USER_WATCHED.put(userId,set2);
+            return list;
         }
     }
 

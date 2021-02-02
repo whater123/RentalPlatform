@@ -82,11 +82,6 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<EnterpriseGoodsEntity> getGoodsEntities(int goodsId, Map<String, String> map) {
-        List<Integer> goodsEntity = getGoodsEntity(goodsId, map);
-        System.out.println(goodsEntity);
-        if (goodsEntity==null){
-            return null;
-        }
         String rentWay = map.get("租赁预期");
         if (rentWay == null){
             return null;
@@ -97,12 +92,23 @@ public class GoodsServiceImpl implements GoodsService {
         } else {
             rentKey=2;
         }
+        //移除租赁预期，因为这个不存在redis里，是用来查询mysql的数据的
+        map.remove("租赁预期");
+        List<Integer> goodsEntity = getGoodsEntity(goodsId, map);
+        System.out.println(goodsEntity);
+        if (goodsEntity==null){
+            return null;
+        }
         Set<Integer> set1 = new HashSet<>(goodsEntity);
         Set<Integer> set2 = new HashSet<>(goodsEntityMapper.selectIdListByRentKey(rentKey));
         Set<Integer> result = new HashSet<>(set1);
         //求交集
         result.retainAll(set2);
-        return goodsEntityMapper.selectBatchIds(result);
+        if (result.isEmpty()){
+            return null;
+        } else {
+            return goodsEntityMapper.selectBatchIds(result);
+        }
     }
 
     /**
@@ -128,6 +134,7 @@ public class GoodsServiceImpl implements GoodsService {
     private List<Integer> getGoodsEntity(int goodsId, Map<String, String> map) {
         //筛选map中添加商品集id
         map.put("goodsId", String.valueOf(goodsId));
+
         System.out.println(map);
         HashOperations<String, Object, Object> opsForHash = redisTemplate.opsForHash();
         if (!opsForHash.hasKey("go_en_cl",String.valueOf(map))){

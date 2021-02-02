@@ -65,7 +65,7 @@ public interface RecommendService {
      * 获取六个商品，用于完成任务
      * @return 六个商品
      */
-    List<EnterpriseGoods> getTestSixGoods();
+    List<EnterpriseGoods> getTestSixGoods(String userId);
 
     /**
      * 获取详情页面下方的推荐列表，用于完成任务

@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author w
@@ -33,8 +34,10 @@ public class EnterpriseGoodsEntity {
     String goodsRegularPrice;
     double goodsNewLevel;
     @TableField(exist = false)
-    private String addNumber;
+    private int addNumber;
     @TableField(exist = false)
     private String goodsRegularPricePerUnit;
+    @TableField(exist = false)
+    List<Property> properties;
 }
 

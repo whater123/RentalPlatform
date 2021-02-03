@@ -7,7 +7,7 @@ import com.rent.pojo.base.EnterpriseGoods;
 import com.rent.pojo.base.EnterpriseGoodsEntity;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.EnterpriseService;
-import com.rent.service.GoodsService;
+import com.rent.service.Goods2Service;
 import com.rent.service.UtilsService;
 import com.rent.util.MoneyUtil;
 import com.rent.util.MyUtil;
@@ -22,7 +22,7 @@ public class GoodsController {
     @Autowired
     EnterpriseService enterpriseService;
     @Autowired
-    GoodsService goodsService;
+    Goods2Service goods2Service;
     @Autowired
     UtilsService utilsService;
 
@@ -37,12 +37,12 @@ public class GoodsController {
         if(MyUtil.strHasVoid(
                 goods.getGoodsPicture(),
                 goods.getGoodsTitle(),
-                goods.getGoodsIntroduce())
-        ){
+                goods.getGoodsIntroduce(),
+                goods.getGoodsBigCategory()
+        )){
             return new ReturnMsg("401",true,"传参不齐");
         }
         if(MyUtil.intHasVoid(
-                goods.getGoodsBigCategory(),
                 goods.getGoodsCategoryId())
         ){
             return new ReturnMsg("401",true,"传参不齐");
@@ -57,7 +57,7 @@ public class GoodsController {
             return new ReturnMsg("403",true,"上传的图组不存在");
         }
         //分类验证（暂无）
-        if(goodsService.insertGoods(goods)){
+        if(goods2Service.insertGoods(goods)){
             return new ReturnMsg("200",false,"添加成功", goods.getGoodsId());
         }else {
             return new ReturnMsg("500",true,"添加失败");
@@ -72,7 +72,7 @@ public class GoodsController {
             return new ReturnMsg("302",true,"尚未授权");
         }
         try{
-            if(!goodsService.isNowEntpId(goodsService.getThoseGoods("goods_id",
+            if(!goods2Service.isNowEntpId(goods2Service.getThoseGoods("goods_id",
                     String.valueOf(goodsEntity.getGoodsId())).get(0).getEntpId())){
                 return new ReturnMsg("302",true,"尚未授权");
             }
@@ -107,12 +107,12 @@ public class GoodsController {
                 goodsEntity.getGoodsRegularPrice())){
             return new ReturnMsg("402",true,"传参不合法");
         }
-        if(!goodsService.isRuleProperties(goodsService.
+        if(!goods2Service.isRuleProperties(goods2Service.
                 getGoodsAttribute(goodsEntity.getGoodsId()),goodsEntity.getProperties())
         ){
             return new ReturnMsg("403",true,"属性不匹配");
         }
-        if(goodsService.insertGoodsEntity(goodsEntity)){
+        if(goods2Service.insertGoodsEntity(goodsEntity)){
             return new ReturnMsg("200",false,"添加成功");
         }else {
             return new ReturnMsg("500",true,"添加失败");
@@ -130,14 +130,14 @@ public class GoodsController {
             return new ReturnMsg("401",true,"传参不齐");
         }
         try{
-            if(!goodsService.isNowEntpId(goodsService.getThoseGoods("goods_id",
+            if(!goods2Service.isNowEntpId(goods2Service.getThoseGoods("goods_id",
                     JSON.parseObject(json).getString("goodsId")).get(0).getEntpId())){
                 return new ReturnMsg("302",true,"尚未授权");
             }
         } catch (Exception e) {
             return new ReturnMsg("40301",true,"该商品集不存在");
         }
-        if(goodsService.insertGoodsProperty(json)){
+        if(goods2Service.insertGoodsProperty(json)){
             return new ReturnMsg("200",false,"添加成功");
         }else {
             return new ReturnMsg("40302",true,"添加失败，该商品集属性已存在");
@@ -155,14 +155,14 @@ public class GoodsController {
             return new ReturnMsg("401",true,"传参不齐");
         }
         try{
-            if(!goodsService.isNowEntpId(goodsService.getThoseGoods("goods_id",
+            if(!goods2Service.isNowEntpId(goods2Service.getThoseGoods("goods_id",
                     JSON.parseObject(json).getString("goodsId")).get(0).getEntpId())){
                 return new ReturnMsg("302",true,"尚未授权");
             }
         } catch (Exception e) {
             return new ReturnMsg("40301",true,"所查找的商品集不存在");
         }
-        Object data = goodsService.getGoodsAttribute(JSONObject.parseObject(json).getInteger("goodsId"));
+        Object data = goods2Service.getGoodsAttribute(JSONObject.parseObject(json).getInteger("goodsId"));
         if(!"".equals(data)){
             return new ReturnMsg("200",false,"获取成功",data);
         }else {

@@ -25,11 +25,11 @@ public class EnterpriseGoods {
     private double goodsNewLevel;
     private int goodsCount;
     private int goodsExisting;
-    private double goodsMaxPrice;
-    private double goodsMinPrice;
+    private String goodsMaxPrice;
+    private String goodsMinPrice;
     private int goodsSold;
-    private double goodsMaxRent;
-    private double goodsMinRent;
+    private String goodsMaxRent;
+    private String goodsMinRent;
     private int goodsRent;
     private String goodsBigCategory;
     private int goodsCategoryId;

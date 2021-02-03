@@ -19,11 +19,6 @@
         <!--        </dependency>-->
         <!--        监控信息-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.75</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
             <version>1.3.2</version>
@@ -79,6 +74,29 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.0.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.15</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.crazycake/shiro-redis -->
+        <dependency>
+            <groupId>org.crazycake</groupId>
+            <artifactId>shiro-redis</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>rent-provider-user-8001</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
         <!-- 打包之后jar包的名字 -->
@@ -92,7 +110,7 @@
 
                 <!-- 启动类的全类名 -->
                 <configuration>
-                    <mainClass>com.springcloud.DeptProvider_8001</mainClass>
+                    <mainClass>com.rent.ManagerProvider_8002</mainClass>
                 </configuration>
 
                 <executions>

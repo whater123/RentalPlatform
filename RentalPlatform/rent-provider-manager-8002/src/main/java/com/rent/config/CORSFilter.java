@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author MSI-PC
+ * @author obuivy
  */
-
 @Component
 public class CORSFilter extends OncePerRequestFilter {
 

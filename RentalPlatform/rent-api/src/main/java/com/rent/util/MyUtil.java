@@ -2,7 +2,10 @@ package com.rent.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.rent.constant.SystemConstant;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,10 +13,20 @@ import java.util.regex.Pattern;
  * @author MSI-PC
  */
 public class MyUtil {
-    public static boolean hasVoid(String...strs){
+    public static boolean strHasVoid(String...strs){
         for (String s :
                 strs) {
             if (s == null || "".equals(s)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean intHasVoid(int...ints){
+        for (int i :
+                ints) {
+            if(i == 0){
                 return true;
             }
         }
@@ -50,4 +63,19 @@ public class MyUtil {
         }
         return false;
     }
+
+    public static String getNowTime(){
+        return  new SimpleDateFormat(SystemConstant.DATE_FORMAT).format(new Date());
+    }
+
+    public static boolean isAllRuleMoney(String...moneys){
+        for (String s:
+                moneys) {
+            if(!MoneyUtil.isRuleString(s)){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

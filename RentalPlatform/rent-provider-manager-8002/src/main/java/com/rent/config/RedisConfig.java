@@ -14,6 +14,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig {
 
     @Bean
+    @SuppressWarnings("all")
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         //为了方便，一般直接使用string，object
         RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
@@ -38,4 +39,6 @@ public class RedisConfig {
 
         return template;
     }
+
+
 }

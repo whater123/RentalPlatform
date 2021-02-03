@@ -1,6 +1,7 @@
 package com.rent.pojo.base;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -21,4 +22,6 @@ public class Enterprise {
     String entpShopName;
     String entpChargePhone;
     String entpPictureId;
+    @TableField(exist = false)
+    private String entpVerification;
 }

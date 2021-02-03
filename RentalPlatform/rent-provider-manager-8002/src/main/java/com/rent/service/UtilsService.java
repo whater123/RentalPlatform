@@ -17,16 +17,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-
+/**
+ * @author obuivy
+ */
 @Service
-public class UtilsService {
+public class UtilsService implements com.rent.service.impl.UtilsImpl {
     private static final List<String> ALLOW_IMAGE_TYPES = Arrays.asList("image/jpeg", "image/png");
     @Autowired
     PictureMapper pictureMapper;
 
     File src = new File("fileSource");
     private String uploadFilePath = src.getAbsolutePath();
-
+    @Override
     public byte[] getPhoto(String filePath) throws IOException {
         File file = new File("fileSource/" + filePath);
         FileInputStream inputStream = new FileInputStream(file);
@@ -34,7 +36,7 @@ public class UtilsService {
         inputStream.read(bytes, 0, inputStream.available());
         return bytes;
     }
-
+    @Override
     public String fileUpload(MultipartFile uploadFile){
         File folder = new File(uploadFilePath);
         if(!folder.isDirectory()){
@@ -50,14 +52,14 @@ public class UtilsService {
             return "500";
         }
     }
-
+    @Override
     public boolean isPictureIdExist(String pictureId){
         QueryWrapper<Picture> queryWrapper = new QueryWrapper<Picture>();
         queryWrapper.eq("picture_id",pictureId);
         List<Picture> pictureList = pictureMapper.selectList(queryWrapper);
         return pictureList.size() != 0;
     }
-
+    @Override
     public ArrayList<String> getPictureUrls(String pictureId, HttpServletRequest request){
         ArrayList<String> list = new ArrayList<String>();
         list.add(pictureId);
@@ -73,7 +75,7 @@ public class UtilsService {
         }
         return list;
     }
-
+    @Override
     public ArrayList<String> uploadFiles(MultipartFile[] pictures){
         ArrayList<String> pictureList = new ArrayList<String>();
         String pictureId = UUID.randomUUID().toString();
@@ -103,7 +105,7 @@ public class UtilsService {
         list.add(pictureId);
         return list;
     }
-
+    @Override
     public boolean isFilesPicture(MultipartFile[] files){
         for (MultipartFile file :
                 files) {
@@ -135,7 +137,7 @@ public class UtilsService {
         }
         return true;
     }
-
+    @Override
     public List<Picture> getThosePictures(String column, String value){
         QueryWrapper<Picture> queryWrapper = new QueryWrapper<Picture>();
         queryWrapper.eq(column,value);

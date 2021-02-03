@@ -90,16 +90,19 @@ public class GoodsController {
         }
     }
 
-    @PostMapping("/getGoodsEntities")
-    public ReturnMsg getGoodsEntities(@RequestBody GoodsAttribute goodsAttribute){
+    @GetMapping("/getGoodsEntities/{sortWay}")
+    public ReturnMsg getGoodsEntities(@RequestBody GoodsAttribute goodsAttribute,@PathVariable("sortWay") String sortWay){
         try{
+            if (sortWay==null|| "".equals(sortWay)){
+                return new ReturnMsg("1",true,"sortWay参数缺失");
+            }
             Map<String, String> map = (TreeMap<String, String>) JsonToMapUtil.getValue(goodsAttribute.getGoodsAttributes());
             List<EnterpriseGoodsEntity> goodsEntities
                     = goodsService.getGoodsEntities(Integer.parseInt(goodsAttribute.getGoodsId()), map);
             if (goodsEntities==null||goodsEntities.size()==0){
                 return new ReturnMsg("1",true,"不含有此属性的商品");
             }else {
-                return new ReturnMsg("0",false,goodsEntities);
+                return new ReturnMsg("0",false,goodsService.entitySort(goodsEntities,sortWay));
             }
         }catch (Exception e){
             e.printStackTrace();

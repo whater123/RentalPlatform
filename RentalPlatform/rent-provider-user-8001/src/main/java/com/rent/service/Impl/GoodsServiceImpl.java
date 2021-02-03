@@ -111,6 +111,22 @@ public class GoodsServiceImpl implements GoodsService {
         }
     }
 
+    @Override
+    public List<EnterpriseGoodsEntity> entitySort(List<EnterpriseGoodsEntity> enterpriseGoodsEntityList, String sortWay) {
+        if ("0".equals(sortWay)){
+            return enterpriseGoodsEntityList;
+        }
+        enterpriseGoodsEntityList.sort((e1,e2)-> {
+            if ("1".equals(sortWay)){
+                return (int) (e2.getGoodsNewLevel()-e1.getGoodsNewLevel());
+            }
+            else {
+                return (int) (e1.getGoodsNewLevel()-e2.getGoodsNewLevel());
+            }
+        });
+        return enterpriseGoodsEntityList;
+    }
+
     /**
      * 根据商品集id获取用户能选择的所有属性
      * @param goodsId 商品集id

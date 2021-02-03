@@ -40,4 +40,12 @@ public interface GoodsService {
      * @return 符合要求的商品个体集合
      */
     List<EnterpriseGoodsEntity> getGoodsEntities(int goodsId,Map<String,String> map);
+
+    /**
+     * 根据排序方法返回列表
+     * @param enterpriseGoodsEntityList 商品个体列表
+     * @param sortWay 排序方法
+     * @return 返回结果
+     */
+    List<EnterpriseGoodsEntity> entitySort(List<EnterpriseGoodsEntity> enterpriseGoodsEntityList,String sortWay);
 }

@@ -179,6 +179,8 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
         TimeZone tz = TimeZone.getTimeZone("ETC/GMT-8");
         TimeZone.setDefault(tz);
         user.setUserRegisterTime(new Date());
+        //随机获取信誉分
+        user.setUserCreditScore(getRandomScore());
         int insert = userMapper.insert(user);
         return insert==1;
     }
@@ -242,19 +244,6 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
     }
 
     @Override
-    public boolean userUpdateInfro(User user) {
-        User user1 = getUser(user);
-        if (user.getUserPhone()!=null){
-            user1.setUserPhone(user.getUserPhone());
-        }
-        if (user.getUserName()!=null){
-            user1.setUserName(user.getUserName());
-        }
-        int i = userMapper.updateById(user1);
-        return i==1;
-    }
-
-    @Override
     public boolean userExtendToken(int userId) {
         ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
         Object o = opsForValue.get("U" + userId);
@@ -281,8 +270,6 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
                 continue;
             }
             String value = String.valueOf(opsForValue.get(key));
-            System.out.println(value);
-            System.out.println(uuid);
             if (value.equals(uuid)){
                 int substring = Integer.parseInt(key.substring(1));
                 userExtendToken(substring);
@@ -317,4 +304,9 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
         return sb.toString();
     }
 
+    private int getRandomScore(){
+        Random n = new Random();
+        int i = n.nextInt(151)+550;
+        return (int) ((double)i/850*200+50);
+    }
 }

@@ -1,5 +1,9 @@
 package com.rent.service;
 
+import com.rent.pojo.base.Contact;
+
+import java.util.List;
+
 /**
  * @author w
  */
@@ -13,4 +17,31 @@ public interface ContactService {
      */
     String userGetAddress(String lat,String lng);
 
+    /**
+     * 用户添加联系信息
+     * @param contact 联系信息
+     * @return 是否添加成功
+     */
+    boolean insertContact(Contact contact);
+
+    /**
+     * 根据U+id获取用户所有的联系信息
+     * @param userIdAddU U+id
+     * @return 所有的联系信息
+     */
+    List<Contact> getAllContact(String userIdAddU);
+
+    /**
+     * 根据联系信息id删除联系信息
+     * @param contactId 联系信息id
+     * @return 是否成功
+     */
+    boolean deleteContact(int contactId);
+
+    /**
+     * 根据id修改联系信息
+     * @param contact 联系信息id和收货人id不变，其他信息改变的update对象
+     * @return 是否成功
+     */
+    boolean updateContact(Contact contact);
 }

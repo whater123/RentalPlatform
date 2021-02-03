@@ -1,9 +1,1 @@
-com\rent\controller\LoAndReController.class
-com\rent\config\RedisConfig.class
-com\rent\service\Impl\LoAndReServiceImpl.class
-com\rent\controller\UserInforController.class
-com\rent\service\LoginAndRegisterService.class
-com\rent\dao\UserMapper.class
-com\rent\thread\SMSThread.class
-com\rent\UserProvider_8001.class
-com\rent\config\ThreadPoolConfig.class
+com\rent\service\RecommendService.class

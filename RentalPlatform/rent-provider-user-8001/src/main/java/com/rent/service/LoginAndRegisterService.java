@@ -77,13 +77,6 @@ public interface LoginAndRegisterService {
     User getUser(User user);
 
     /**
-     * 根据id修改用户个人信息
-     * @param user 含id的用户，手机或用户名只要不为空的都会被更新
-     * @return  是否更新成功
-     */
-    boolean userUpdateInfro(User user);
-
-    /**
      * 延长用户的令牌有效时间，在每次请求发送都要执行此方法
      * @param userId 用户id
      * @return 未登录返回false

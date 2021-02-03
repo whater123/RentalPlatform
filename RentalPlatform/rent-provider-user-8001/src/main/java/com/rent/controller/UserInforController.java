@@ -1,8 +1,10 @@
 package com.rent.controller;
 
+import com.rent.pojo.base.Picture;
 import com.rent.pojo.base.User;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.LoginAndRegisterService;
+import com.rent.service.UserImformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 /**
@@ -21,6 +24,8 @@ import java.io.File;
 public class UserInforController {
     @Autowired
     LoginAndRegisterService loginAndRegisterService;
+    @Autowired
+    UserImformationService userImformationService;
 //    @Autowired
 //    RestTemplate restTemplate;
 
@@ -42,7 +47,7 @@ public class UserInforController {
             if (!loginAndRegisterService.userCheckVerification(user.getUserPhone(),user.getUserVerification())){
                 return new ReturnMsg("306",true);
             }
-            boolean b = loginAndRegisterService.userUpdateInfro(user);
+            boolean b = userImformationService.userUpdateInfro(user);
             if (!b){
                 return new ReturnMsg("500",true,"后端逻辑错误或数据库错误");
             }
@@ -55,19 +60,27 @@ public class UserInforController {
         }
     }
 
-//    @PostMapping(path = "/changePhoto",produces = "application/json;charset=UTF-8")
-//    public ReturnMsg changePhoto(MultipartFile userPhoto, int userId){
-//        System.out.println(userPhoto);
-//        System.out.println(userId);
-//        ReturnMsg returnMsg = restTemplate.postForObject("http://106.54.174.38:8001/user/utils/uploadPicture", userPhoto, ReturnMsg.class);
-//        System.out.println(returnMsg);
-//        assert returnMsg != null;
-//        if ("200".equals(returnMsg.getCode())){
-//            //存入picturename
-//            return new ReturnMsg("0",false,returnMsg.getData());
-//        }
-//        else {
-//            return returnMsg;
-//        }
-//    }
+    @PostMapping(path = "/changePhoto",produces = "application/json;charset=UTF-8")
+    public ReturnMsg changePhoto(HttpServletRequest request, @RequestBody Picture picture){
+        try{
+            String userId = request.getHeader("UserId");
+            if ("".equals(userId)){
+                return new ReturnMsg("301",true);
+            }
+            boolean b = loginAndRegisterService.userExtendToken(Integer.parseInt(userId));
+            if (!b){
+                return new ReturnMsg("301",true);
+            }
+
+            boolean b1 = userImformationService.userUpdatePhoto(picture.getPictureId(), Integer.parseInt(userId));
+            if (!b1){
+                return new ReturnMsg("1",true,"id参数错误");
+            }else {
+                return new ReturnMsg("0",false);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
 }

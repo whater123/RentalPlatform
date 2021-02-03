@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class GoodsService implements GoodsImpl {
+public class Goods2Service implements GoodsImpl {
     @Autowired
     RedisTemplate<String, Object> redisTemplate;
     @Autowired

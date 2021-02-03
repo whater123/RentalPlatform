@@ -8,8 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
+/**
+ * @author w
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,7 +34,9 @@ public class EnterpriseGoodsEntity {
     String goodsRegularPrice;
     double goodsNewLevel;
     @TableField(exist = false)
-    int addNumber;
+    private int addNumber;
+    @TableField(exist = false)
+    private String goodsRegularPricePerUnit;
     @TableField(exist = false)
     List<Property> properties;
 }

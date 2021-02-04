@@ -1,19 +1,17 @@
 package com.rent.controller;
 
-import com.rent.pojo.base.EnterpriseGoods;
-import com.rent.pojo.base.EnterpriseGoodsEntity;
-import com.rent.pojo.base.User;
+import com.rent.pojo.base.manager.EnterpriseGoods;
+import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
+import com.rent.pojo.base.user.UserComment;
 import com.rent.pojo.view.GoodsAttribute;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.pojo.view.SimpleGoods;
+import com.rent.service.CommentService;
 import com.rent.service.GoodsService;
 import com.rent.service.RecommendService;
 import com.rent.util.JsonToMapUtil;
-import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
 
@@ -27,6 +25,8 @@ public class GoodsController {
     RecommendService recommendService;
     @Autowired
     GoodsService goodsService;
+    @Autowired
+    CommentService commentService;
 
     @GetMapping("/getRecommendations/{userId}")
     public ReturnMsg getRecommendations(@PathVariable("userId") String userId){
@@ -103,6 +103,21 @@ public class GoodsController {
                 return new ReturnMsg("1",true,"不含有此属性的商品");
             }else {
                 return new ReturnMsg("0",false,goodsService.entitySort(goodsEntities,sortWay));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/comments/{goodsId}")
+    public ReturnMsg getComments(@PathVariable("goodsId") String goodsId){
+        try{
+            List<UserComment> userCommentsByGoodsId = commentService.getUserCommentsByGoodsId(Integer.parseInt(goodsId));
+            if (userCommentsByGoodsId==null||userCommentsByGoodsId.size()==0){
+                return new ReturnMsg("1",true,"暂无评论");
+            } else{
+                return new ReturnMsg("0",false,userCommentsByGoodsId);
             }
         }catch (Exception e){
             e.printStackTrace();

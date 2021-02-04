@@ -1,12 +1,9 @@
 package com.rent.service;
 
 import com.rent.enumeration.SortWayEnum;
-import com.rent.pojo.base.Enterprise;
-import com.rent.pojo.base.EnterpriseGoods;
-import com.rent.pojo.view.SimpleGoods;
+import com.rent.pojo.base.manager.EnterpriseGoods;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author w

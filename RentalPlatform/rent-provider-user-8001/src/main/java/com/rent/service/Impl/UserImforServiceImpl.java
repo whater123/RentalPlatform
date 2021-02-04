@@ -1,7 +1,7 @@
 package com.rent.service.Impl;
 
 import com.rent.dao.UserMapper;
-import com.rent.pojo.base.User;
+import com.rent.pojo.base.user.User;
 import com.rent.service.LoginAndRegisterService;
 import com.rent.service.UserImformationService;
 import org.springframework.beans.factory.annotation.Autowired;

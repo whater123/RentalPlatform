@@ -1,7 +1,7 @@
 package com.rent.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.rent.pojo.base.EnterpriseGoodsEntity;
+import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;

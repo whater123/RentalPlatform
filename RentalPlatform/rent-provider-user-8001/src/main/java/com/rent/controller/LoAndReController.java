@@ -1,15 +1,12 @@
 package com.rent.controller;
 
 import com.rent.config.ThreadPoolConfig;
-import com.rent.pojo.base.User;
+import com.rent.pojo.base.user.User;
 import com.rent.pojo.view.LoginMsg;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.LoginAndRegisterService;
 import com.rent.thread.SMSThread;
 import com.rent.util.VerificationUtil;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
 import java.util.Map;
 
 /**

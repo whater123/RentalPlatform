@@ -1,7 +1,7 @@
 package com.rent.service.impl;
 
 import com.rent.dao.EnterpriseAuthenticationMapper;
-import com.rent.pojo.base.EnterpriseAuthentication;
+import com.rent.pojo.base.manager.EnterpriseAuthentication;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.rent.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.EnterpriseAuthenticationMapper;
-import com.rent.pojo.base.EnterpriseAuthentication;
+import com.rent.pojo.base.manager.EnterpriseAuthentication;
 import com.rent.service.impl.EnterpriseAuthenticationImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

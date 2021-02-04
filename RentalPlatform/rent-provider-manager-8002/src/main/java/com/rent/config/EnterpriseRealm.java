@@ -3,7 +3,7 @@ package com.rent.config;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.constant.SystemConstant;
 import com.rent.pojo.base.Enterprise;
-import com.rent.pojo.base.EnterpriseAuthentication;
+import com.rent.pojo.base.manager.EnterpriseAuthentication;
 import com.rent.service.EnterpriseAuthenticationService;
 import com.rent.service.EnterpriseService;
 import com.rent.util.MD5util;

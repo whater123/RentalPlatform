@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.rent.constant.SystemConstant;
 import com.rent.dao.EnterpriseAuthenticationMapper;
-import com.rent.pojo.base.EnterpriseAuthentication;
+import com.rent.pojo.base.manager.EnterpriseAuthentication;
 import com.rent.pojo.view.ReturnDoubleData;
 import com.rent.service.impl.PlatformImpl;
 import com.rent.util.MyUtil;

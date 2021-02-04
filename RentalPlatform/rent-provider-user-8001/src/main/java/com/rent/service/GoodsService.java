@@ -1,7 +1,7 @@
 package com.rent.service;
 
-import com.rent.pojo.base.EnterpriseGoods;
-import com.rent.pojo.base.EnterpriseGoodsEntity;
+import com.rent.pojo.base.manager.EnterpriseGoods;
+import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.view.GoodsAttribute;
 import com.rent.pojo.view.SimpleGoods;
 

@@ -1,10 +1,9 @@
 package com.rent.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.rent.pojo.base.EnterpriseAuthentication;
+import com.rent.pojo.base.manager.EnterpriseAuthentication;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

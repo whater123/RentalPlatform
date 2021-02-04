@@ -1,10 +1,9 @@
 package com.rent.service.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.GoodsEntityMapper;
 import com.rent.dao.GoodsMapper;
-import com.rent.pojo.base.EnterpriseGoods;
-import com.rent.pojo.base.EnterpriseGoodsEntity;
+import com.rent.pojo.base.manager.EnterpriseGoods;
+import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.view.GoodsAttribute;
 import com.rent.pojo.view.SimpleGoods;
 import com.rent.service.GoodsService;
@@ -151,7 +150,6 @@ public class GoodsServiceImpl implements GoodsService {
         //筛选map中添加商品集id
         map.put("goodsId", String.valueOf(goodsId));
 
-        System.out.println(map);
         HashOperations<String, Object, Object> opsForHash = redisTemplate.opsForHash();
         if (!opsForHash.hasKey("go_en_cl",String.valueOf(map))){
             return null;

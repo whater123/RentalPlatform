@@ -4,13 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.GoodsMapper;
 import com.rent.enumeration.SortWayEnum;
 import com.rent.memoryBase.UserWatchedFilter;
-import com.rent.pojo.base.Enterprise;
-import com.rent.pojo.base.EnterpriseGoods;
-import com.rent.pojo.view.SimpleGoods;
+import com.rent.pojo.base.manager.EnterpriseGoods;
 import com.rent.service.GoodsService;
 import com.rent.service.RecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -212,7 +209,14 @@ public class RecommendServiceImpl implements RecommendService {
         QueryWrapper<EnterpriseGoods> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("goods_big_category",goodsImformation.getGoodsBigCategory())
                     .eq("goods_category_id",goodsImformation.getGoodsCategoryId());
-        return goodsMapper.selectList(queryWrapper);
+        List<EnterpriseGoods> enterpriseGoods = goodsMapper.selectList(queryWrapper);
+        //删掉自己
+        enterpriseGoods.forEach(enterpriseGoods1 -> {
+            if (enterpriseGoods1.getGoodsId()==goodsId){
+                enterpriseGoods.remove(enterpriseGoods1);
+            }
+        });
+        return enterpriseGoods;
     }
 
     private boolean addGoodsToRedis(EnterpriseGoods enterpriseGoods){

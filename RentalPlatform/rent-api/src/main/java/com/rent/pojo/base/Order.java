@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order {
-    @TableId(type = IdType.AUTO)
-    private int orderId;
-    private int orderParentId;
+    private String orderId;
+    private String orderParentId;
     private int userId;
     private int goodsEntityId;
     private int contactId;
@@ -28,5 +27,6 @@ public class Order {
     private int orderStopState;
     private int orderGoodsCount;
     private int orderRentWay;
-    private String orderRentTime;
+    private int orderRentTime;
+    private String orderRentUnit;
 }

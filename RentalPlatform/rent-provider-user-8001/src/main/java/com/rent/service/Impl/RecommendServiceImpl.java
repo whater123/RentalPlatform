@@ -202,20 +202,17 @@ public class RecommendServiceImpl implements RecommendService {
 
     @Override
     public List<EnterpriseGoods> getLastList(int goodsId) {
-        EnterpriseGoods goodsImformation = goodsService.getGoodsImformation(goodsId);
+        EnterpriseGoods goodsImformation = goodsService.getGoodsInformation(goodsId);
         if (goodsImformation==null){
             return null;
         }
         QueryWrapper<EnterpriseGoods> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("goods_big_category",goodsImformation.getGoodsBigCategory())
-                    .eq("goods_category_id",goodsImformation.getGoodsCategoryId());
+                    .eq("goods_category_id",goodsImformation.getGoodsCategoryId())
+                    .orderByDesc("goods_sold");
         List<EnterpriseGoods> enterpriseGoods = goodsMapper.selectList(queryWrapper);
         //删掉自己
-        enterpriseGoods.forEach(enterpriseGoods1 -> {
-            if (enterpriseGoods1.getGoodsId()==goodsId){
-                enterpriseGoods.remove(enterpriseGoods1);
-            }
-        });
+        enterpriseGoods.removeIf(enterpriseGoods1 -> enterpriseGoods1.getGoodsId() == goodsId);
         return enterpriseGoods;
     }
 

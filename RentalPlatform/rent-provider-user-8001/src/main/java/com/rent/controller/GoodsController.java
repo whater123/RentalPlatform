@@ -47,7 +47,7 @@ public class GoodsController {
     @GetMapping("/{goodsId}")
     public ReturnMsg getGoods(@PathVariable("goodsId") String goodsId){
         try{
-            EnterpriseGoods goodsImformation = goodsService.getGoodsImformation(Integer.parseInt(goodsId));
+            EnterpriseGoods goodsImformation = goodsService.getGoodsInformation(Integer.parseInt(goodsId));
             if (goodsImformation==null){
                 return new ReturnMsg("1",true,"id参数无效");
             }
@@ -67,7 +67,14 @@ public class GoodsController {
             if (list==null){
                 return new ReturnMsg("1",true,"id参数错误");
             }
-            return new ReturnMsg("0",false,list);
+            if (list.size()==0){
+                return new ReturnMsg("1",true,"暂无推荐");
+            }
+            if (list.size()>6){
+                return new ReturnMsg("0",false,list.subList(0,6));
+            }else {
+                return new ReturnMsg("0",false,list);
+            }
         }catch (Exception e){
             e.printStackTrace();
             return new ReturnMsg("500",true,e.getMessage());
@@ -102,7 +109,7 @@ public class GoodsController {
             if (goodsEntities==null||goodsEntities.size()==0){
                 return new ReturnMsg("1",true,"不含有此属性的商品");
             }else {
-                return new ReturnMsg("0",false,goodsService.entitySort(goodsEntities,sortWay));
+                return new ReturnMsg("0",false,goodsService.entitySortAndHandle(goodsEntities,sortWay));
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -13,11 +13,18 @@ import java.util.Map;
  */
 public interface GoodsService {
     /**
-     * 获取商品的详细信息
+     * 获取商品集的详细信息
      * @param goodsId 商品id
      * @return 详细信息
      */
-    EnterpriseGoods getGoodsImformation(int goodsId);
+    EnterpriseGoods getGoodsInformation(int goodsId);
+
+    /**
+     * 获取商品个体信息
+     * @param goodsEntityId 商品个体id
+     * @return 商品个体信息
+     */
+    EnterpriseGoodsEntity getGoodsEntityInformation(int goodsEntityId);
 
     /**
      * 简化数据
@@ -47,5 +54,5 @@ public interface GoodsService {
      * @param sortWay 排序方法
      * @return 返回结果
      */
-    List<EnterpriseGoodsEntity> entitySort(List<EnterpriseGoodsEntity> enterpriseGoodsEntityList,String sortWay);
+    List<EnterpriseGoodsEntity> entitySortAndHandle(List<EnterpriseGoodsEntity> enterpriseGoodsEntityList, String sortWay) throws Exception;
 }

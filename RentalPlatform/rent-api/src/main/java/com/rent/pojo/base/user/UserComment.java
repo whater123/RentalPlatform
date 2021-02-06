@@ -21,6 +21,7 @@ public class UserComment {
     private String commentPictureId;
     private String commentContext;
     private int commentStar;
+    private String commentTime;
     @TableField(exist = false)
     private String userPictureId;
     @TableField(exist = false)

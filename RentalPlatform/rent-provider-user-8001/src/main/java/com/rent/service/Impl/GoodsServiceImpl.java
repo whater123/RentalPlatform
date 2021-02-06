@@ -7,6 +7,7 @@ import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.view.GoodsAttribute;
 import com.rent.pojo.view.SimpleGoods;
 import com.rent.service.GoodsService;
+import com.rent.util.MoneyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -28,7 +29,7 @@ public class GoodsServiceImpl implements GoodsService {
     GoodsEntityMapper goodsEntityMapper;
 
     @Override
-    public EnterpriseGoods getGoodsImformation(int goodsId) {
+    public EnterpriseGoods getGoodsInformation(int goodsId) {
         EnterpriseGoods enterpriseGoods = goodsMapper.selectById(goodsId);
         ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
         if (opsForValue.get("goods")==null){
@@ -41,6 +42,11 @@ public class GoodsServiceImpl implements GoodsService {
             enterpriseGoods.setPoint(enterpriseGoods1.getPoint());
         }
         return enterpriseGoods;
+    }
+
+    @Override
+    public EnterpriseGoodsEntity getGoodsEntityInformation(int goodsEntityId) {
+        return goodsEntityMapper.selectById(goodsEntityId);
     }
 
     @Override
@@ -111,7 +117,29 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<EnterpriseGoodsEntity> entitySort(List<EnterpriseGoodsEntity> enterpriseGoodsEntityList, String sortWay) {
+    public List<EnterpriseGoodsEntity> entitySortAndHandle(List<EnterpriseGoodsEntity> enterpriseGoodsEntityList, String sortWay) throws Exception {
+        for (int i = 0; i < enterpriseGoodsEntityList.size(); i++) {
+            String[] split = enterpriseGoodsEntityList.get(i).getGoodRegularUnit().split("/");
+            String[] split1 = enterpriseGoodsEntityList.get(i).getGoodsRegularPrice().split("/");
+            String sum = "0.0";
+            if (split.length!=split1.length){
+                continue;
+            } else {
+                for (int j = 0; j < split.length; j++) {
+                    if (!MoneyUtil.isRuleString(split1[j])){
+                        split1[j] = MoneyUtil.addTail(split1[j]);
+                    }
+                    if (!MoneyUtil.isRuleString(split[j])){
+                        split[j] = MoneyUtil.addTail(split[j]);
+                    }
+                    sum = MoneyUtil.fractionAdd(sum,MoneyUtil.fractionDivide(split1[j],split[j]));
+                }
+            }
+            EnterpriseGoodsEntity enterpriseGoodsEntity = enterpriseGoodsEntityList.get(i);
+            enterpriseGoodsEntity.setGoodsRegularPricePerDay(MoneyUtil.fractionDivide(sum,split.length+".0"));
+            enterpriseGoodsEntityList.set(i,enterpriseGoodsEntity);
+        }
+
         if ("0".equals(sortWay)){
             return enterpriseGoodsEntityList;
         }

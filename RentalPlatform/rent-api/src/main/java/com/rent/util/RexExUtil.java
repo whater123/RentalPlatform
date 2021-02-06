@@ -45,7 +45,10 @@ public class RexExUtil {
     }
 
 
-    public static boolean isAllNumber(String str){
+    public static boolean isRealNumber(String str){
+        if(str.charAt(0) == '-'){
+            str = str.substring(1);
+        }
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(str);
         return isNum.matches();

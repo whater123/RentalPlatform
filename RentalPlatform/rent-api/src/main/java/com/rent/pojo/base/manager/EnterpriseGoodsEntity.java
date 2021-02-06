@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.rent.pojo.view.Property;
+import com.rent.util.MoneyUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,13 +31,13 @@ public class EnterpriseGoodsEntity {
     String goodsPrice;
     String goodsDeposit;
     String goodsCurrentPrice;
-    int goodRegularUnit;
+    String goodRegularUnit;
     String goodsRegularPrice;
     double goodsNewLevel;
     @TableField(exist = false)
     private int addNumber;
     @TableField(exist = false)
-    private String goodsRegularPricePerUnit;
+    private String goodsRegularPricePerDay = "0.0";
     @TableField(exist = false)
     List<Property> properties;
 }

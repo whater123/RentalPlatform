@@ -31,7 +31,7 @@ public class EnterpriseGoodsEntity {
     String goodsPrice;
     String goodsDeposit;
     String goodsCurrentPrice;
-    String goodRegularUnit;
+    String goodsRegularUnit;
     String goodsRegularPrice;
     double goodsNewLevel;
     @TableField(exist = false)

@@ -178,7 +178,7 @@ public class Goods2Service implements GoodsImpl {
         }
 
         String regularPrice = MoneyUtil.fractionDivide(goodsEntity.getGoodsRegularPrice(),
-                (goodsEntity.getGoodRegularUnit())+".00");
+                (goodsEntity.getGoodsRegularUnit())+".00");
 
 
         if(MoneyUtil.compare(goodsEntity.getGoodsCurrentPrice(),

@@ -7,7 +7,6 @@ com\rent\pojo\base\user\UserComment.class
 com\rent\constant\SystemConstant.class
 com\rent\pojo\view\Property.class
 com\rent\pojo\view\ReturnMsg.class
-com\rent\pojo\base\Enterprise.class
 com\rent\util\VerificationUtil.class
 com\rent\util\HttpUtils.class
 com\rent\util\MD5util.class

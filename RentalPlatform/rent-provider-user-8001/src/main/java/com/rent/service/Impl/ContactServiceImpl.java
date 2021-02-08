@@ -3,7 +3,7 @@ package com.rent.service.Impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.ContactMapper;
-import com.rent.pojo.base.Contact;
+import com.rent.pojo.base.user.Contact;
 import com.rent.service.ContactService;
 import com.rent.util.HttpUtils;
 import org.apache.http.HttpResponse;

@@ -1,7 +1,7 @@
 package com.rent.controller;
 
 import com.rent.config.ShiroUtil;
-import com.rent.pojo.base.Enterprise;
+import com.rent.pojo.base.manager.Enterprise;
 import com.rent.pojo.base.manager.EnterpriseAuthentication;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.EnterpriseAuthenticationService;

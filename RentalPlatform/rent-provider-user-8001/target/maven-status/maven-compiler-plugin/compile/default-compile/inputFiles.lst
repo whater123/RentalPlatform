@@ -30,6 +30,7 @@ E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\r
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\GoodsController.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\ContactMapper.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\PayService.java
+E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\OrderPayMapper.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\OrderMapper.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\GoodsService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\LoginAndRegisterService.java

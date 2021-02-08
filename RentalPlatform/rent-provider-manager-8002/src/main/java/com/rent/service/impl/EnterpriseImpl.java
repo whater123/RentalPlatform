@@ -1,7 +1,7 @@
 package com.rent.service.impl;
 
 import com.rent.dao.EnterpriseMapper;
-import com.rent.pojo.base.Enterprise;
+import com.rent.pojo.base.manager.Enterprise;
 
 import java.util.List;
 /**

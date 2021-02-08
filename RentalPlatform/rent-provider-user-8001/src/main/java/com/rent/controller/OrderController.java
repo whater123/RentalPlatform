@@ -1,16 +1,16 @@
 package com.rent.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
-import com.rent.pojo.base.Order;
+import com.rent.pojo.base.Trade;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.LoginAndRegisterService;
 import com.rent.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author w
@@ -24,18 +24,18 @@ public class OrderController {
     LoginAndRegisterService loginAndRegisterService;
 
     @PutMapping("/putOriginOrder")
-    public ReturnMsg putOriginOrder(@RequestBody Order order){
+    public ReturnMsg putOriginOrder(@RequestBody Trade trade){
         try{
-            boolean b = loginAndRegisterService.userExtendToken(order.getUserId());
+            boolean b = loginAndRegisterService.userExtendToken(trade.getUserId());
             if (!b){
                 return new ReturnMsg("301",true);
             }
 
-            boolean b1 = orderService.insertOriginOrder(order);
-            if (!b1){
-                return new ReturnMsg("1",true,"该商品不可租");
+            Map<String, String> map = orderService.insertOriginOrder(trade);
+            if (!"0".equals(map.get("code"))){
+                return new ReturnMsg("1",true, map.get("msg"));
             }else {
-                return new ReturnMsg("0",false,(Object) order.getOrderId());
+                return new ReturnMsg("0",false,(Object) trade.getOrderId());
             }
         }catch (Exception e){
             e.printStackTrace();

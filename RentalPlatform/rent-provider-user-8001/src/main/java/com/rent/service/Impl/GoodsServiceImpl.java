@@ -119,7 +119,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<EnterpriseGoodsEntity> entitySortAndHandle(List<EnterpriseGoodsEntity> enterpriseGoodsEntityList, String sortWay) throws Exception {
         for (int i = 0; i < enterpriseGoodsEntityList.size(); i++) {
-            String[] split = enterpriseGoodsEntityList.get(i).getGoodRegularUnit().split("/");
+            String[] split = enterpriseGoodsEntityList.get(i).getGoodsRegularUnit().split("/");
             String[] split1 = enterpriseGoodsEntityList.get(i).getGoodsRegularPrice().split("/");
             String sum = "0.0";
             if (split.length!=split1.length){
@@ -184,6 +184,21 @@ public class GoodsServiceImpl implements GoodsService {
         }else {
             System.out.println(map);
             return (List<Integer>) opsForHash.get("go_en_cl",String.valueOf(map));
+        }
+    }
+
+    /**
+     * 删除商品集所有属性
+     * @param goodsId 商品集id
+     * @return 如果不存在或删除失败则返回false，成功返回true
+     */
+    private boolean deleteGoodsAttributes(int goodsId){
+        HashOperations<String, Object, Object> opsForHash = redisTemplate.opsForHash();
+        if (!opsForHash.hasKey("go_cl",String.valueOf(goodsId))){
+            return false;
+        }else {
+            Long goCl = opsForHash.delete("goCl", String.valueOf(goodsId));
+            return goCl==1;
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.rent.service;
 
-import com.rent.pojo.base.Contact;
+import com.rent.pojo.base.user.Contact;
 
 import java.util.List;
 

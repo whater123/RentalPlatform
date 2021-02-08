@@ -29,7 +29,7 @@ public class User {
     private String userRealName;
     private String userIdNumber;
     private Date userRegisterTime;
-    private int userAccountMoney;
+    private String userAccountMoney;
     @TableField(exist = false)
     private String userVerification;
     @TableField(exist = false)

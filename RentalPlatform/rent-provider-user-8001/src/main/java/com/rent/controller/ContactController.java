@@ -1,6 +1,6 @@
 package com.rent.controller;
 
-import com.rent.pojo.base.Contact;
+import com.rent.pojo.base.user.Contact;
 import com.rent.pojo.view.AddressMsg;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.ContactService;

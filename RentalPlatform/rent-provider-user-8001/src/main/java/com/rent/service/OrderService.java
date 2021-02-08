@@ -1,6 +1,8 @@
 package com.rent.service;
 
-import com.rent.pojo.base.Order;
+import com.rent.pojo.base.Trade;
+
+import java.util.Map;
 
 /**
  * @author w
@@ -8,8 +10,8 @@ import com.rent.pojo.base.Order;
 public interface OrderService {
     /**
      * 插入订单
-     * @param order 接收到的不完整订单信息
-     * @return 是否成功
+     * @param trade 接收到的不完整订单信息
+     * @return code为1则msg返回错误信息，code为0则超过
      */
-    boolean insertOriginOrder(Order order) throws Exception;
+    Map<String,String> insertOriginOrder(Trade trade) throws Exception;
 }

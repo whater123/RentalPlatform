@@ -1,16 +1,15 @@
 package com.rent.controller;
 
-import com.rent.pojo.base.Order;
+import com.rent.pojo.base.Trade;
+import com.rent.pojo.base.OrderPay;
 import com.rent.pojo.view.PayNeedMsg;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.LoginAndRegisterService;
 import com.rent.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @author w
@@ -24,18 +23,44 @@ public class PayController {
     LoginAndRegisterService loginAndRegisterService;
 
     @GetMapping("/getPayInformation")
-    public ReturnMsg getPayInformation(@RequestBody Order order) throws Exception {
+    public ReturnMsg getPayInformation(@RequestBody Trade trade) throws Exception {
         try{
-            boolean b = loginAndRegisterService.userExtendToken(order.getUserId());
+            boolean b = loginAndRegisterService.userExtendToken(trade.getUserId());
             if (!b){
                 return new ReturnMsg("301",true);
             }
 
-            PayNeedMsg payNeedMsg = payService.getPayNeedMsg(order);
+            PayNeedMsg payNeedMsg = payService.getPayNeedMsg(trade);
             if (payNeedMsg.getErrorCode()!=null){
                 return new ReturnMsg("1",true,payNeedMsg.getErrorCode());
             }else {
                 return new ReturnMsg("0",false,payNeedMsg);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @PutMapping("/putPayInformation")
+    public ReturnMsg putPayInformation(@RequestBody OrderPay orderPay) throws Exception {
+        try{
+            boolean b = loginAndRegisterService.userExtendToken(orderPay.getUserId());
+            if (!b){
+                return new ReturnMsg("301",true);
+            }
+
+            Map<String, String> map = payService.payMsgCheck(orderPay);
+            String code = map.get("code");
+            String msg = map.get("msg");
+            if (!"0".equals(code)){
+                return new ReturnMsg(code,true,msg);
+            }
+            boolean b1 = payService.insertPayAndUpdate(orderPay);
+            if (!b1){
+                return new ReturnMsg("1",true,"数据插入失败");
+            }else {
+                return new ReturnMsg("0",false);
             }
         }catch (Exception e){
             e.printStackTrace();

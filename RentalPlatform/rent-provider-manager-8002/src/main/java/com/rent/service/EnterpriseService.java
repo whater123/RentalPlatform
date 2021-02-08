@@ -2,7 +2,7 @@ package com.rent.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.EnterpriseMapper;
-import com.rent.pojo.base.Enterprise;
+import com.rent.pojo.base.manager.Enterprise;
 import com.rent.util.MyUtil;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;

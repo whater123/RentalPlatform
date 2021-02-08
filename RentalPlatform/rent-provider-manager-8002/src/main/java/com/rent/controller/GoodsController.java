@@ -93,7 +93,7 @@ public class GoodsController {
         goodsEntity.setGoodsRegularPrice(MoneyUtil.addTail(goodsEntity.getGoodsRegularPrice()));
         if(MyUtil.intHasVoid(
                 goodsEntity.getAddNumber(),
-                goodsEntity.getGoodRegularUnit(),
+                goodsEntity.getGoodsRegularUnit(),
                 goodsEntity.getGoodsId(),
                 goodsEntity.getGoodsRentExpert(),
                 goodsEntity.getGoodsRentWay())

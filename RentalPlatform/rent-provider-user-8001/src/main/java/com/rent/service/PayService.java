@@ -4,6 +4,7 @@ import com.rent.pojo.base.Trade;
 import com.rent.pojo.base.OrderPay;
 import com.rent.pojo.view.PayNeedMsg;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,4 +32,11 @@ public interface PayService {
      * @return 是否成功
      */
     boolean insertPayAndUpdate(OrderPay orderPay) throws Exception;
+
+    /**
+     * 获取某个用户的所有支付记录
+     * @param userId 用户id
+     * @return 支付记录列表，时间倒序
+     */
+    List<OrderPay> getUserAllPays(int userId);
 }

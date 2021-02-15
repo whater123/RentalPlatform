@@ -11,7 +11,6 @@ E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\redisP
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\SimpleGoods.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\manager\EnterpriseCategory.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\PayNeedMsg.java
-E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\Order.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\user\User.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\OrderPay.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\HttpUtils.java
@@ -24,6 +23,7 @@ E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\MoneyU
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\user\Contact.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\enumeration\SortWayEnum.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\Property.java
+E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\Trade.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\base\manager\EnterpriseAuthentication.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\pojo\view\ReturnMsg.java
 E:\Git\RentalPlatform\RentalPlatform\rent-api\src\main\java\com\rent\util\RexExUtil.java

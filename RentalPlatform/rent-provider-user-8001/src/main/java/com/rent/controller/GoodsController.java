@@ -10,6 +10,7 @@ import com.rent.service.CommentService;
 import com.rent.service.GoodsService;
 import com.rent.service.RecommendService;
 import com.rent.util.JsonToMapUtil;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -97,15 +98,16 @@ public class GoodsController {
         }
     }
 
-    @GetMapping("/getGoodsEntities/{sortWay}")
-    public ReturnMsg getGoodsEntities(@RequestBody GoodsAttribute goodsAttribute,@PathVariable("sortWay") String sortWay){
+    @GetMapping("/getGoodsEntities/{sortWay}/{goodsId}/{goodsAttributes}")
+    public ReturnMsg getGoodsEntities(@PathVariable("sortWay") String sortWay, @PathVariable("goodsAttributes") String goodsAttributes, @PathVariable("goodsId") String goodsId){
         try{
             if (sortWay==null|| "".equals(sortWay)){
                 return new ReturnMsg("1",true,"sortWay参数缺失");
             }
-            Map<String, String> map = (TreeMap<String, String>) JsonToMapUtil.getValue(goodsAttribute.getGoodsAttributes());
+            Map<String, String> map = (TreeMap<String, String>) JsonToMapUtil.getValue(goodsAttributes);
+            System.out.println(map);
             List<EnterpriseGoodsEntity> goodsEntities
-                    = goodsService.getGoodsEntities(Integer.parseInt(goodsAttribute.getGoodsId()), map);
+                    = goodsService.getGoodsEntities(Integer.parseInt(goodsId), map);
             if (goodsEntities==null||goodsEntities.size()==0){
                 return new ReturnMsg("1",true,"不含有此属性的商品");
             }else {
@@ -126,6 +128,17 @@ public class GoodsController {
             } else{
                 return new ReturnMsg("0",false,userCommentsByGoodsId);
             }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/getHotGoods")
+    public ReturnMsg getHotGoods(){
+        try{
+            List<EnterpriseGoods> hotGoods = goodsService.getHotGoods();
+            return new ReturnMsg("0",false,goodsService.returnHandle(hotGoods));
         }catch (Exception e){
             e.printStackTrace();
             return new ReturnMsg("500",true,e.getMessage());

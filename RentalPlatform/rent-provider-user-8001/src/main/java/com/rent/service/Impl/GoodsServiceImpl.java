@@ -1,5 +1,6 @@
 package com.rent.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.GoodsEntityMapper;
 import com.rent.dao.GoodsMapper;
 import com.rent.pojo.base.manager.EnterpriseGoods;
@@ -154,6 +155,13 @@ public class GoodsServiceImpl implements GoodsService {
         return enterpriseGoodsEntityList;
     }
 
+    @Override
+    public List<EnterpriseGoods> getHotGoods() {
+        List<EnterpriseGoods> enterpriseGoods = goodsMapper.selectList(null);
+        enterpriseGoods.sort((e1,e2)-> (e2.getGoodsRent()+e2.getGoodsSold())-(e1.getGoodsRent()+e1.getGoodsSold()));
+        return enterpriseGoods.subList(0,4);
+    }
+
     /**
      * 根据商品集id获取用户能选择的所有属性
      * @param goodsId 商品集id
@@ -177,12 +185,10 @@ public class GoodsServiceImpl implements GoodsService {
     private List<Integer> getGoodsEntity(int goodsId, Map<String, String> map) {
         //筛选map中添加商品集id
         map.put("goodsId", String.valueOf(goodsId));
-
         HashOperations<String, Object, Object> opsForHash = redisTemplate.opsForHash();
         if (!opsForHash.hasKey("go_en_cl",String.valueOf(map))){
             return null;
         }else {
-            System.out.println(map);
             return (List<Integer>) opsForHash.get("go_en_cl",String.valueOf(map));
         }
     }

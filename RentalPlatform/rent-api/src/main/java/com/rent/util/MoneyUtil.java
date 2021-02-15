@@ -42,6 +42,8 @@ public class MoneyUtil {
     }
 
     public static String fractionAdd(String s1,String s2) throws Exception {
+        s1 = addTail(s1);
+        s2 = addTail(s2);
         if(!isRuleString(s1) || !isRuleString(s2)){
             throw new Exception("参数不合法，必须是小数形式，且小数点必须小于或等于两位。");
         }
@@ -49,6 +51,8 @@ public class MoneyUtil {
     }
 
     public static String fractionSubtract(String s1,String s2) throws Exception {
+        s1 = addTail(s1);
+        s2 = addTail(s2);
         if(!isRuleString(s1) || !isRuleString(s2)){
             throw new Exception("参数不合法，必须是小数形式，且小数点必须小于或等于两位。");
         }
@@ -56,6 +60,8 @@ public class MoneyUtil {
     }
 
     public static String fractionMultiply(String s1,String s2) throws Exception {
+        s1 = addTail(s1);
+        s2 = addTail(s2);
         if(!isRuleString(s1) || !isRuleString(s2)){
             throw new Exception("参数不合法，必须是小数形式，且小数点必须小于或等于两位。");
         }
@@ -63,6 +69,8 @@ public class MoneyUtil {
     }
 
     public static String fractionDivide(String s1,String s2) throws Exception {
+        s1 = addTail(s1);
+        s2 = addTail(s2);
         if(!isRuleString(s1) || !isRuleString(s2)){
             throw new Exception("参数不合法，必须是小数形式，且小数点必须小于或等于两位。");
         }
@@ -77,6 +85,8 @@ public class MoneyUtil {
      *          1         大于
      */
     public static int compare(String s1,String s2) throws Exception {
+        s1 = addTail(s1);
+        s2 = addTail(s2);
         if(!isRuleString(s1) || !isRuleString(s2)){
             throw new Exception("参数不合法，必须是小数形式，且小数点必须小于或等于两位。");
         }

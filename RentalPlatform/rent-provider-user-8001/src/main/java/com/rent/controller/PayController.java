@@ -9,6 +9,7 @@ import com.rent.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,7 +23,7 @@ public class PayController {
     @Autowired
     LoginAndRegisterService loginAndRegisterService;
 
-    @GetMapping("/getPayInformation")
+    @PostMapping("/getPayInformation")
     public ReturnMsg getPayInformation(@RequestBody Trade trade) throws Exception {
         try{
             boolean b = loginAndRegisterService.userExtendToken(trade.getUserId());
@@ -62,6 +63,21 @@ public class PayController {
             }else {
                 return new ReturnMsg("0",false);
             }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/getPays/{userId}")
+    public ReturnMsg getPays(@PathVariable("userId") String userId){
+        try{
+            if (!loginAndRegisterService.userExtendToken(Integer.parseInt(userId))){
+                return new ReturnMsg("301",true);
+            }
+
+            List<OrderPay> userAllPays = payService.getUserAllPays(Integer.parseInt(userId));
+            return new ReturnMsg("0",false,userAllPays);
         }catch (Exception e){
             e.printStackTrace();
             return new ReturnMsg("500",true,e.getMessage());

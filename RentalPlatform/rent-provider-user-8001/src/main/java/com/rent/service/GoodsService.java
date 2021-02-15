@@ -55,4 +55,10 @@ public interface GoodsService {
      * @return 返回结果
      */
     List<EnterpriseGoodsEntity> entitySortAndHandle(List<EnterpriseGoodsEntity> enterpriseGoodsEntityList, String sortWay) throws Exception;
+
+    /**
+     * 获取首页推荐商品
+     * @return 推荐列表
+     */
+    List<EnterpriseGoods> getHotGoods();
 }

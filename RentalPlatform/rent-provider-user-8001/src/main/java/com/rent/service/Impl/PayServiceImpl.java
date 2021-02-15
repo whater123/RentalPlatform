@@ -89,8 +89,9 @@ public class PayServiceImpl implements PayService {
             //单位价格*几个单位
             String firstPay = MoneyUtil.fractionMultiply(rentPrice+".0", trade.getOrderRentTime() +".0");
             firstPay = MoneyUtil.fractionMultiply(firstPay, trade.getOrderGoodsCount()+".0");
+            String goodsOriginPrice = MoneyUtil.fractionMultiply(goodsEntityInformation.getGoodsPrice(), trade.getOrderGoodsCount() +".0");
             //如果第一次支付金额大于原价则返回参数错误
-            if (MoneyUtil.compare(firstPay,goodsEntityInformation.getGoodsPrice())==1){
+            if (MoneyUtil.compare(firstPay,goodsOriginPrice)==1){
                 return new PayNeedMsg("定期支付金额大于商品原价,定期支付金额:"+firstPay+";商品原价"+goodsEntityInformation.getGoodsPrice());
             }
             //需要支付总价=押金+定期价格
@@ -131,6 +132,10 @@ public class PayServiceImpl implements PayService {
         }else if (trade.getUserId()!=orderPay.getUserId()){
             map.put("code", "309");
             map.put("msg", "订单提交者付款者不一致");
+            return map;
+        }else if (trade.getOrderState()!=1&&trade.getOrderState()!=0){
+            map.put("code", "309");
+            map.put("msg", "订单状态不为待付款，无法支付");
             return map;
         }
         User user = loginAndRegisterService.getUser(new User(trade.getUserId()));
@@ -173,6 +178,13 @@ public class PayServiceImpl implements PayService {
         if (insert!=1){
             return false;
         }
+        Trade trade = tradeMapper.mySelectById(orderPay.getOrderId());
+        trade.setOrderState(2);
+        int i1 = tradeMapper.updateById(trade);
+        if (i1!=1){
+            orderPayMapper.deleteById(orderPay.getPayId());
+            return false;
+        }
         User user = userMapper.selectById(orderPay.getUserId());
         if (!MoneyUtil.isRuleString(orderPay.getPayAmount())){
             orderPay.setPayAmount(MoneyUtil.addTail(orderPay.getPayAmount()));
@@ -194,5 +206,14 @@ public class PayServiceImpl implements PayService {
         }else {
             return true;
         }
+    }
+
+    @Override
+    public List<OrderPay> getUserAllPays(int userId) {
+        QueryWrapper<OrderPay> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id",userId);
+        List<OrderPay> orderPays = orderPayMapper.selectList(queryWrapper);
+        Collections.reverse(orderPays);
+        return orderPays;
     }
 }

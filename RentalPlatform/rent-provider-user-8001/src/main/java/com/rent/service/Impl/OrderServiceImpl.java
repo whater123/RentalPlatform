@@ -6,7 +6,6 @@ import com.rent.pojo.base.Trade;
 import com.rent.pojo.base.manager.EnterpriseGoods;
 import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.base.user.Contact;
-import com.rent.pojo.base.user.User;
 import com.rent.service.OrderService;
 import com.rent.util.MyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,7 +93,8 @@ public class OrderServiceImpl implements OrderService {
         trade.setOrderCreateTime(MyUtil.getNowTime());
         trade.setOrderStopState(0);
         trade.setOrderId(getRandomOrderId(trade.getUserId()));
-        trade.setEnptId(enterpriseGoods.getEntpId());
+        trade.setEntpId(enterpriseGoods.getEntpId());
+        trade.setOrderState(1);
         //这里的逻辑需要改一下，处理错误的回滚
         int insert = tradeMapper.insert(trade);
         if (insert!=1){

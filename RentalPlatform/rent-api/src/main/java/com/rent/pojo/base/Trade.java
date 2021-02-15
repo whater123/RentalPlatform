@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Trade {
+    @TableId(value = "order_id")
     private String orderId;
     private String orderParentId;
     private int userId;
@@ -29,5 +30,6 @@ public class Trade {
     private int orderRentWay;
     private int orderRentTime;
     private String orderRentUnit;
-    private int enptId;
+    private int entpId;
+    private int orderState;
 }

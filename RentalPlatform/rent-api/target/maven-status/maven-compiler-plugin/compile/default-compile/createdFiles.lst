@@ -14,7 +14,6 @@ com\rent\pojo\redisPojo\GoodsPoint.class
 com\rent\pojo\base\manager\EnterpriseGoodsEntity.class
 com\rent\pojo\base\user\User.class
 com\rent\util\HttpUtils$1.class
-com\rent\pojo\base\Order.class
 com\rent\pojo\view\SimpleGoods.class
 com\rent\pojo\view\LoginMsg.class
 com\rent\pojo\base\Picture.class

@@ -149,4 +149,28 @@ public class ContactController {
             return new ReturnMsg("500",true,e.getMessage());
         }
     }
+
+    @GetMapping(path = "/{contactId}",produces = "application/json;charset=UTF-8")
+    public ReturnMsg getContact(@PathVariable("contactId") String contactId, HttpServletRequest request){
+        try{
+            String userId = request.getHeader("UserId");
+            if ("".equals(userId)){
+                return new ReturnMsg("301",true);
+            }
+            if (!loginAndRegisterService.userExtendToken(Integer.parseInt(userId))){
+                return new ReturnMsg("301",true);
+            }
+
+            Contact contactById = contactService.getContactById(Integer.parseInt(contactId));
+            if (contactById==null){
+                return new ReturnMsg("1",true,"id参数无效");
+            }
+            else {
+                return new ReturnMsg("0",false,contactById);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
 }

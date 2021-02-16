@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.*;
 import com.rent.pojo.base.Trade;
 import com.rent.pojo.base.OrderPay;
+import com.rent.pojo.base.manager.Enterprise;
 import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.base.user.User;
 import com.rent.pojo.view.PayNeedMsg;
@@ -34,6 +35,8 @@ public class PayServiceImpl implements PayService {
     OrderPayMapper orderPayMapper;
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    EnterpriseMapper enterpriseMapper;
 
     /**
      * 获取支付id
@@ -138,6 +141,7 @@ public class PayServiceImpl implements PayService {
             map.put("msg", "订单状态不为待付款，无法支付");
             return map;
         }
+        orderPay.setPayAmount(trade.getOrderTotalMoney());
         User user = loginAndRegisterService.getUser(new User(trade.getUserId()));
         if (!MoneyUtil.isRuleString(orderPay.getPayAmount())){
             orderPay.setPayAmount(MoneyUtil.addTail(orderPay.getPayAmount()));
@@ -148,10 +152,6 @@ public class PayServiceImpl implements PayService {
         if (trade.getLogisticsId()!=0){
             map.put("code","309");
             map.put("msg","订单异常，已有物流信息");
-            return map;
-        } else if (trade.getOrderStopState()!=0){
-            map.put("code","309");
-            map.put("msg","订单异常，订单已结束");
             return map;
         }else if (orderPay.getPayType()>2){
             map.put("code","1");
@@ -169,16 +169,21 @@ public class PayServiceImpl implements PayService {
 
     @Override
     public boolean insertPayAndUpdate(OrderPay orderPay) throws Exception {
+        Trade trade = tradeMapper.mySelectById(orderPay.getOrderId());
+        Enterprise enterprise = enterpriseMapper.selectById(trade.getEntpId());
+        double addScore = Double.parseDouble(MoneyUtil.fractionMultiply(orderPay.getPayAmount(),"0.09"));
+
         String randomPayId = getRandomPayId(orderPay.getUserId());
         orderPay.setPayId(randomPayId);
         orderPay.setPayTime(MyUtil.getNowTime());
-        double addScore = Double.parseDouble(MoneyUtil.fractionMultiply(orderPay.getPayAmount(),"0.09"));
+        orderPay.setPayAmount(trade.getOrderTotalMoney());
         orderPay.setPayScore(addScore);
+
         int insert = orderPayMapper.insert(orderPay);
         if (insert!=1){
             return false;
         }
-        Trade trade = tradeMapper.mySelectById(orderPay.getOrderId());
+        orderPay.setPayAmount(trade.getOrderTotalMoney());
         trade.setOrderState(2);
         int i1 = tradeMapper.updateById(trade);
         if (i1!=1){
@@ -194,13 +199,27 @@ public class PayServiceImpl implements PayService {
         }
         String newAccount = MoneyUtil.fractionSubtract(user.getUserAccountMoney(), orderPay.getPayAmount());
         if (newAccount.contains("-")){
+            trade.setOrderState(1);
+            tradeMapper.updateById(trade);
             orderPayMapper.deleteById(orderPay.getPayId());
             return false;
         }
         user.setUserAccountMoney(newAccount);
         user.setUserCreditScore(user.getUserCreditScore()+(int)addScore);
+        enterprise.setEntpAccountMoney(MoneyUtil.fractionAdd(enterprise.getEntpAccountMoney(),trade.getOrderTotalMoney()));
+        int i2 = enterpriseMapper.updateById(enterprise);
+        if (i2!=1){
+            trade.setOrderState(1);
+            tradeMapper.updateById(trade);
+            orderPayMapper.deleteById(orderPay.getPayId());
+            return false;
+        }
         int i = userMapper.updateById(user);
         if (i!=1){
+            trade.setOrderState(1);
+            tradeMapper.updateById(trade);
+            enterprise.setEntpAccountMoney(MoneyUtil.fractionDivide(enterprise.getEntpAccountMoney(),trade.getOrderTotalMoney()));
+            enterpriseMapper.updateById(enterprise);
             orderPayMapper.deleteById(orderPay.getPayId());
             return false;
         }else {

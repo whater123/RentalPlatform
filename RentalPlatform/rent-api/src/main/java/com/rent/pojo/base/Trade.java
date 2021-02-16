@@ -25,11 +25,11 @@ public class Trade {
     private String orderUrgentPhone;
     private String orderCreateTime;
     private int orderRentExpect;
-    private int orderStopState;
     private int orderGoodsCount;
     private int orderRentWay;
     private int orderRentTime;
     private String orderRentUnit;
     private int entpId;
     private int orderState;
+    private String orderTotalMoney;
 }

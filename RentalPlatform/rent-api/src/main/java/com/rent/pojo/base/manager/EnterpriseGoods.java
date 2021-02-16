@@ -35,4 +35,6 @@ public class EnterpriseGoods {
     private int goodsCategoryId;
     @TableField(exist = false)
     private double point;
+    @TableField(exist = false)
+    private String entpShopName;
 }

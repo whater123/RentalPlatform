@@ -1,8 +1,9 @@
 package com.rent.service.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.rent.dao.EnterpriseMapper;
 import com.rent.dao.GoodsEntityMapper;
 import com.rent.dao.GoodsMapper;
+import com.rent.pojo.base.manager.Enterprise;
 import com.rent.pojo.base.manager.EnterpriseGoods;
 import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.view.GoodsAttribute;
@@ -28,11 +29,17 @@ public class GoodsServiceImpl implements GoodsService {
     RedisTemplate<String,Object> redisTemplate;
     @Autowired
     GoodsEntityMapper goodsEntityMapper;
+    @Autowired
+    EnterpriseMapper enterpriseMapper;
 
     @Override
     public EnterpriseGoods getGoodsInformation(int goodsId) {
         EnterpriseGoods enterpriseGoods = goodsMapper.selectById(goodsId);
         ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
+
+        Enterprise enterprise = enterpriseMapper.selectById(enterpriseGoods.getEntpId());
+        enterpriseGoods.setEntpShopName(enterprise.getEntpShopName());
+
         if (opsForValue.get("goods")==null){
             return enterpriseGoods;
         }

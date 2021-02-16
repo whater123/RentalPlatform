@@ -7,6 +7,7 @@ import com.rent.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,6 +35,21 @@ public class OrderController {
             }else {
                 return new ReturnMsg("0",false,(Object) trade.getOrderId());
             }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/getAllOrders/{userId}")
+    public ReturnMsg getAllOrders(@PathVariable("userId") String userId){
+        try{
+            if (!loginAndRegisterService.userExtendToken(Integer.parseInt(userId))){
+                return new ReturnMsg("301",true);
+            }
+
+            List<Trade> allTrades = orderService.getAllTrades(Integer.parseInt(userId));
+            return new ReturnMsg("0",false,allTrades);
         }catch (Exception e){
             e.printStackTrace();
             return new ReturnMsg("500",true,e.getMessage());

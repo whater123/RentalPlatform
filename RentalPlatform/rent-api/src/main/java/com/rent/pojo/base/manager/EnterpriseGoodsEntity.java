@@ -34,6 +34,7 @@ public class EnterpriseGoodsEntity {
     String goodsRegularUnit;
     String goodsRegularPrice;
     double goodsNewLevel;
+    String goodsProperties;
     @TableField(exist = false)
     private int addNumber;
     @TableField(exist = false)

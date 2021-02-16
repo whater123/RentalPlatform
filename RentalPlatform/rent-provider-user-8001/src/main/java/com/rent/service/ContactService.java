@@ -44,4 +44,11 @@ public interface ContactService {
      * @return 是否成功
      */
     boolean updateContact(Contact contact);
+
+    /**
+     * 根据id获取联系信息
+     * @param contactId 联系信息id
+     * @return 处理后的联系信息
+     */
+    Contact getContactById(int contactId);
 }

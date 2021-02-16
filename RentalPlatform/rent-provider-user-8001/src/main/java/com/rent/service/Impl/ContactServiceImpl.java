@@ -97,7 +97,16 @@ public class ContactServiceImpl implements ContactService {
         return i==1;
     }
 
+    @Override
+    public Contact getContactById(int contactId) {
+        Contact contact = contactMapper.selectById(contactId);
+        return returnHandle(contact);
+    }
+
     private Contact returnHandle(Contact contact){
+        if (contact==null){
+            return null;
+        }
         contact.setContactReceiveId(null);
         return contact;
     }

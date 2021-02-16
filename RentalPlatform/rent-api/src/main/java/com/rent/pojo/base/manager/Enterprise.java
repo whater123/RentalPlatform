@@ -22,6 +22,7 @@ public class Enterprise {
     String entpShopName;
     String entpChargePhone;
     String entpPictureId;
+    String entpAccountMoney;
     @TableField(exist = false)
     private String entpVerification;
 }

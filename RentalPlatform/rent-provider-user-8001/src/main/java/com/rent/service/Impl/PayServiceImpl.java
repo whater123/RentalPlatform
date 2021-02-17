@@ -5,6 +5,7 @@ import com.rent.dao.*;
 import com.rent.pojo.base.Trade;
 import com.rent.pojo.base.OrderPay;
 import com.rent.pojo.base.manager.Enterprise;
+import com.rent.pojo.base.manager.EnterpriseGoods;
 import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.base.user.User;
 import com.rent.pojo.view.PayNeedMsg;
@@ -37,6 +38,8 @@ public class PayServiceImpl implements PayService {
     UserMapper userMapper;
     @Autowired
     EnterpriseMapper enterpriseMapper;
+    @Autowired
+    GoodsMapper goodsMapper;
 
     /**
      * 获取支付id
@@ -233,6 +236,19 @@ public class PayServiceImpl implements PayService {
         queryWrapper.eq("user_id",userId);
         List<OrderPay> orderPays = orderPayMapper.selectList(queryWrapper);
         Collections.reverse(orderPays);
+        orderPays.forEach(orderPay -> {
+            EnterpriseGoodsEntity enterpriseGoodsEntity = goodsEntityMapper.selectById(orderPay.getGoodsEntityId());
+            if (enterpriseGoodsEntity==null){
+                orderPay.setGoodsTitle(null);
+            }else {
+                EnterpriseGoods enterpriseGoods = goodsMapper.selectById(enterpriseGoodsEntity.getGoodsId());
+                if (enterpriseGoods==null){
+                    orderPay.setGoodsTitle(null);
+                }else {
+                    orderPay.setGoodsTitle(enterpriseGoods.getGoodsTitle());
+                }
+            }
+        });
         return orderPays;
     }
 }

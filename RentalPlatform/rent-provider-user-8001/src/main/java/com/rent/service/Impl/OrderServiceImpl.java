@@ -122,32 +122,61 @@ public class OrderServiceImpl implements OrderService {
     public List<Trade> getAllTrades(int userId) {
         QueryWrapper<Trade> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id",userId);
-        return tradeMapper.selectList(queryWrapper);
+        List<Trade> trades = tradeMapper.selectList(queryWrapper);
+        trades.forEach(trade -> {
+            EnterpriseGoodsEntity enterpriseGoodsEntity = goodsEntityMapper.selectById(trade.getGoodsEntityId());
+            if (enterpriseGoodsEntity==null){
+                trade.setGoodsId(0);
+            }else {
+                EnterpriseGoods enterpriseGoods = goodsMapper.selectById(enterpriseGoodsEntity.getGoodsId());
+                if (enterpriseGoods==null){
+                    trade.setGoodsId(0);
+                }else {
+                    trade.setGoodsId(enterpriseGoods.getGoodsId());
+                }
+            }
+        });
+        return trades;
     }
 
     @Override
     public List<ResBody> getOrderLogistics(String orderId) throws Exception {
         Trade trade = tradeMapper.mySelectById(orderId);
         if (trade==null){
-            throw new Exception("订单不存在");
+            throw new Exception("dataBaseError:订单不存在");
         }
         OrderLogistics orderLogistics = logisticsMapper.selectById(trade.getLogisticsId());
         Contact contact = contactMapper.selectById(trade.getContactId());
         if (contact==null){
-            throw new Exception("联系方式不存在");
+            throw new Exception("dataBaseError:联系方式不存在");
         }
         if (orderLogistics==null){
             //说明是未发货
             return null;
         }
+        QueryWrapper<Contact> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("contact_receive_id","E"+trade.getEntpId());
+        Contact entpContact = contactMapper.selectOne(queryWrapper);
         List<ResBody> logisticsMsgs = new ArrayList<>();
         ResBody oneLogisticsMsg = getOneLogisticsMsg(
                 orderLogistics.getEntpToUserCompany(), orderLogistics.getEntpToUserNumber(), contact.getContactPhone());
-        logisticsMsgs.add(oneLogisticsMsg);
+        if (oneLogisticsMsg!=null){
+            logisticsMsgs.add(oneLogisticsMsg);
+        }
         //判断下面参数是否为空，不为空就继续操作
-//        ResBody oneLogisticsMsg1 = getOneLogisticsMsg(
-//                orderLogistics.getUserToEntpCompany(), orderLogistics.getUserToEntpNumber(), contact.getContactPhone());
-
+        if (entpContact==null){
+            return logisticsMsgs;
+        }
+        if ( orderLogistics.getUserToEntpCompany()==null|| "".equals(orderLogistics.getUserToEntpCompany())
+            ||orderLogistics.getUserToEntpNumber()==null||"".equals(orderLogistics.getUserToEntpNumber())){
+            return logisticsMsgs;
+        }
+        //归还的物流信息
+        ResBody oneLogisticsMsg1 = getOneLogisticsMsg(
+                orderLogistics.getUserToEntpCompany(), orderLogistics.getUserToEntpNumber(), contact.getContactPhone());
+        if (oneLogisticsMsg!=null){
+            logisticsMsgs.add(oneLogisticsMsg1);
+        }
         return logisticsMsgs;
     }
 
@@ -172,10 +201,8 @@ public class OrderServiceImpl implements OrderService {
         try {
             HttpResponse response = HttpUtils.doGet(host, path, method, headers, querys);
             //获取response的body
-            HttpEntity entity = response.getEntity();
-            System.out.println(EntityUtils.toString(response.getEntity()));
-
             JSONObject jsonObject = JSONObject.parseObject(EntityUtils.toString(response.getEntity()));
+            System.out.println(jsonObject);
             int showApiResCode = jsonObject.getObject("showapi_res_code", Integer.class);
             if (showApiResCode!=0){
                 return null;

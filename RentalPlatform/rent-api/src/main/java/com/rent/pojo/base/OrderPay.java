@@ -1,5 +1,6 @@
 package com.rent.pojo.base;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,6 @@ public class OrderPay {
     private String payTime;
     private double payScore;
     private String payPlatform;
+    @TableField(exist = false)
+    private String goodsTitle;
 }

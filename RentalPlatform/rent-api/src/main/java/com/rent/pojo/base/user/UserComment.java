@@ -22,6 +22,7 @@ public class UserComment {
     private String commentContext;
     private int commentStar;
     private String commentTime;
+    private String orderId;
     @TableField(exist = false)
     private String userPictureId;
     @TableField(exist = false)

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.rent.constant.SystemConstant;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -65,7 +66,7 @@ public class MyUtil {
     }
 
     public static String getNowTime(){
-        return  new SimpleDateFormat(SystemConstant.DATE_FORMAT).format(new Date());
+        return  new SimpleDateFormat(SystemConstant.DATETIME_FORMAT).format(new Date());
     }
 
     public static boolean isAllRuleMoney(String...moneys){
@@ -77,5 +78,42 @@ public class MyUtil {
         }
         return true;
     }
+    /**
+     *计算两个日期相隔的天数
+      */
+    public static int nDaysBetweenTwoDate(String firstString,String secondString) {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date firstDate=null;
+        Date secondDate=null;
+        try {
+            firstDate = df.parse(firstString);
+            secondDate=df.parse(secondString);
+        }
+        catch(Exception e) {
+            // 日期型字符串格式错误
+            System.out.println("日期型字符串格式错误");
+        }
 
+        assert secondDate != null;
+        return (int)((secondDate.getTime()-firstDate.getTime())/(24*60*60*1000));
+    }
+
+    /**
+     *获取某个日期加上一定天数后的日期
+     */
+    public static String addDate(String timeParam, long day){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // 日期格式
+        Date date = null; // 指定日期
+        try {
+            date = dateFormat.parse(timeParam);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("日期型字符串格式错误");
+        }
+        long time = date.getTime(); // 得到指定日期的毫秒数
+        day = day * 24 * 60 * 60 * 1000; // 要加上的天数转换成毫秒数
+        time += day; // 相加得到新的毫秒数
+        Date newDate = new Date(time);
+        return dateFormat.format(newDate); // 将毫秒数转换成日期
+    }
 }

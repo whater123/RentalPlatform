@@ -144,4 +144,19 @@ public class GoodsController {
             return new ReturnMsg("500",true,e.getMessage());
         }
     }
+
+    @GetMapping("/getEntity/{goodsEntityId}")
+    public ReturnMsg getEntity(@PathVariable("goodsEntityId") String goodsEntityId){
+        try{
+            EnterpriseGoodsEntity entity = goodsService.getEntity(Integer.parseInt(goodsEntityId));
+            if (entity==null){
+                return new ReturnMsg("1",true,"商品个体不存在");
+            }else {
+                return new ReturnMsg("0",false,entity);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
 }

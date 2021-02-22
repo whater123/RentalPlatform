@@ -195,7 +195,7 @@ public class RecommendServiceImpl implements RecommendService {
             }
             set2.addAll(set1);
             //将本次推荐列表添加至过滤器中
-            UserWatchedFilter.USER_WATCHED.put(userId,set2);
+//            UserWatchedFilter.USER_WATCHED.put(userId,set2);
             return list;
         }
     }

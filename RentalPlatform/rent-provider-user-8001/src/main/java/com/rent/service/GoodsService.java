@@ -1,5 +1,6 @@
 package com.rent.service;
 
+import com.rent.dao.GoodsEntityMapper;
 import com.rent.pojo.base.manager.EnterpriseGoods;
 import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.view.GoodsAttribute;
@@ -61,4 +62,11 @@ public interface GoodsService {
      * @return 推荐列表
      */
     List<EnterpriseGoods> getHotGoods();
+
+    /**
+     * 获取商品个体详细信息
+     * @param goodsEntityId 商品个体id
+     * @return 商品个体，没有则返回null
+     */
+    EnterpriseGoodsEntity getEntity(int goodsEntityId);
 }

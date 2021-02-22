@@ -33,6 +33,7 @@ public class Trade {
     private int entpId;
     private int orderState;
     private String orderTotalMoney;
+    private String orderDeposit;
     @TableField(exist = false)
     private int goodsId;
 }

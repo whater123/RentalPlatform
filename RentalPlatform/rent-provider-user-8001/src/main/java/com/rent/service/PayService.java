@@ -39,4 +39,11 @@ public interface PayService {
      * @return 支付记录列表，时间倒序
      */
     List<OrderPay> getUserAllPays(int userId);
+
+    /**
+     * 买断商品的退定金，商品变更状态功能
+     * @param orderId 订单id
+     * @return 是否成功
+     */
+    boolean buyGoods(String orderId) throws Exception;
 }

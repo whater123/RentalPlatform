@@ -24,8 +24,8 @@ public class ScheduledTaskConfig {
      */
     @Scheduled(initialDelay =  1000 * 60 * 10,fixedDelay = 1000 * 60 * 10)
     public void scheduledTask2(){
-        UserWatchedFilter.USER_WATCHED.clear();
-        System.out.println("定时任务已执行，用户查看记录已清除");
+//        UserWatchedFilter.USER_WATCHED.clear();
+//        System.out.println("定时任务已执行，用户查看记录已清除");
     }
 
 //    @Scheduled(initialDelay =  1000 * 10,fixedRate = 1000 * 5)

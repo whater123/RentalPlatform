@@ -1,5 +1,6 @@
 package com.rent.service;
 
+import com.rent.pojo.base.user.User;
 import com.rent.pojo.base.user.UserComment;
 
 import java.util.List;
@@ -14,4 +15,11 @@ public interface CommentService {
      * @return 评论列表
      */
     List<UserComment> getUserCommentsByGoodsId(int goodsId);
+
+    /**
+     * 插入评论
+     * @param comment 评论
+     * @return 是否成功
+     */
+    boolean insertComment(UserComment comment);
 }

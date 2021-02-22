@@ -169,6 +169,11 @@ public class GoodsServiceImpl implements GoodsService {
         return enterpriseGoods.subList(0,4);
     }
 
+    @Override
+    public EnterpriseGoodsEntity getEntity(int goodsEntityId) {
+        return goodsEntityMapper.selectById(goodsEntityId);
+    }
+
     /**
      * 根据商品集id获取用户能选择的所有属性
      * @param goodsId 商品集id

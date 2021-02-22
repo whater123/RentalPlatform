@@ -139,12 +139,12 @@ public class PayServiceImpl implements PayService {
             map.put("code", "309");
             map.put("msg", "订单提交者付款者不一致");
             return map;
-        }else if (trade.getOrderState()!=1&&trade.getOrderState()!=0){
-            map.put("code", "309");
-            map.put("msg", "订单状态不为待付款，无法支付");
-            return map;
         }
-        orderPay.setPayAmount(trade.getOrderTotalMoney());
+        if (orderPay.getOrderNeedPay()==null){
+            orderPay.setPayAmount(trade.getOrderTotalMoney());
+        }else {
+            orderPay.setPayAmount(orderPay.getOrderNeedPay());
+        }
         User user = loginAndRegisterService.getUser(new User(trade.getUserId()));
         if (!MoneyUtil.isRuleString(orderPay.getPayAmount())){
             orderPay.setPayAmount(MoneyUtil.addTail(orderPay.getPayAmount()));
@@ -152,11 +152,7 @@ public class PayServiceImpl implements PayService {
         if (!MoneyUtil.isRuleString(user.getUserAccountMoney())){
             user.setUserAccountMoney(MoneyUtil.addTail(user.getUserAccountMoney()));
         }
-        if (trade.getLogisticsId()!=0){
-            map.put("code","309");
-            map.put("msg","订单异常，已有物流信息");
-            return map;
-        }else if (orderPay.getPayType()>2){
+        if (orderPay.getPayType()>3){
             map.put("code","1");
             map.put("msg","payType参数错误");
             return map;
@@ -173,34 +169,39 @@ public class PayServiceImpl implements PayService {
     @Override
     public boolean insertPayAndUpdate(OrderPay orderPay) throws Exception {
         Trade trade = tradeMapper.mySelectById(orderPay.getOrderId());
+        if (orderPay.getOrderNeedPay()==null){
+            orderPay.setOrderNeedPay(trade.getOrderTotalMoney());
+        }
+        System.out.println(orderPay);
         Enterprise enterprise = enterpriseMapper.selectById(trade.getEntpId());
-        double addScore = Double.parseDouble(MoneyUtil.fractionMultiply(orderPay.getPayAmount(),"0.09"));
+        double addScore = Double.parseDouble(MoneyUtil.fractionMultiply(orderPay.getOrderNeedPay(),"0.09"));
 
         String randomPayId = getRandomPayId(orderPay.getUserId());
         orderPay.setPayId(randomPayId);
         orderPay.setPayTime(MyUtil.getNowTime());
-        orderPay.setPayAmount(trade.getOrderTotalMoney());
         orderPay.setPayScore(addScore);
+        orderPay.setPayAmount(orderPay.getOrderNeedPay());
+        if (!"0".equals(trade.getOrderParentId())){
+            orderPay.setOrderId(trade.getOrderParentId());
+        }
 
         int insert = orderPayMapper.insert(orderPay);
         if (insert!=1){
             return false;
         }
-        orderPay.setPayAmount(trade.getOrderTotalMoney());
-        trade.setOrderState(2);
-        int i1 = tradeMapper.updateById(trade);
-        if (i1!=1){
-            orderPayMapper.deleteById(orderPay.getPayId());
-            return false;
+        if (orderPay.getPayType()==0){
+            trade.setOrderState(2);
+        }else if (orderPay.getPayType()==3){
+            trade.setOrderState(5);
+        }else if (orderPay.getPayType()==2){
+            trade.setOrderState(6);
+        }else if (orderPay.getPayType()==1&&trade.getOrderState()!=4){
+            trade.setOrderState(4);
         }
+        tradeMapper.updateById(trade);
+
         User user = userMapper.selectById(orderPay.getUserId());
-        if (!MoneyUtil.isRuleString(orderPay.getPayAmount())){
-            orderPay.setPayAmount(MoneyUtil.addTail(orderPay.getPayAmount()));
-        }
-        if (!MoneyUtil.isRuleString(user.getUserAccountMoney())){
-            user.setUserAccountMoney(MoneyUtil.addTail(user.getUserAccountMoney()));
-        }
-        String newAccount = MoneyUtil.fractionSubtract(user.getUserAccountMoney(), orderPay.getPayAmount());
+        String newAccount = MoneyUtil.fractionSubtract(user.getUserAccountMoney(), orderPay.getOrderNeedPay());
         if (newAccount.contains("-")){
             trade.setOrderState(1);
             tradeMapper.updateById(trade);
@@ -209,19 +210,21 @@ public class PayServiceImpl implements PayService {
         }
         user.setUserAccountMoney(newAccount);
         user.setUserCreditScore(user.getUserCreditScore()+(int)addScore);
-        enterprise.setEntpAccountMoney(MoneyUtil.fractionAdd(enterprise.getEntpAccountMoney(),trade.getOrderTotalMoney()));
+        enterprise.setEntpAccountMoney(MoneyUtil.fractionAdd(enterprise.getEntpAccountMoney(),orderPay.getOrderNeedPay()));
         int i2 = enterpriseMapper.updateById(enterprise);
         if (i2!=1){
-            trade.setOrderState(1);
-            tradeMapper.updateById(trade);
-            orderPayMapper.deleteById(orderPay.getPayId());
-            return false;
+            if (trade.getOrderRentWay()!=2){
+                trade.setOrderState(1);
+                tradeMapper.updateById(trade);
+                orderPayMapper.deleteById(orderPay.getPayId());
+                return false;
+            }
         }
         int i = userMapper.updateById(user);
         if (i!=1){
             trade.setOrderState(1);
             tradeMapper.updateById(trade);
-            enterprise.setEntpAccountMoney(MoneyUtil.fractionDivide(enterprise.getEntpAccountMoney(),trade.getOrderTotalMoney()));
+            enterprise.setEntpAccountMoney(MoneyUtil.fractionDivide(enterprise.getEntpAccountMoney(),orderPay.getOrderNeedPay()));
             enterpriseMapper.updateById(enterprise);
             orderPayMapper.deleteById(orderPay.getPayId());
             return false;
@@ -250,5 +253,61 @@ public class PayServiceImpl implements PayService {
             }
         });
         return orderPays;
+    }
+
+    @Override
+    public boolean buyGoods(String orderId) throws Exception {
+        Trade trade = tradeMapper.mySelectById(orderId);
+        if (!"0".equals(trade.getOrderParentId())){
+            trade = tradeMapper.mySelectById(trade.getOrderParentId());
+        }
+        //退款金额
+        String orderDeposit = trade.getOrderDeposit();
+        Enterprise enterprise = enterpriseMapper.selectById(trade.getEntpId());
+        String entpAfterSub = MoneyUtil.fractionSubtract(enterprise.getEntpAccountMoney(), orderDeposit);
+        User user = userMapper.selectById(trade.getUserId());
+        String userAfterAdd = MoneyUtil.fractionAdd(user.getUserAccountMoney(), orderDeposit);
+        EnterpriseGoodsEntity enterpriseGoodsEntity = goodsEntityMapper.selectById(trade.getGoodsEntityId());
+        enterpriseGoodsEntity.setGoodsRentState(5);
+
+        QueryWrapper<OrderPay> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("order_id",orderId);
+        List<OrderPay> orderPays = orderPayMapper.selectList(queryWrapper);
+        OrderPay orderPay = orderPays.get(0);
+        orderPay.setPayId(getRandomPayId(orderPay.getUserId()));
+        orderPay.setPayTime(MyUtil.getNowTime());
+        orderPay.setPayScore(0);
+        orderPay.setPayPlatform("租赁宝");
+        orderPay.setPayType(4);
+        orderPay.setPayAmount("-"+orderDeposit);
+
+        int insert = orderPayMapper.insert(orderPay);
+        if (insert!=1){
+            return false;
+        }
+        int i = goodsEntityMapper.updateById(enterpriseGoodsEntity);
+        if (i!=1){
+            orderPayMapper.deleteById(orderPay.getPayId());
+            return false;
+        }
+        enterprise.setEntpAccountMoney(entpAfterSub);
+        int i1 = enterpriseMapper.updateById(enterprise);
+        if (i1!=1){
+            orderPayMapper.deleteById(orderPay.getPayId());
+            enterpriseGoodsEntity.setGoodsRentState(4);
+            goodsEntityMapper.updateById(enterpriseGoodsEntity);
+            return false;
+        }
+        user.setUserAccountMoney(userAfterAdd);
+        int i2 = userMapper.updateById(user);
+        if (i2!=1){
+            orderPayMapper.deleteById(orderPay.getPayId());
+            enterpriseGoodsEntity.setGoodsRentState(4);
+            goodsEntityMapper.updateById(enterpriseGoodsEntity);
+            enterprise.setEntpAccountMoney(MoneyUtil.fractionAdd(entpAfterSub,orderDeposit));
+            enterpriseMapper.updateById(enterprise);
+            return false;
+        }
+        return true;
     }
 }

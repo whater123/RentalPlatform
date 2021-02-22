@@ -61,6 +61,12 @@ public class PayController {
             if (!b1){
                 return new ReturnMsg("1",true,"数据插入失败");
             }else {
+                if (orderPay.getPayType()==2){
+                    boolean b2 = payService.buyGoods(orderPay.getOrderId());
+                    if (!b2){
+                        return new ReturnMsg("500",true,"数据库错误，请联系管理员处理退款");
+                    }
+                }
                 return new ReturnMsg("0",false);
             }
         }catch (Exception e){

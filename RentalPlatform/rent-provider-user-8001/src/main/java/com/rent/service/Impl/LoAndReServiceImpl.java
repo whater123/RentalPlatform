@@ -178,6 +178,7 @@ public class LoAndReServiceImpl implements LoginAndRegisterService {
         TimeZone.setDefault(tz);
         user.setUserRegisterTime(new Date());
         //随机获取信誉分
+        user.setUserAccountMoney("10000.0");
         user.setUserCreditScore(getRandomScore());
         int insert = userMapper.insert(user);
         return insert==1;

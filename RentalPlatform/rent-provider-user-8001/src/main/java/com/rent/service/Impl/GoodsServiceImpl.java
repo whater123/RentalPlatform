@@ -1,6 +1,5 @@
 package com.rent.service.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.dao.GoodsEntityMapper;
 import com.rent.dao.GoodsMapper;
 import com.rent.pojo.base.EnterpriseGoods;

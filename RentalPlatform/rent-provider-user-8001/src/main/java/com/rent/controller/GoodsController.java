@@ -2,18 +2,14 @@ package com.rent.controller;
 
 import com.rent.pojo.base.EnterpriseGoods;
 import com.rent.pojo.base.EnterpriseGoodsEntity;
-import com.rent.pojo.base.User;
 import com.rent.pojo.view.GoodsAttribute;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.pojo.view.SimpleGoods;
 import com.rent.service.GoodsService;
 import com.rent.service.RecommendService;
 import com.rent.util.JsonToMapUtil;
-import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
 

@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.rent.constant.SystemConstant;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,9 +66,6 @@ public class MyUtil {
         return false;
     }
 
-    public static String getNowTime(){
-        return  new SimpleDateFormat(SystemConstant.DATE_FORMAT).format(new Date());
-    }
 
     public static boolean isAllRuleMoney(String...moneys){
         for (String s:
@@ -76,6 +75,91 @@ public class MyUtil {
             }
         }
         return true;
+    }
+
+    public static String getNowDate(){
+        return  new SimpleDateFormat(SystemConstant.DATE_FORMAT).format(new Date());
+    }
+
+    public static String getNowDateTime(){
+        return  new SimpleDateFormat(SystemConstant.DATETIME_FORMAT).format(new Date());
+    }
+    /**
+     * @Description: 获取相对时间
+     * @param field 为跨度
+     * @param amount 为跨多少
+     */
+    public static String getPastDate(int field, int amount){
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(field,amount);
+        DateFormat dateFormat = new SimpleDateFormat(SystemConstant.DATE_FORMAT);
+        return dateFormat.format(calendar.getTime());
+    }
+
+    public static String getPastDateTime(int field, int amount){
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(field,amount);
+        DateFormat dateFormat = new SimpleDateFormat(SystemConstant.DATETIME_FORMAT);
+        return dateFormat.format(calendar.getTime());
+    }
+
+    /**
+     * @Description: 获取本周第一天（星期一）
+     * @param i 为0表示本周为1表示下周
+     */
+    public static String getThisWeekOfFirstDate(Integer i) {
+        SimpleDateFormat format = new SimpleDateFormat(SystemConstant.DATE_FORMAT);
+        Calendar calendar = Calendar.getInstance();
+        if (i != null) {
+            calendar.add(Calendar.DAY_OF_WEEK_IN_MONTH, i);
+        }
+        calendar.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
+        return format.format(calendar.getTime());
+    }
+    /**
+     * @Description: 获取本月第一天
+     * @param i 为0表示本月为1表示下月
+     */
+    public static String getThisMonthOfFirstDate(Integer i) {
+        SimpleDateFormat format = new SimpleDateFormat(SystemConstant.DATE_FORMAT);
+        Calendar calendar = Calendar.getInstance();
+        if (i != null) {
+            calendar.add(Calendar.MONTH, i);
+        }
+        calendar.set(Calendar.DAY_OF_MONTH, Calendar.SUNDAY);
+        return format.format(calendar.getTime());
+    }
+    /**
+     *  获取某月所有日期，不包括未来日期
+     *  System.out.println(getDateList(getThisMonthOfFirstDate(0)));
+     */
+    public static List<String> getDateList(String date) throws ParseException {
+        // 计算的月份
+        List<String> dateList = new LinkedList<String>();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new SimpleDateFormat("yyyy-MM").parse(date));
+
+        SimpleDateFormat dateSdf = new SimpleDateFormat("yyyy-MM-dd");
+        String nowDate = dateSdf.format(new Date());
+        // 到下个月不在累计
+        while (calendar.get(Calendar.MONTH) + 1 == Integer.parseInt(date.split("-")[1])) {
+            // 至本年月日,不在计算
+            if (dateSdf.format(calendar.getTime()).equals(nowDate)) {
+                dateList.add(dateSdf.format(calendar.getTime()));
+                calendar.add(Calendar.DATE, 1);
+                break;
+            }
+            dateList.add(dateSdf.format(calendar.getTime()));
+            calendar.add(Calendar.DATE, 1);
+        }
+        //多添加一天日期，便于数据库比较
+        dateList.add(dateSdf.format(calendar.getTime()));
+        calendar.add(Calendar.DATE, 1);
+        return dateList;
     }
 
 }

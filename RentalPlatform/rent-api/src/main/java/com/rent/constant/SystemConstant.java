@@ -10,6 +10,8 @@ public class SystemConstant {
     public static final String FRONT_END_URL = "http://localhost:9528";
 
     public static final int GET_AUTHENTICATIONS_PER_PAGE = 10;
+    public static final int GET_ORDERS_PER_PAGE = 10;
+    public static final int GET_APPEALS_PER_PAGE = 10;
 
     public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_FORMAT = "yyyy-MM-dd";

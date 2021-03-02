@@ -2,7 +2,6 @@ package com.rent.service;
 
 import com.rent.pojo.base.User;
 import com.rent.pojo.view.LoginMsg;
-import org.springframework.stereotype.Service;
 
 import java.util.Map;
 

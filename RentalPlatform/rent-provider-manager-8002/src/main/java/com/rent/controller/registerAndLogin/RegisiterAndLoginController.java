@@ -1,4 +1,4 @@
-package com.rent.controller;
+package com.rent.controller.registerAndLogin;
 
 import com.rent.constant.SystemConstant;
 import com.rent.pojo.base.Enterprise;
@@ -71,11 +71,12 @@ public class RegisiterAndLoginController {
         if(enterpriseService.isThatExist("entp_name", enterprise.getEntpName())){
             return new ReturnMsg("40303",true,"该企业名已被注册");
         }
-//        if(!enterpriseService.userCheckVerification(enterprise.getEntpChargePhone(),
-//                enterprise.getEntpVerification())){
-//            return new ReturnMsg("40304",true,"验证码错误");
-//        }
+        if(!enterpriseService.userCheckVerification(enterprise.getEntpChargePhone(),
+                enterprise.getEntpVerification())){
+            return new ReturnMsg("40304",true,"验证码错误");
+        }
         try{
+            enterprise.setEntpAccountMoney("0");
             enterprise.setEntpPassword(MD5util.code(enterprise.getEntpPassword()));
             enterpriseService.getMapper().insert(enterprise);
             return new ReturnMsg("20001",false,"注册成功");

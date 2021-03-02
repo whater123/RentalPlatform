@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.rent.pojo.view.Property;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,9 +30,10 @@ public class EnterpriseGoodsEntity {
     String goodsPrice;
     String goodsDeposit;
     String goodsCurrentPrice;
-    int goodRegularUnit;
+    String goodsRegularUnit;
     String goodsRegularPrice;
     double goodsNewLevel;
+    String goodsProperties;
     @TableField(exist = false)
     private int addNumber;
     @TableField(exist = false)

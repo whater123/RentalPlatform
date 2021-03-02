@@ -1,7 +1,13 @@
-package com.rent.controller;
+package com.rent.controller.publicAPI;
 
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.IORuntimeException;
+import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.rent.dao.PictureMapper;
+import com.rent.pojo.base.Picture;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.UtilsService;
 import com.rent.util.MyUtil;
@@ -14,8 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 /**
  * @author obuivy
@@ -34,7 +42,7 @@ public class UtilsController {
             return new ReturnMsg("401",true,"参数不齐");
         }
         try{
-            if(!utilsService.isFilesPicture(pictures)){
+            if(!utilsService.areFilesPicture(pictures)){
                 return new ReturnMsg("402",true,"参数不合法");
             }
             ArrayList<String> list = utilsService.uploadFiles(pictures);
@@ -73,4 +81,41 @@ public class UtilsController {
         return new ReturnMsg("200",false,"查询成功", utilsService.getPictureUrls(pictureId,request));
     }
 
+    @RequestMapping(path = "/uploadPicturesByte",produces = "application/json;charset=UTF-8")
+    public ReturnMsg uploadPicturesByte(@RequestBody String json,HttpServletRequest request){
+        if(MyUtil.jsonHasVoid(json,"pictures","names")){
+            return new ReturnMsg("401",true,"传参不齐");
+        }
+        System.out.println(json);
+
+        JSONObject jsonObject = JSON.parseObject(json);
+        JSONArray pictures = jsonObject.getJSONArray("pictures");
+        JSONArray names = jsonObject.getJSONArray("names");
+        String pictureId = UUID.randomUUID().toString();
+
+        int j = pictures.size();
+        for (int i = 0; i < pictures.size(); i++) {
+            JSONArray jsonArray = pictures.getJSONArray(i);
+            byte[] bytes = jsonArray.toJavaObject(byte[].class);
+            String oldName = names.get(i).toString();
+            String newName = UUID.randomUUID().toString() + oldName.substring(oldName.lastIndexOf("."));
+            System.out.println(newName);
+            Picture picture = new Picture(pictureId,newName);
+            pictureMapper.insert(picture);
+            try{
+                File folder = new File("fileSource");
+                if(!folder.isDirectory()){
+                    folder.mkdirs();
+                }
+                FileUtil.writeBytes(bytes, new File(folder,newName),
+                        0,bytes.length,false);
+            } catch (IORuntimeException e) {
+                e.printStackTrace();
+                j--;
+            }
+        }
+        return new ReturnMsg("200",false,
+                "共计" + pictures.size() + "个文件，" + "成功上传" + j + "个图片",
+                utilsService.getPictureUrls(pictureId,request));
+    }
 }

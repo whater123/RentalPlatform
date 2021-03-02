@@ -1,10 +1,8 @@
-package com.rent.controller;
+package com.rent.controller.platform;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.config.ShiroUtil;
-import com.rent.dao.EnterpriseMapper;
-import com.rent.pojo.base.Enterprise;
 import com.rent.pojo.base.EnterpriseAuthentication;
 import com.rent.pojo.view.ReturnDoubleData;
 import com.rent.pojo.view.ReturnMsg;
@@ -24,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/manager/platform")
-public class PlatformController {
+public class PlatAuthenController {
     @Autowired
     PlatformService platformService;
     @Autowired
@@ -33,7 +31,7 @@ public class PlatformController {
     EnterpriseService enterpriseService;
 
     @RequestMapping("/getSimpleAuthentications")
-    public ReturnDoubleData getSimpleAuthentications(@RequestBody String json, HttpServletRequest request){
+    public ReturnDoubleData getSimpleAuthentications(@RequestBody String json){
         if(!ShiroUtil.isAuthenticed()){
             return new ReturnDoubleData("301",true,"尚未登录");
         }

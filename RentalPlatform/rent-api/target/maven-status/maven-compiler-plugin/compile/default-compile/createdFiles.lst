@@ -1,9 +1,14 @@
 com\rent\pojo\base\EnterpriseGoodsEntity.class
 com\rent\enumeration\CategoryEnum.class
+com\rent\pojo\base\EnterpriseCategory.class
+com\rent\pojo\base\OrderLogistics.class
 com\rent\util\MyUtil.class
+com\rent\pojo\base\UserComment.class
 com\rent\constant\SystemConstant.class
+com\rent\pojo\view\Property.class
 com\rent\pojo\view\ReturnMsg.class
 com\rent\pojo\base\Enterprise.class
+com\rent\pojo\base\OrderPay.class
 com\rent\util\VerificationUtil.class
 com\rent\pojo\base\EnterpriseAuthentication.class
 com\rent\util\HttpUtils.class
@@ -11,6 +16,8 @@ com\rent\util\MD5util.class
 com\rent\pojo\redisPojo\GoodsPoint.class
 com\rent\pojo\base\User.class
 com\rent\util\HttpUtils$1.class
+com\rent\pojo\base\Trade.class
 com\rent\pojo\view\SimpleGoods.class
 com\rent\pojo\view\LoginMsg.class
+com\rent\util\ExpressUtil.class
 com\rent\pojo\base\Picture.class

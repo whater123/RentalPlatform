@@ -241,6 +241,14 @@ public class EntpGoodsService implements GoodsImpl {
             }
             goodsEntity.setGoodsProperties(map.toString());
             for (int i = 0; i < goodsEntity.getAddNumber(); i++) {
+                String[] strings = goodsEntity.getGoodsRegularPrice().split("/");
+                StringBuilder goodsRegularPrice = new StringBuilder();
+                for (String string :
+                        strings) {
+                    goodsRegularPrice.append(MoneyUtil.addTail(string)).append("/");
+                    System.out.println(string);
+                }
+                goodsEntity.setGoodsRegularPrice(goodsRegularPrice.substring(0,goodsRegularPrice.length() - 1));
                 enterpriseGoodsEntityMapper.insert(goodsEntity);
                 list.add(goodsEntity.getGoodsEntityId());
             }

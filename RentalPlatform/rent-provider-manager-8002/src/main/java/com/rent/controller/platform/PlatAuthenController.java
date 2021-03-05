@@ -30,7 +30,7 @@ public class PlatAuthenController {
     @Autowired
     EnterpriseService enterpriseService;
 
-    @RequestMapping("/getSimpleAuthentications")
+    @RequestMapping(value = "/getSimpleAuthentications", produces = "application/json;charset=UTF-8")
     public ReturnDoubleData getSimpleAuthentications(@RequestBody String json){
         if(!ShiroUtil.isAuthenticed()){
             return new ReturnDoubleData("301",true,"尚未登录");
@@ -41,7 +41,7 @@ public class PlatAuthenController {
         return platformService.getAuthentications(json);
     }
 
-    @RequestMapping("/getDetailAuthentication")
+    @RequestMapping(value = "/getDetailAuthentication", produces = "application/json;charset=UTF-8")
     public ReturnMsg getDetailAuthentication(@RequestBody String json){
         if(!ShiroUtil.isAuthenticed()){
             return new ReturnMsg("301",true,"尚未登录");
@@ -57,7 +57,7 @@ public class PlatAuthenController {
                         JSON.parseObject(json).getString("authId")).get(0));
     }
 
-    @RequestMapping("/handleAuthentication")
+    @RequestMapping(value = "/handleAuthentication", produces = "application/json;charset=UTF-8")
     public ReturnMsg handleAuthentication(@RequestBody String json){
         if(!ShiroUtil.isAuthenticed()){
             return new ReturnMsg("30101",true,"尚未登录");
@@ -83,7 +83,7 @@ public class PlatAuthenController {
         }
     }
 
-    @RequestMapping("/getEnterpriseInfo")
+    @RequestMapping(value = "/getEnterpriseInfo", produces = "application/json;charset=UTF-8")
     public ReturnMsg getEnterpriseInfo(@RequestBody String json){
         if(!ShiroUtil.isAuthenticed()){
             return new ReturnMsg("30101",true,"尚未登录");

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/manager/enterprise")
-public class SelfInfoController {
+public class EntpSelfInfoController {
     @Autowired
     EnterpriseAuthenticationService enterpriseAuthenticationService;
     @Autowired

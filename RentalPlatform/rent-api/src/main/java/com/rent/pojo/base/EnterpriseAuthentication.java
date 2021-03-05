@@ -20,4 +20,5 @@ public class EnterpriseAuthentication {
     String authEmail;
     int authState;
     String authAddress;
+    String authTime;
 }

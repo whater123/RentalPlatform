@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/manager/enterprise")
-public class AuthenticationController {
+public class EntpAuthenticationController {
     @Autowired
     EnterpriseAuthenticationService enterpriseAuthenticationService;
     @Autowired
@@ -62,6 +62,7 @@ public class AuthenticationController {
             return new ReturnMsg("40303",true,"该营业执照图组不存在");
         }
         try{
+            authentication.setAuthTime(MyUtil.getNowDateTime());
             authentication.setAuthState(0);
             authentication.setEntpId(enterpriseService.getThoseEnterprises("entp_account",
                     String.valueOf(SecurityUtils.getSubject().getPrincipal())).get(0).getEntpId());

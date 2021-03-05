@@ -47,7 +47,7 @@ public class PlatAppealController {
     @Autowired
     OrderService orderService;
 
-    @RequestMapping("/getAppeal")
+    @RequestMapping(value = "/getAppeal", produces = "application/json;charset=UTF-8")
     public ReturnDoubleData getAppeal(@RequestBody String json){
         if(!ShiroUtil.isAuthenticed()){
             return new ReturnDoubleData("301",true,"尚未登录");
@@ -128,7 +128,7 @@ public class PlatAppealController {
         }
     }
 
-    @RequestMapping("/handleAppeal")
+    @RequestMapping(value = "/handleAppeal", produces = "application/json;charset=UTF-8")
     public ReturnMsg handleAppeal(@RequestBody String json){
         if(!ShiroUtil.isAuthenticed()){
             return new ReturnMsg("301",true,"尚未登录");

@@ -9,6 +9,9 @@ import java.util.List;
 public class MoneyUtil {
 
     public static boolean isRuleString(String str) {
+        if(str == null || "".equals(str)){
+            return false;
+        }
         if(!str.contains(".")){
             return false;
         }

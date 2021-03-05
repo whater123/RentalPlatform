@@ -76,6 +76,7 @@ public class RegisiterAndLoginController {
             return new ReturnMsg("40304",true,"验证码错误");
         }
         try{
+            enterprise.setEntpRegisterTime(MyUtil.getNowDateTime());
             enterprise.setEntpAccountMoney("0");
             enterprise.setEntpPassword(MD5util.code(enterprise.getEntpPassword()));
             enterpriseService.getMapper().insert(enterprise);

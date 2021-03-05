@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/manager/authEnterprise")
-public class GoodsEntityController {
+public class AuthGoodsEntityController {
     @Autowired
     EnterpriseService enterpriseService;
     @Autowired

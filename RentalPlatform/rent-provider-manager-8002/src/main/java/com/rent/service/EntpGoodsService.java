@@ -116,6 +116,7 @@ public class EntpGoodsService implements GoodsImpl {
             goods.setGoodsMinPrice("0.00");
             goods.setGoodsMaxRent("0.00");
             goods.setGoodsMinRent("0.00");
+            goods.setGoodsCreateTime(MyUtil.getNowDateTime());
             enterpriseGoodsMapper.insert(goods);
             return true;
         } catch (Exception e) {

@@ -24,7 +24,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/manager/authEnterprise")
-public class OrderController {
+public class AuthOrderController {
     @Autowired
     EnterpriseService enterpriseService;
     @Autowired

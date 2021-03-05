@@ -33,6 +33,7 @@ public class EnterpriseGoods {
     private int goodsRent;
     private int goodsBigCategory;
     private int goodsCategoryId;
+    private String goodsCreateTime;
     @TableField(exist = false)
     private double point;
 }

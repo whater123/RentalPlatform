@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/manager/authEnterprise")
-public class DataVisController {
+public class AuthDataVisController {
     @Autowired
     DataVisService dataVisService;
 
@@ -86,7 +86,7 @@ public class DataVisController {
             return new ReturnMsg("302", true, "尚未授权");
         }
         try{
-            if(JSON.parseObject(json).getInteger("month") > 1){
+            if(JSON.parseObject(json).getInteger("month") >= 1){
                 return new ReturnMsg("402", true, "参数不合法");
             }
         } catch (Exception e) {
@@ -94,7 +94,7 @@ public class DataVisController {
             return new ReturnMsg("401", true, "参数不齐");
         }
         try{
-            return new ReturnMsg("200", false, "获取成功",dataVisService.getOrderCurveMonthlyJSONArray(json));
+            return new ReturnMsg("200", false, "获取成功",dataVisService.getOrderCurveMonthlyJsonArray(json));
         } catch (Exception e) {
             e.printStackTrace();
             return new ReturnMsg("500", true, "服务器错误", e.getMessage());

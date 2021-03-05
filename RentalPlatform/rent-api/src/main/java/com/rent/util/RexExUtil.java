@@ -46,6 +46,9 @@ public class RexExUtil {
 
 
     public static boolean isRealNumber(String str){
+        if(str == null || "".equals(str)){
+            return false;
+        }
         if(str.charAt(0) == '-'){
             str = str.substring(1);
         }

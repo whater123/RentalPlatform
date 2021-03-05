@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/manager/authEnterprise")
-public class AppealController {
+public class AuthAppealController {
     @Autowired
     AppealMapper appealMapper;
     @Autowired

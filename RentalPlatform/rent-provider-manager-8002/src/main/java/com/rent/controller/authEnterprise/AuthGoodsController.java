@@ -27,7 +27,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/manager/authEnterprise")
-public class EntpGoodsController {
+public class AuthGoodsController {
     @Autowired
     EnterpriseService enterpriseService;
     @Autowired

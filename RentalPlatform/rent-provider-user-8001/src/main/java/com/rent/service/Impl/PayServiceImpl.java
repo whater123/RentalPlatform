@@ -1,6 +1,7 @@
 package com.rent.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.rent.config.ThreadPoolConfig;
 import com.rent.dao.*;
 import com.rent.pojo.base.Trade;
 import com.rent.pojo.base.OrderPay;
@@ -12,6 +13,8 @@ import com.rent.pojo.view.PayNeedMsg;
 import com.rent.service.GoodsService;
 import com.rent.service.LoginAndRegisterService;
 import com.rent.service.PayService;
+import com.rent.thread.RegularOrderListenThread;
+import com.rent.thread.SMSThread;
 import com.rent.util.MoneyUtil;
 import com.rent.util.MyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +43,8 @@ public class PayServiceImpl implements PayService {
     EnterpriseMapper enterpriseMapper;
     @Autowired
     GoodsMapper goodsMapper;
+    @Autowired
+    ThreadPoolConfig threadPoolConfig;
 
     /**
      * 获取支付id
@@ -70,6 +75,10 @@ public class PayServiceImpl implements PayService {
         String needDeposit = MoneyUtil.fractionSubtract(goodsEntityInformation.getGoodsDeposit(),subDeposit);
         subDeposit = MoneyUtil.fractionMultiply(subDeposit, trade.getOrderGoodsCount()+".0");
         needDeposit = MoneyUtil.fractionMultiply(needDeposit, trade.getOrderGoodsCount()+".0");
+        if (needDeposit.contains("-")){
+            needDeposit = "0";
+            subDeposit = goodsEntityInformation.getGoodsDeposit();
+        }
         if (trade.getOrderRentWay()==2){
             //活期支付总额就是押金金额
             return new PayNeedMsg(user.getUserCreditScore(),needDeposit,needDeposit,subDeposit);
@@ -93,7 +102,7 @@ public class PayServiceImpl implements PayService {
                 return new PayNeedMsg("orderRentUnit参数错误，不存在此单位");
             }
             //单位价格*几个单位
-            String firstPay = MoneyUtil.fractionMultiply(rentPrice+".0", trade.getOrderRentTime() +".0");
+            String firstPay = MoneyUtil.fractionMultiply(MoneyUtil.addTail(rentPrice), trade.getOrderRentTime() +".0");
             firstPay = MoneyUtil.fractionMultiply(firstPay, trade.getOrderGoodsCount()+".0");
             String goodsOriginPrice = MoneyUtil.fractionMultiply(goodsEntityInformation.getGoodsPrice(), trade.getOrderGoodsCount() +".0");
             //如果第一次支付金额大于原价则返回参数错误
@@ -172,6 +181,7 @@ public class PayServiceImpl implements PayService {
         if (orderPay.getOrderNeedPay()==null){
             orderPay.setOrderNeedPay(trade.getOrderTotalMoney());
         }
+
         System.out.println(orderPay);
         Enterprise enterprise = enterpriseMapper.selectById(trade.getEntpId());
         double addScore = Double.parseDouble(MoneyUtil.fractionMultiply(orderPay.getOrderNeedPay(),"0.09"));
@@ -229,6 +239,15 @@ public class PayServiceImpl implements PayService {
             orderPayMapper.deleteById(orderPay.getPayId());
             return false;
         }else {
+            if (trade.getOrderRentWay()==1){
+                String orderCreateTime = trade.getOrderCreateTime();
+                String orderRentUnit = trade.getOrderRentUnit();
+                int orderRentTime = trade.getOrderRentTime();
+                String s = MyUtil.addDate(orderCreateTime, orderRentTime * Integer.parseInt(orderRentUnit));
+                //启动监听线程
+                threadPoolConfig.threadPoolTaskExecutor().execute(new RegularOrderListenThread(s,trade.getOrderId(),tradeMapper));
+                System.out.println("监听线程已启动");
+            }
             return true;
         }
     }

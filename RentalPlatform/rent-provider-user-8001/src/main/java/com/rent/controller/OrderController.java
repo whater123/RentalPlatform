@@ -6,11 +6,13 @@ import com.rent.pojo.base.OrderLogistics;
 import com.rent.pojo.base.Trade;
 import com.rent.pojo.base.user.UserComment;
 import com.rent.pojo.view.PayNeedMsg;
+import com.rent.pojo.view.RentReturnMsg;
 import com.rent.pojo.view.ResBody;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.CommentService;
 import com.rent.service.LoginAndRegisterService;
 import com.rent.service.OrderService;
+import com.rent.util.MyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -235,12 +237,33 @@ public class OrderController {
             if (!loginAndRegisterService.userExtendToken(Integer.parseInt(userId))){
                 return new ReturnMsg("301",true);
             }
+            appeal.setAppealTime(MyUtil.getNowTime());
+            appeal.setAppealState(1);
             int insert = appealMapper.insert(appeal);
             if (insert==1){
                 return new ReturnMsg("0",false);
             }else {
                 return new ReturnMsg("500",true,"数据库错误");
             }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/using/returnMsg")
+    public ReturnMsg returnMsg(HttpServletRequest request){
+        try{
+            String userId = request.getHeader("UserId");
+            if ("".equals(userId)){
+                return new ReturnMsg("301",true);
+            }
+            if (!loginAndRegisterService.userExtendToken(Integer.parseInt(userId))){
+                return new ReturnMsg("301",true);
+            }
+
+            List<RentReturnMsg> returnMsgs = orderService.getReturnMsgs(Integer.parseInt(userId));
+            return new ReturnMsg("0",false,returnMsgs);
         }catch (Exception e){
             e.printStackTrace();
             return new ReturnMsg("500",true,e.getMessage());

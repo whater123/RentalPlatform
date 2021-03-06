@@ -1,5 +1,7 @@
 package com.rent.controller;
 
+import com.baomidou.mybatisplus.extension.api.R;
+import com.rent.pojo.base.manager.EnterpriseCategory;
 import com.rent.pojo.base.manager.EnterpriseGoods;
 import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.base.user.UserComment;
@@ -11,6 +13,7 @@ import com.rent.service.GoodsService;
 import com.rent.service.RecommendService;
 import com.rent.util.JsonToMapUtil;
 import org.apache.ibatis.annotations.Param;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -153,6 +156,68 @@ public class GoodsController {
                 return new ReturnMsg("1",true,"商品个体不存在");
             }else {
                 return new ReturnMsg("0",false,entity);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/search/{context}")
+    public ReturnMsg search(@PathVariable("context") String context){
+        try{
+            List<EnterpriseGoods> search = goodsService.search(context);
+            if (search==null||search.size()==0){
+                return new ReturnMsg("1",true,"搜索结果不存在");
+            }else {
+                return new ReturnMsg("0",false,search);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/getHotCategory/{bigCategoryId}")
+    public ReturnMsg getHotCategory(@PathVariable("bigCategoryId") String bigCategoryId){
+        try{
+            List<EnterpriseGoods> hotCategoryGoods = goodsService.getHotCategoryGoods(Integer.parseInt(bigCategoryId));
+            if (hotCategoryGoods==null||hotCategoryGoods.size()==0){
+                return new ReturnMsg("1",true,"无商品集");
+            }
+            return new ReturnMsg("0",false,hotCategoryGoods);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/entp/category/{entpId}")
+    public ReturnMsg category(@PathVariable("entpId") String entpId){
+        try{
+            List<EnterpriseCategory> enterpriseCategory = goodsService.getEnterpriseCategory(Integer.parseInt(entpId));
+            if (enterpriseCategory==null||enterpriseCategory.size()==0){
+                return new ReturnMsg("1",false,"无分类");
+            }else {
+                return new ReturnMsg("0",false,enterpriseCategory);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ReturnMsg("500",true,e.getMessage());
+        }
+    }
+
+    @GetMapping("/entp/{entpId}/{categoryId}")
+    public ReturnMsg getEntpGoods(@PathVariable("entpId") String entpId,@PathVariable("categoryId") String categoryId){
+        try{
+            if (categoryId==null|| "".equals(categoryId)){
+                categoryId="0";
+            }
+            List<EnterpriseGoods> entpGoods = goodsService.getEntpGoods(Integer.parseInt(entpId), Integer.parseInt(categoryId));
+            if (entpGoods==null||entpGoods.size()==0){
+                return new ReturnMsg("1",false,"暂无商品");
+            }else {
+                return new ReturnMsg("0",false,entpGoods);
             }
         }catch (Exception e){
             e.printStackTrace();

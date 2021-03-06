@@ -11,6 +11,7 @@
         <module>rent-api</module>
         <module>rent-provider-user-8001</module>
         <module>rent-provider-manager-8002</module>
+        <module>rent-provider-user-clickAndRead-8003</module>
     </modules>
 
     <packaging>pom</packaging>

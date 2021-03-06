@@ -1,9 +1,12 @@
 package com.rent.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.rent.dao.CategoryMapper;
 import com.rent.dao.EnterpriseMapper;
 import com.rent.dao.GoodsEntityMapper;
 import com.rent.dao.GoodsMapper;
 import com.rent.pojo.base.manager.Enterprise;
+import com.rent.pojo.base.manager.EnterpriseCategory;
 import com.rent.pojo.base.manager.EnterpriseGoods;
 import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.view.GoodsAttribute;
@@ -22,7 +25,8 @@ import java.util.*;
  * @author w
  */
 @Service
-public class GoodsServiceImpl implements GoodsService {
+public class GoodsServiceImpl implements
+        GoodsService {
     @Autowired
     GoodsMapper goodsMapper;
     @Autowired
@@ -31,6 +35,8 @@ public class GoodsServiceImpl implements GoodsService {
     GoodsEntityMapper goodsEntityMapper;
     @Autowired
     EnterpriseMapper enterpriseMapper;
+    @Autowired
+    CategoryMapper categoryMapper;
 
     @Override
     public EnterpriseGoods getGoodsInformation(int goodsId) {
@@ -172,6 +178,37 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public EnterpriseGoodsEntity getEntity(int goodsEntityId) {
         return goodsEntityMapper.selectById(goodsEntityId);
+    }
+
+    @Override
+    public List<EnterpriseGoods> search(String context) {
+        QueryWrapper<EnterpriseGoods> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("goods_title",context).or().like("goods_introduce",context);
+        return goodsMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public List<EnterpriseGoods> getHotCategoryGoods(int categoryId) {
+        QueryWrapper<EnterpriseGoods> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("goods_big_category",String.valueOf(categoryId));
+        return goodsMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public List<EnterpriseCategory> getEnterpriseCategory(int entpId) {
+        QueryWrapper<EnterpriseCategory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("entp_id",entpId);
+        return categoryMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public List<EnterpriseGoods> getEntpGoods(int entpId, int categoryId) {
+        QueryWrapper<EnterpriseGoods> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("entp_id",entpId);
+        if (categoryId!=0){
+            queryWrapper.eq("goods_category_id",categoryId);
+        }
+        return goodsMapper.selectList(queryWrapper);
     }
 
     /**

@@ -17,7 +17,9 @@ E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\r
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\config\CORSFilter.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\UserInforController.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\TradeMapper.java
+E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\Impl\RabbitmqSenderService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\RecommendService.java
+E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\RabbitmqController.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\ContactController.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\config\ScheduledTaskConfig.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\Impl\GoodsServiceImpl.java
@@ -31,9 +33,12 @@ E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\r
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\GoodsController.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\ContactMapper.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\LogisticsMapper.java
+E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\thread\RegularOrderListenThread.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\PayService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\OrderPayMapper.java
+E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\CategoryMapper.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\dao\EnterpriseMapper.java
+E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\config\SenderConf.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\GoodsService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\service\LoginAndRegisterService.java
 E:\Git\RentalPlatform\RentalPlatform\rent-provider-user-8001\src\main\java\com\rent\controller\LoAndReController.java

@@ -4,6 +4,7 @@ import com.rent.pojo.base.OrderLogistics;
 import com.rent.pojo.base.Trade;
 import com.rent.pojo.view.LogisticsMsg;
 import com.rent.pojo.view.PayNeedMsg;
+import com.rent.pojo.view.RentReturnMsg;
 import com.rent.pojo.view.ResBody;
 
 import java.awt.*;
@@ -76,4 +77,11 @@ public interface OrderService {
      * @return 支付信息
      */
     PayNeedMsg getCurrentPay(String orderId) throws Exception;
+
+    /**
+     * 获取用户所有定期订单的到期时间信息
+     * @param userId 用户id
+     * @return 到期信息
+     */
+    List<RentReturnMsg> getReturnMsgs(int userId);
 }

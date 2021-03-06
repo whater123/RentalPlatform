@@ -1,6 +1,7 @@
 package com.rent.service;
 
 import com.rent.dao.GoodsEntityMapper;
+import com.rent.pojo.base.manager.EnterpriseCategory;
 import com.rent.pojo.base.manager.EnterpriseGoods;
 import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.view.GoodsAttribute;
@@ -69,4 +70,33 @@ public interface GoodsService {
      * @return 商品个体，没有则返回null
      */
     EnterpriseGoodsEntity getEntity(int goodsEntityId);
+
+    /**
+     * 模糊搜索 商品标题和描述
+     * @param context 搜索内容
+     * @return 商品集列表
+     */
+    List<EnterpriseGoods> search(String context);
+
+    /**
+     * 获取热门分类的商品集列表
+     * @param categoryId 热门分类id
+     * @return 商品集列表
+     */
+    List<EnterpriseGoods> getHotCategoryGoods(int categoryId);
+
+    /**
+     * 获取企业的内部分类
+     * @param entpId 企业id
+     * @return 企业分类id
+     */
+    List<EnterpriseCategory> getEnterpriseCategory(int entpId);
+
+    /**
+     * 获取企业某分类的商品集（如category为null则传0进来）
+     * @param entpId 企业id
+     * @param categoryId 企业分类id/0
+     * @return 商品集
+     */
+    List<EnterpriseGoods> getEntpGoods(int entpId,int categoryId);
 }

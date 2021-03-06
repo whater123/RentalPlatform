@@ -11,6 +11,7 @@ import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.base.user.Contact;
 import com.rent.pojo.view.LogisticsMsg;
 import com.rent.pojo.view.PayNeedMsg;
+import com.rent.pojo.view.RentReturnMsg;
 import com.rent.pojo.view.ResBody;
 import com.rent.service.OrderService;
 import com.rent.util.HttpUtils;
@@ -382,6 +383,23 @@ public class OrderServiceImpl implements OrderService {
         PayNeedMsg payNeedMsg = new PayNeedMsg(s, "1");
         payNeedMsg.setOrderId(null);
         return payNeedMsg;
+    }
+
+    @Override
+    public List<RentReturnMsg> getReturnMsgs(int userId) {
+        QueryWrapper<Trade> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id",userId).eq("order_rent_way",1);
+        List<Trade> trades = tradeMapper.selectList(queryWrapper);
+        List<RentReturnMsg> list = new ArrayList<>();
+        for (Trade trade: trades
+             ) {
+            String orderCreateTime = trade.getOrderCreateTime();
+            String orderRentUnit = trade.getOrderRentUnit();
+            int orderRentTime = trade.getOrderRentTime();
+            String s = MyUtil.addDate(orderCreateTime, orderRentTime * Integer.parseInt(orderRentUnit));
+            list.add(new RentReturnMsg(trade,s));
+        }
+        return list;
     }
 
     private ResBody getOneLogisticsMsg(String com,String nu,String receiverPhone){

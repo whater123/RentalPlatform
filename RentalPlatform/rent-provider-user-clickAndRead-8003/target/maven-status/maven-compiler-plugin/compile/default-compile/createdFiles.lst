@@ -1,0 +1,3 @@
+com\rent\config\RedisConfig2.class
+com\rent\service\QueueReceive.class
+com\rent\UserProvider_8003.class

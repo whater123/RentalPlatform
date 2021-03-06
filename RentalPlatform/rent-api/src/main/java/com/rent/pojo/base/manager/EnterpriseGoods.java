@@ -31,8 +31,9 @@ public class EnterpriseGoods {
     private String goodsMaxRent;
     private String goodsMinRent;
     private int goodsRent;
-    private String goodsBigCategory;
+    private int goodsBigCategory;
     private int goodsCategoryId;
+    private String goodsCreateTime;
     @TableField(exist = false)
     private double point;
     @TableField(exist = false)

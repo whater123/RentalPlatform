@@ -1,4 +1,4 @@
-package com.rent.pojo.base.manager;
+package com.rent.pojo.base;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -23,6 +23,7 @@ public class Enterprise {
     String entpChargePhone;
     String entpPictureId;
     String entpAccountMoney;
+    String entpRegisterTime;
     @TableField(exist = false)
     private String entpVerification;
 }

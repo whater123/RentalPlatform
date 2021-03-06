@@ -26,14 +26,20 @@ public class Trade {
     private String orderUrgentPhone;
     private String orderCreateTime;
     private int orderRentExpect;
+    private int orderState;
     private int orderGoodsCount;
     private int orderRentWay;
     private int orderRentTime;
-    private String orderRentUnit;
     private int entpId;
-    private int orderState;
+    private String orderRentUnit;
     private String orderTotalMoney;
     private String orderDeposit;
     @TableField(exist = false)
-    private int goodsId;
+    EnterpriseGoodsEntity enterpriseGoodsEntity;
+    @TableField(exist = false)
+    EnterpriseGoods enterpriseGoods;
+    @TableField(exist = false)
+    Contact contact;
+    @TableField(exist = false)
+    User user;
 }

@@ -49,7 +49,7 @@ public interface UtilsImpl {
      * @param files 文件数组
      * @return 判断该文件数组下是否所有文件都为图片
      */
-    boolean isFilesPicture(MultipartFile[] files);
+    boolean areFilesPicture(MultipartFile[] files);
 
     /**
      * @param column 数据库的属性

@@ -8,18 +8,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author w
+ * @author MSI-PC
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderLogistics {
     @TableId(type = IdType.AUTO)
-    private int logisticsId;
-    private String entpToUserNumber;
-    private String entpToUserCompany;
-    private String userToEntpNumber;
-    private String userToEntpCompany;
+    int logisticsId;
+    String entpToUserNumber;
+    String entpToUserCompany;
+    String userToEntpNumber;
+    String userToEntpCompany;
     @TableField(exist = false)
-    private String orderId;
+    String orderId;
 }

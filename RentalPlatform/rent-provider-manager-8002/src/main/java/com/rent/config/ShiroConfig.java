@@ -1,19 +1,14 @@
 package com.rent.config;
 
 import com.rent.constant.SystemConstant;
-import org.apache.shiro.session.mgt.SessionManager;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.crazycake.shiro.RedisManager;
 import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

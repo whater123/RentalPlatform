@@ -1,8 +1,16 @@
 package com.rent.service;
 
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.IORuntimeException;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.rent.dao.OrderPayMapper;
 import com.rent.dao.PictureMapper;
+import com.rent.pojo.base.OrderPay;
 import com.rent.pojo.base.Picture;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +33,10 @@ public class UtilsService implements com.rent.service.impl.UtilsImpl {
     private static final List<String> ALLOW_IMAGE_TYPES = Arrays.asList("image/jpeg", "image/png");
     @Autowired
     PictureMapper pictureMapper;
+    @Autowired
+    EnterpriseService enterpriseService;
+    @Autowired
+    OrderPayMapper orderPayMapper;
 
     File src = new File("fileSource");
     private String uploadFilePath = src.getAbsolutePath();
@@ -106,7 +118,7 @@ public class UtilsService implements com.rent.service.impl.UtilsImpl {
         return list;
     }
     @Override
-    public boolean isFilesPicture(MultipartFile[] files){
+    public boolean areFilesPicture(MultipartFile[] files){
         for (MultipartFile file :
                 files) {
             try {
@@ -144,4 +156,23 @@ public class UtilsService implements com.rent.service.impl.UtilsImpl {
         return pictureMapper.selectList(queryWrapper);
     }
 
+    public boolean isNowEntpId(int entpId){
+        return entpId == enterpriseService.getThoseEnterprises("entp_account",
+                String.valueOf(SecurityUtils.getSubject().getPrincipal())).get(0).getEntpId();
+    }
+
+    /**
+     * 获取支付id
+     * @param userId 用户id
+     * @return 半随机支付id
+     */
+    public String getRandomPayId(int userId){
+        StringBuilder stringBuilder = new StringBuilder();
+        Integer integer = orderPayMapper.selectCount(null);
+        stringBuilder.append("RPP");
+        stringBuilder.append(integer+1);
+        stringBuilder.append(UUID.randomUUID().toString().toUpperCase(), 0, 5);
+        stringBuilder.append(userId);
+        return String.valueOf(stringBuilder);
+    }
 }

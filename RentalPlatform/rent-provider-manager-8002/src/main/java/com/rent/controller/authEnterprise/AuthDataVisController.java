@@ -100,4 +100,30 @@ public class AuthDataVisController {
             return new ReturnMsg("500", true, "服务器错误", e.getMessage());
         }
     }
+
+    @RequestMapping(value = "/getClickInfo", produces = "application/json;charset=UTF-8")
+    public ReturnMsg getClickInfo(@RequestBody String json){
+        if (!ShiroUtil.isAuthenticed()) {
+            return new ReturnMsg("301", true, "尚未登录");
+        }
+        if (!ShiroUtil.hasRoles("authEnterprise_manager")) {
+            return new ReturnMsg("302", true, "尚未授权");
+        }
+        try{
+            if(JSON.parseObject(json).getInteger("month") >= 1){
+                return new ReturnMsg("402", true, "参数不合法");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ReturnMsg("401", true, "参数不齐");
+        }
+        try{
+            return new ReturnMsg("200", false, "获取成功",
+                    dataVisService.getClickInfoJSONArray(json));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ReturnMsg("500", true, "服务器错误", e.getMessage());
+        }
+    }
+
 }

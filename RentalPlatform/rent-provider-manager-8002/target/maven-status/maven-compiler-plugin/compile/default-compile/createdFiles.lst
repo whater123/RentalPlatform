@@ -1,7 +1,6 @@
 com\rent\service\DataVisService.class
 com\rent\service\impl\EnterpriseImpl.class
 com\rent\service\impl\GoodsImpl.class
-com\rent\controller\enterprise\SelfInfoController.class
 com\rent\service\impl\PlatformImpl.class
 com\rent\dao\PictureMapper.class
 com\rent\service\impl\EnterpriseAuthenticationImpl.class
@@ -14,7 +13,6 @@ com\rent\dao\TradeMapper.class
 com\rent\config\ShiroUtil.class
 com\rent\dao\EnterpriseAuthenticationMapper.class
 com\rent\config\CrossConfig$1.class
-com\rent\controller\enterprise\AuthenticationController.class
 com\rent\service\impl\UtilsImpl.class
 com\rent\dao\EnterpriseCategoryMapper.class
 com\rent\service\OrderService.class
@@ -25,14 +23,12 @@ com\rent\config\CrossConfig.class
 com\rent\service\EnterpriseCategoryService.class
 com\rent\config\RedisConfig.class
 com\rent\config\EnterpriseRealm.class
-com\rent\controller\authEnterprise\AppealController.class
 com\rent\config\MySessionManager.class
 com\rent\dao\UserMapper.class
 com\rent\service\EntpGoodsService.class
 com\rent\dao\EnterpriseGoodsEntityMapper.class
 com\rent\dao\OrderLogisticsMapper.class
 com\rent\service\PlatformService.class
-com\rent\controller\authEnterprise\DataVisController.class
 com\rent\dao\OrderPayMapper.class
 com\rent\service\UtilsService.class
 com\rent\dao\AppealMapper.class

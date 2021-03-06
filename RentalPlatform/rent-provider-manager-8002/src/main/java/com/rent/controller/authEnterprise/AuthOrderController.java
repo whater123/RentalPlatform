@@ -188,7 +188,8 @@ public class AuthOrderController {
         }
         QueryWrapper<OrderPay> queryWrapper = new QueryWrapper<>();
         queryWrapper.in("order_id",list);
-        return new ReturnMsg("200", false, "获取成功",
+        return new ReturnMsg("200", false, enterpriseService.getThoseEnterprises("entp_account",
+                String.valueOf(SecurityUtils.getSubject().getPrincipal())).get(0).getEntpAccountMoney(),
                 orderPayMapper.selectList(queryWrapper));
     }
 

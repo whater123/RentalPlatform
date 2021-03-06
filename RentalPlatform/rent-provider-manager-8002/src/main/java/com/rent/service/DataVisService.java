@@ -10,12 +10,13 @@ import com.rent.util.MoneyUtil;
 import com.rent.util.MyUtil;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author obuivy
@@ -38,6 +39,10 @@ public class DataVisService {
     ContactMapper contactMapper;
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    OrderPayMapper orderPayMapper;
+    @Autowired
+    RedisTemplate<String, Object> redisTemplate;
 
     public List<Trade> getPendingOrder(){
         QueryWrapper<Trade> queryWrapper = new QueryWrapper<Trade>();
@@ -311,6 +316,7 @@ public class DataVisService {
         int userRegisterWeek = 0;
         int userRegisterMonth = 0;
         int userRegister = 0;
+        int userRecently = 0;
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
 
@@ -326,7 +332,14 @@ public class DataVisService {
 
         userRegister = userMapper.selectCount(null);
 
+        QueryWrapper<OrderPay> queryWrapper1 = new QueryWrapper<OrderPay>();
+
+        queryWrapper1.ge("pay_time",MyUtil.getPastDate(Calendar.MONTH,-1))
+                .select("DISTINCT user_id");
+        userRecently = orderPayMapper.selectList(queryWrapper1).size();
+
         JSONObject jsonObject = new JSONObject();
+        jsonObject.put("userRecently",userRecently);
         jsonObject.put("userRegister",userRegister);
         jsonObject.put("userRegisterDay",userRegisterDay);
         jsonObject.put("userRegisterWeek",userRegisterWeek);
@@ -397,5 +410,62 @@ public class DataVisService {
         jsonObject.put("authenticationPending",authenticationPending);
         return jsonObject;
     }
+
+    public JSONArray getClickInfoJSONArray(String json) throws ParseException {
+        JSONArray jsonArray = new JSONArray();
+        ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
+        Integer entpId = enterpriseService.getThoseEnterprises("entp_account",
+                String.valueOf(SecurityUtils.getSubject().getPrincipal())).get(0).getEntpId();
+        for (String date :
+                MyUtil.getDateList(MyUtil.getThisMonthOfFirstDate(JSON.parseObject(json).getInteger("month")))) {
+            int clickStore = 0,clickGoods = 0;
+
+            ArrayList<Integer> listE = (ArrayList<Integer>) opsForValue.get(date + "E");
+            System.out.println(date+"E");
+            System.out.println(listE);
+            if(listE != null && listE.size() != 0){
+                for (Integer i :
+                        listE) {
+                    if(entpId.equals(i)){
+                        clickStore++;
+                    }
+                }
+            }
+            ArrayList<Integer> listG = (ArrayList<Integer>) opsForValue.get(date + "G");
+            System.out.println(date+"G");
+            System.out.println(listG);
+            if(listG != null && listG.size() != 0){
+                for (Integer i :
+                        listG) {
+                    if(entpId.equals(i)){
+                        clickGoods++;
+                    }
+                }
+            }
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("clickGoods",clickGoods);
+            jsonObject.put("clickStore",clickStore);
+            jsonObject.put("date",date);
+            jsonArray.add(jsonObject);
+        }
+        return jsonArray;
+    }
+
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put("c", "12453456");
+        map.put("a", "12345456");
+        map.put("b", "21231456");
+        map.put("d", "21523456");
+
+        List<Map.Entry<String,String>> list = new ArrayList<>(map.entrySet());
+
+        list.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+
+        for(Map.Entry<String,String> mapping:list){
+            System.out.println(mapping.getKey()+":"+mapping.getValue());
+        }
+    }
+
 }
 

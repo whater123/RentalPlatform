@@ -35,7 +35,7 @@ public class AuthAppealController {
     @Autowired
     OrderPayMapper orderPayMapper;
     @Autowired
-    OrderService orderService;
+    EntpOrderService entpOrderService;
     @Autowired
     OrderLogisticsMapper orderLogisticsMapper;
     @Autowired
@@ -71,7 +71,7 @@ public class AuthAppealController {
             return new ReturnMsg("40303",true,"该申诉图组不存在");
         }
         try{
-            if (!utilsService.isNowEntpId(orderService.getThoseTrade("order_id",
+            if (!utilsService.isNowEntpId(entpOrderService.getThoseTrade("order_id",
                     appeal.getAppealGoalId()).get(0).getEntpId())){
                 return new ReturnMsg("302", true, "尚未授权，您无权申诉该订单");
             }
@@ -99,7 +99,7 @@ public class AuthAppealController {
             return new ReturnMsg("302", true, "尚未授权，尚未认证");
         }
         try{
-            List<Trade> trades = orderService.getThoseTrade("entp_id", String.valueOf(enterpriseService.
+            List<Trade> trades = entpOrderService.getThoseTrade("entp_id", String.valueOf(enterpriseService.
                     getThoseEnterprises("entp_account",
                             String.valueOf(SecurityUtils.getSubject().getPrincipal())).get(0).getEntpId()));
             List<String> orderIdList = new ArrayList<>();

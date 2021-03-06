@@ -1,155 +1,38 @@
-2021-03-05 15:00:57.270  INFO 22352 --- [restartedMain] com.rent.UserProvider_8001               : No active profile set, falling back to default profiles: default
-2021-03-05 15:00:58.294  WARN 22352 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.rent]' package. Please check your configuration.
-2021-03-05 15:00:58.490  INFO 22352 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-03-05 15:00:58.494  INFO 22352 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2021-03-05 15:00:58.544  INFO 22352 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35ms. Found 0 repository interfaces.
-2021-03-05 15:00:58.827  INFO 22352 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=746b0b17-de0f-393d-98f8-8b09d8ab072d
-2021-03-05 15:00:58.944  INFO 22352 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$fd432798] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-03-05 15:00:58.975  INFO 22352 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$195d2a95] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-03-05 15:00:59.642  INFO 22352 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8001 (http)
-2021-03-05 15:00:59.671  INFO 22352 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2021-03-05 15:00:59.671  INFO 22352 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
-2021-03-05 15:00:59.679  INFO 22352 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
-2021-03-05 15:00:59.679  INFO 22352 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
-2021-03-05 15:00:59.680  INFO 22352 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-03-05 15:00:59.685  INFO 22352 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
-2021-03-05 15:00:59.926  INFO 22352 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2021-03-05 15:00:59.926  INFO 22352 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2634 ms
-2021-03-05 15:01:00.920  INFO 22352 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2021-03-05 15:01:01.351  INFO 22352 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2021-03-05 15:01:01.953  INFO 22352 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'ThreadPoolTaskExecutor'
-2021-03-05 15:01:01.966  WARN 22352 --- [restartedMain] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2021-03-05 15:01:01.969  WARN 22352 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2021-03-05 15:01:01.969  INFO 22352 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2021-03-05 15:01:01.977  WARN 22352 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2021-03-05 15:01:01.977  INFO 22352 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2021-03-05 15:01:02.891  INFO 22352 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
-2021-03-05 15:01:02.986  INFO 22352 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2021-03-05 15:01:04.825  INFO 22352 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2021-03-05 15:01:04.859  INFO 22352 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2021-03-05 15:01:05.008  INFO 22352 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8001 (http) with context path ''
-2021-03-05 15:01:05.010  INFO 22352 --- [restartedMain] com.rent.UserProvider_8001               : Started UserProvider_8001 in 12.56 seconds (JVM running for 15.108)
-2021-03-05 15:01:05.558  INFO 22352 --- [RMI TCP Connection(1)-192.168.79.1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [106.54.174.38:5672]
-2021-03-05 15:01:05.563  INFO 22352 --- [RMI TCP Connection(2)-192.168.79.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-03-05 15:01:05.563  INFO 22352 --- [RMI TCP Connection(2)-192.168.79.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2021-03-05 15:01:05.573  INFO 22352 --- [RMI TCP Connection(2)-192.168.79.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
-2021-03-05 15:01:05.698  INFO 22352 --- [RMI TCP Connection(1)-192.168.79.1] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#45ec14e4:0/SimpleConnection@40f48185 [delegate=amqp://guest@106.54.174.38:5672/, localPort= 63133]
-2021-03-05 15:01:06.028  INFO 22352 --- [RMI TCP Connection(1)-192.168.79.1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
-2021-03-05 15:01:06.029  INFO 22352 --- [RMI TCP Connection(1)-192.168.79.1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
-2021-03-05 15:07:55.082  INFO 12508 --- [restartedMain] com.rent.UserProvider_8001               : No active profile set, falling back to default profiles: default
-2021-03-05 15:07:56.297  WARN 12508 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.rent]' package. Please check your configuration.
-2021-03-05 15:07:56.550  INFO 12508 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-03-05 15:07:56.555  INFO 12508 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2021-03-05 15:07:56.625  INFO 12508 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49ms. Found 0 repository interfaces.
-2021-03-05 15:07:57.003  INFO 12508 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=746b0b17-de0f-393d-98f8-8b09d8ab072d
-2021-03-05 15:07:57.126  INFO 12508 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3375ad3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-03-05 15:07:57.150  INFO 12508 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$1f515dd0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-03-05 15:07:57.830  INFO 12508 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8001 (http)
-2021-03-05 15:07:57.852  INFO 12508 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2021-03-05 15:07:57.852  INFO 12508 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
-2021-03-05 15:07:57.860  INFO 12508 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
-2021-03-05 15:07:57.860  INFO 12508 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
-2021-03-05 15:07:57.860  INFO 12508 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-03-05 15:07:57.864  INFO 12508 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
-2021-03-05 15:07:58.102  INFO 12508 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2021-03-05 15:07:58.103  INFO 12508 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3001 ms
-2021-03-05 15:07:59.227  INFO 12508 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2021-03-05 15:07:59.700  INFO 12508 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2021-03-05 15:08:00.175  INFO 12508 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'ThreadPoolTaskExecutor'
-2021-03-05 15:08:00.188  WARN 12508 --- [restartedMain] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2021-03-05 15:08:00.191  WARN 12508 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2021-03-05 15:08:00.191  INFO 12508 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2021-03-05 15:08:00.196  WARN 12508 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2021-03-05 15:08:00.196  INFO 12508 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2021-03-05 15:08:01.057  INFO 12508 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
-2021-03-05 15:08:01.141  INFO 12508 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2021-03-05 15:08:03.016  INFO 12508 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2021-03-05 15:08:03.049  INFO 12508 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2021-03-05 15:08:03.214  INFO 12508 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8001 (http) with context path ''
-2021-03-05 15:08:03.217  INFO 12508 --- [restartedMain] com.rent.UserProvider_8001               : Started UserProvider_8001 in 13.139 seconds (JVM running for 15.468)
-2021-03-05 15:08:05.770  INFO 12508 --- [RMI TCP Connection(5)-192.168.79.1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [106.54.174.38:5672]
-2021-03-05 15:08:05.779  INFO 12508 --- [RMI TCP Connection(6)-192.168.79.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-03-05 15:08:05.779  INFO 12508 --- [RMI TCP Connection(6)-192.168.79.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2021-03-05 15:08:05.795  INFO 12508 --- [RMI TCP Connection(6)-192.168.79.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
-2021-03-05 15:08:15.892 ERROR 12508 --- [AMQP Connection 106.54.174.38:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured
-
-java.net.SocketTimeoutException: Timeout during Connection negotiation
-	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:766) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:678) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:48) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:597) ~[amqp-client-5.4.3.jar:5.4.3]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
-
-2021-03-05 15:08:16.899  WARN 12508 --- [RMI TCP Connection(5)-192.168.79.1] o.s.b.a.amqp.RabbitHealthIndicator       : Rabbit health check failed
-
-org.springframework.amqp.AmqpIOException: java.io.IOException
-	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:71) ~[spring-rabbit-2.1.5.RELEASE.jar:2.1.5.RELEASE]
-	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:509) ~[spring-rabbit-2.1.5.RELEASE.jar:2.1.5.RELEASE]
-	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:682) ~[spring-rabbit-2.1.5.RELEASE.jar:2.1.5.RELEASE]
-	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:214) ~[spring-rabbit-2.1.5.RELEASE.jar:2.1.5.RELEASE]
-	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2073) ~[spring-rabbit-2.1.5.RELEASE.jar:2.1.5.RELEASE]
-	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2047) ~[spring-rabbit-2.1.5.RELEASE.jar:2.1.5.RELEASE]
-	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2027) ~[spring-rabbit-2.1.5.RELEASE.jar:2.1.5.RELEASE]
-	at org.springframework.boot.actuate.amqp.RabbitHealthIndicator.getVersion(RabbitHealthIndicator.java:48) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at org.springframework.boot.actuate.amqp.RabbitHealthIndicator.doHealthCheck(RabbitHealthIndicator.java:44) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:84) ~[spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at org.springframework.boot.actuate.health.CompositeHealthIndicator.health(CompositeHealthIndicator.java:98) [spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at org.springframework.boot.actuate.health.HealthEndpoint.health(HealthEndpoint.java:50) [spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_152]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_152]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_152]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_152]
-	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282) [spring-core-5.1.6.RELEASE.jar:5.1.6.RELEASE]
-	at org.springframework.boot.actuate.endpoint.invoke.reflect.ReflectiveOperationInvoker.invoke(ReflectiveOperationInvoker.java:76) [spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at org.springframework.boot.actuate.endpoint.annotation.AbstractDiscoveredOperation.invoke(AbstractDiscoveredOperation.java:61) [spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:126) [spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:99) [spring-boot-actuator-2.1.4.RELEASE.jar:2.1.4.RELEASE]
-	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819) [na:1.8.0_152]
-	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801) [na:1.8.0_152]
-	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1468) [na:1.8.0_152]
-	at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:76) [na:1.8.0_152]
-	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1309) [na:1.8.0_152]
-	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1401) [na:1.8.0_152]
-	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:829) [na:1.8.0_152]
-	at sun.reflect.GeneratedMethodAccessor113.invoke(Unknown Source) ~[na:na]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_152]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_152]
-	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:357) [na:1.8.0_152]
-	at sun.rmi.transport.Transport$1.run(Transport.java:200) [na:1.8.0_152]
-	at sun.rmi.transport.Transport$1.run(Transport.java:197) [na:1.8.0_152]
-	at java.security.AccessController.doPrivileged(Native Method) [na:1.8.0_152]
-	at sun.rmi.transport.Transport.serviceCall(Transport.java:196) [na:1.8.0_152]
-	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568) [na:1.8.0_152]
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826) [na:1.8.0_152]
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:683) [na:1.8.0_152]
-	at java.security.AccessController.doPrivileged(Native Method) [na:1.8.0_152]
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682) [na:1.8.0_152]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[na:1.8.0_152]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[na:1.8.0_152]
-	at java.lang.Thread.run(Thread.java:748) ~[na:1.8.0_152]
-Caused by: java.io.IOException: null
-	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:126) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:122) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:144) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:401) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1104) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1054) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:994) ~[amqp-client-5.4.3.jar:5.4.3]
-	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:462) ~[spring-rabbit-2.1.5.RELEASE.jar:2.1.5.RELEASE]
-	... 42 common frames omitted
-Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
-	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:494) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQChannel.privateRpc(AMQChannel.java:288) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:138) ~[amqp-client-5.4.3.jar:5.4.3]
-	... 47 common frames omitted
-Caused by: java.net.SocketTimeoutException: Timeout during Connection negotiation
-	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:766) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:678) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:48) ~[amqp-client-5.4.3.jar:5.4.3]
-	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:597) ~[amqp-client-5.4.3.jar:5.4.3]
-	... 1 common frames omitted
-
-2021-03-05 15:08:17.099  INFO 12508 --- [RMI TCP Connection(5)-192.168.79.1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
-2021-03-05 15:08:17.102  INFO 12508 --- [RMI TCP Connection(5)-192.168.79.1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2021-03-06 12:40:29.091  INFO 29180 --- [restartedMain] com.rent.UserProvider_8001               : No active profile set, falling back to default profiles: default
+2021-03-06 12:40:30.356  WARN 29180 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.rent]' package. Please check your configuration.
+2021-03-06 12:40:30.606  INFO 29180 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-06 12:40:30.606  INFO 29180 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-03-06 12:40:30.663  INFO 29180 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41ms. Found 0 repository interfaces.
+2021-03-06 12:40:31.007  INFO 29180 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=746b0b17-de0f-393d-98f8-8b09d8ab072d
+2021-03-06 12:40:31.132  INFO 29180 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$293029ea] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-06 12:40:31.163  INFO 29180 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$454a2ce7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-06 12:40:31.960  INFO 29180 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8001 (http)
+2021-03-06 12:40:31.991  INFO 29180 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-06 12:40:31.991  INFO 29180 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2021-03-06 12:40:31.991  INFO 29180 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
+2021-03-06 12:40:31.991  INFO 29180 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2021-03-06 12:40:31.991  INFO 29180 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-03-06 12:40:32.022  INFO 29180 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
+2021-03-06 12:40:32.233  INFO 29180 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-06 12:40:32.249  INFO 29180 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3127 ms
+2021-03-06 12:40:33.289  INFO 29180 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-06 12:40:34.179  INFO 29180 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-06 12:40:34.773  INFO 29180 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'ThreadPoolTaskExecutor'
+2021-03-06 12:40:34.788  WARN 29180 --- [restartedMain] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2021-03-06 12:40:34.788  WARN 29180 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-03-06 12:40:34.788  INFO 29180 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-03-06 12:40:34.804  WARN 29180 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-03-06 12:40:34.804  INFO 29180 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-03-06 12:40:35.601  INFO 29180 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-03-06 12:40:35.679  INFO 29180 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-03-06 12:40:37.468  INFO 29180 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2021-03-06 12:40:37.514  INFO 29180 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-03-06 12:40:37.671  INFO 29180 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8001 (http) with context path ''
+2021-03-06 12:40:37.671  INFO 29180 --- [restartedMain] com.rent.UserProvider_8001               : Started UserProvider_8001 in 14.165 seconds (JVM running for 16.908)
+2021-03-06 12:40:37.967  INFO 29180 --- [RMI TCP Connection(5)-192.168.79.1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [106.54.174.38:5672]
+2021-03-06 12:40:38.217  INFO 29180 --- [RMI TCP Connection(5)-192.168.79.1] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7cde6262:0/SimpleConnection@227b09a6 [delegate=amqp://guest@106.54.174.38:5672/, localPort= 52441]
+2021-03-06 12:40:38.686  INFO 29180 --- [RMI TCP Connection(5)-192.168.79.1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2021-03-06 12:40:38.686  INFO 29180 --- [RMI TCP Connection(5)-192.168.79.1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2021-03-06 12:40:38.952  INFO 29180 --- [RMI TCP Connection(7)-192.168.79.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-06 12:40:38.952  INFO 29180 --- [RMI TCP Connection(7)-192.168.79.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-06 12:40:38.967  INFO 29180 --- [RMI TCP Connection(7)-192.168.79.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms

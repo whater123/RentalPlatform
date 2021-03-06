@@ -3,7 +3,7 @@ package com.rent.controller.platform;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rent.config.ShiroUtil;
-import com.rent.pojo.base.EnterpriseAuthentication;
+import com.rent.pojo.base.manager.EnterpriseAuthentication;
 import com.rent.pojo.view.ReturnDoubleData;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.EnterpriseAuthenticationService;

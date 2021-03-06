@@ -1,6 +1,6 @@
 package com.rent.config;
 
-import com.rent.pojo.base.Enterprise;
+import com.rent.pojo.base.manager.Enterprise;
 import com.rent.service.EnterpriseService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;

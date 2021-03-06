@@ -3,6 +3,10 @@ package com.rent.pojo.base;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.rent.pojo.base.manager.EnterpriseGoods;
+import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
+import com.rent.pojo.base.user.Contact;
+import com.rent.pojo.base.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +38,8 @@ public class Trade {
     private String orderRentUnit;
     private String orderTotalMoney;
     private String orderDeposit;
+    @TableField(exist = false)
+    private int goodsId;
     @TableField(exist = false)
     EnterpriseGoodsEntity enterpriseGoodsEntity;
     @TableField(exist = false)

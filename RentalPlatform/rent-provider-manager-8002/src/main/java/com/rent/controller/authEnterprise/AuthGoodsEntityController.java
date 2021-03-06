@@ -2,8 +2,8 @@
 package com.rent.controller.authEnterprise;
 
 import com.rent.config.ShiroUtil;
-import com.rent.pojo.base.EnterpriseGoods;
-import com.rent.pojo.base.EnterpriseGoodsEntity;
+import com.rent.pojo.base.manager.EnterpriseGoods;
+import com.rent.pojo.base.manager.EnterpriseGoodsEntity;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.EnterpriseCategoryService;
 import com.rent.service.EnterpriseService;

@@ -10,21 +10,18 @@ import com.rent.dao.EnterpriseMapper;
 import com.rent.dao.TradeMapper;
 import com.rent.dao.UserMapper;
 import com.rent.pojo.base.Appeal;
-import com.rent.pojo.base.OrderPay;
 import com.rent.pojo.base.Trade;
 import com.rent.pojo.view.ReturnDoubleData;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.EnterpriseService;
-import com.rent.service.OrderService;
+import com.rent.service.EntpOrderService;
 import com.rent.service.UtilsService;
 import com.rent.util.MyUtil;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -45,7 +42,7 @@ public class PlatAppealController {
     @Autowired
     UtilsService utilsService;
     @Autowired
-    OrderService orderService;
+    EntpOrderService entpOrderService;
 
     @RequestMapping(value = "/getAppeal", produces = "application/json;charset=UTF-8")
     public ReturnDoubleData getAppeal(@RequestBody String json){
@@ -85,7 +82,7 @@ public class PlatAppealController {
         for (Appeal appeal :
                 appeals) {
             try{
-                Trade trade = orderService.getThoseTrade("order_id",appeal.getAppealGoalId()).get(0);
+                Trade trade = entpOrderService.getThoseTrade("order_id",appeal.getAppealGoalId()).get(0);
                 appeal.setUser(userMapper.selectById(trade.getUserId()));
                 appeal.setEnterprise(enterpriseMapper.selectById(trade.getEntpId()));
                 myAppeals.add(appeal);

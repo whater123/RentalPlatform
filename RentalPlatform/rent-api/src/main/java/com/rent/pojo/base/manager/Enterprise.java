@@ -1,4 +1,4 @@
-package com.rent.pojo.base;
+package com.rent.pojo.base.manager;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

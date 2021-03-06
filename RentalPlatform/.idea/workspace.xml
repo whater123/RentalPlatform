@@ -1,46 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e95d995-4f99-4a45-9eb5-885bbe4db364" name="Default Changelist" comment="user test">
-      <change afterPath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/redisPojo/ClickMsg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/view/RentReturnMsg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/config/SenderConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/RabbitmqController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/dao/CategoryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/RabbitmqSenderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/thread/RegularOrderListenThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-clickAndRead-8003/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-clickAndRead-8003/src/main/java/com/rent/UserProvider_8003.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-clickAndRead-8003/src/main/java/com/rent/config/RedisConfig2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-clickAndRead-8003/src/main/java/com/rent/service/QueueReceive.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rent-provider-user-clickAndRead-8003/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="0a8b313a-36da-41e0-961c-2421ee34ccef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/Appeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/Appeal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/Appeal.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/Appeal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-api/target/rent-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/rent-api-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/GoodsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/GoodsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/GoodsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/GoodsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/PayServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/Impl/PayServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/java/com/rent/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/GoodsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/GoodsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/GoodsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/GoodsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/GoodsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/GoodsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/OrderServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/PayServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/PayServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/itoo-gateway.jar" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/itoo-gateway.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/itoo-gateway.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/itoo-gateway.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my.log" beforeDir="false" afterPath="$PROJECT_DIR$/my.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/Trade.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/Trade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/manager/Enterprise.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/pojo/base/manager/Enterprise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/util/MyUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/src/main/java/com/rent/util/MyUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/Trade.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/Trade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/manager/Enterprise.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/manager/Enterprise.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/manager/EnterpriseAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/manager/EnterpriseAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/manager/EnterpriseGoods.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/manager/EnterpriseGoods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/user/Contact.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/user/Contact.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/pojo/base/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/util/MoneyUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/util/MoneyUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-api/target/classes/com/rent/util/MyUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-api/target/classes/com/rent/util/MyUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/config/ShiroUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/config/ShiroUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/GoodsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthAppealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthAppealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthGoodsCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthGoodsCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthGoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthGoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthGoodsEntityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthGoodsEntityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/authEnterprise/AuthOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/enterprise/EntpSelfInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/enterprise/EntpSelfInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/platform/PlatAppealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/platform/PlatAppealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/platform/PlatAuthenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/controller/platform/PlatAuthenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/dao/ContactMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/dao/ContactMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/dao/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/service/DataVisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/service/DataVisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/service/EntpGoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/service/EntpGoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/src/main/java/com/rent/service/EntpOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/config/EnterpriseRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/config/EnterpriseRealm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthAppealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthAppealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthGoodsCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthGoodsCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthGoodsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthGoodsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthGoodsEntityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthGoodsEntityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthOrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/authEnterprise/AuthOrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/enterprise/EntpAuthenticationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/enterprise/EntpAuthenticationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/enterprise/EntpSelfInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/enterprise/EntpSelfInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/platform/PlatAppealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/platform/PlatAppealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/platform/PlatAuthenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/platform/PlatAuthenController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/registerAndLogin/RegisiterAndLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/controller/registerAndLogin/RegisiterAndLoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/ContactMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/ContactMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/EnterpriseAuthenticationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/EnterpriseAuthenticationMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/EnterpriseGoodsEntityMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/EnterpriseGoodsEntityMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/EnterpriseGoodsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/EnterpriseGoodsMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/EnterpriseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/EnterpriseMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/dao/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/DataVisService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/DataVisService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/EnterpriseAuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/EnterpriseAuthenticationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/EnterpriseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/EnterpriseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/EntpGoodsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/EntpGoodsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/PlatformService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/PlatformService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/UtilsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/UtilsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/impl/EnterpriseAuthenticationImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/impl/EnterpriseAuthenticationImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/impl/EnterpriseImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-manager-8002/target/classes/com/rent/service/impl/EnterpriseImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/RecommendServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/rent-provider-user-8001/target/classes/com/rent/service/Impl/RecommendServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,10 +106,10 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../skillexample/Shiro-example" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -124,7 +140,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserProvider_8001">
+  <component name="RunManager" selected="Spring Boot.ManagerProvider_8002">
     <configuration name="ManagerProvider_8002" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="rent-provider-manager-8002" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.rent.ManagerProvider_8002" />
@@ -157,7 +173,7 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.22062841" />
+          <option name="contentProportion" value="0.1318306" />
           <treeState>
             <expand>
               <path>
@@ -317,10 +333,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="70" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1611294308420" />
-    <state x="465" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614928128800">
+    <state x="465" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615006767952">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1614928128800" />
+    <state x="465" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1615006767952" />
     <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1614925834970">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -333,10 +349,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="482" y="279" width="572" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1611036676128" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1612766022055">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1615006586574">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1612766022055" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1615006586574" />
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1613812327632">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -349,38 +365,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="614" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1614958283344" />
-    <state width="1493" height="118" key="GridCell.Tab.0.bottom" timestamp="1614929977756">
+    <state width="1270" height="540" key="GridCell.Tab.0.bottom" timestamp="1615006756618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1614929977756" />
-    <state width="1493" height="118" key="GridCell.Tab.0.center" timestamp="1614929977756">
+    <state width="1270" height="540" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615006756618" />
+    <state width="1270" height="540" key="GridCell.Tab.0.center" timestamp="1615006756618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1614929977756" />
-    <state width="1493" height="118" key="GridCell.Tab.0.left" timestamp="1614929977756">
+    <state width="1270" height="540" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615006756618" />
+    <state width="1270" height="540" key="GridCell.Tab.0.left" timestamp="1615006756618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1614929977756" />
-    <state width="1493" height="118" key="GridCell.Tab.0.right" timestamp="1614929977756">
+    <state width="1270" height="540" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615006756618" />
+    <state width="1270" height="540" key="GridCell.Tab.0.right" timestamp="1615006756618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1614929977756" />
-    <state width="1140" height="130" key="GridCell.Tab.1.bottom" timestamp="1614929977756">
+    <state width="1270" height="540" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615006756618" />
+    <state width="1270" height="540" key="GridCell.Tab.1.bottom" timestamp="1615006756618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1140" height="130" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1614929977756" />
-    <state width="1140" height="130" key="GridCell.Tab.1.center" timestamp="1614929977756">
+    <state width="1270" height="540" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615006756618" />
+    <state width="1270" height="540" key="GridCell.Tab.1.center" timestamp="1615006756618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1140" height="130" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1614929977756" />
-    <state width="1140" height="130" key="GridCell.Tab.1.left" timestamp="1614929977756">
+    <state width="1270" height="540" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1615006756618" />
+    <state width="1270" height="540" key="GridCell.Tab.1.left" timestamp="1615006756618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1140" height="130" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1614929977756" />
-    <state width="1140" height="130" key="GridCell.Tab.1.right" timestamp="1614929977756">
+    <state width="1270" height="540" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1615006756618" />
+    <state width="1270" height="540" key="GridCell.Tab.1.right" timestamp="1615006756618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1140" height="130" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1614929977756" />
+    <state width="1270" height="540" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1615006756618" />
     <state x="496" y="119" key="Maven.ArtifactSearchDialog" timestamp="1610962179748">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -393,10 +409,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="470" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1612337279061" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1614606443747">
+    <state x="249" y="0" key="SettingsEditor" timestamp="1615005799735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1614606443747" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615005799735" />
     <state width="498" height="477" key="SwitcherDM" timestamp="1613886788624">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

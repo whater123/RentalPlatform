@@ -7,6 +7,7 @@ import com.rent.config.ShiroUtil;
 import com.rent.constant.SystemConstant;
 import com.rent.dao.*;
 import com.rent.pojo.base.*;
+import com.rent.pojo.base.manager.Enterprise;
 import com.rent.pojo.view.ReturnDoubleData;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.*;
@@ -38,7 +39,7 @@ public class AuthOrderController {
     @Autowired
     OrderPayMapper orderPayMapper;
     @Autowired
-    OrderService orderService;
+    EntpOrderService entpOrderService;
     @Autowired
     OrderLogisticsMapper orderLogisticsMapper;
     @Autowired
@@ -178,7 +179,7 @@ public class AuthOrderController {
         if (!ShiroUtil.hasRoles("authEnterprise_manager")) {
             return new ReturnMsg("302", true, "尚未授权，尚未认证");
         }
-        List<Trade> trades = orderService.getThoseTrade("entp_id",
+        List<Trade> trades = entpOrderService.getThoseTrade("entp_id",
                 String.valueOf(enterpriseService.getThoseEnterprises("entp_account",
                         String.valueOf(SecurityUtils.getSubject().getPrincipal())).get(0).getEntpId()));
         ArrayList<String> list = new ArrayList<>();
@@ -205,7 +206,7 @@ public class AuthOrderController {
             return new ReturnMsg("401", true, "传参不齐");
         }
         try {
-            trade = orderService.getThoseTrade("order_id", trade.getOrderId()).get(0);
+            trade = entpOrderService.getThoseTrade("order_id", trade.getOrderId()).get(0);
         } catch (Exception e) {
             e.printStackTrace();
             return new ReturnMsg("403", true, "该订单不存在");

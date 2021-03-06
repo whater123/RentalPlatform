@@ -8,6 +8,8 @@ import com.rent.dao.EnterpriseGoodsMapper;
 import com.rent.dao.UserCommentMapper;
 import com.rent.dao.UserMapper;
 import com.rent.pojo.base.*;
+import com.rent.pojo.base.manager.EnterpriseGoods;
+import com.rent.pojo.base.user.User;
 import com.rent.pojo.view.ReturnMsg;
 import com.rent.service.EnterpriseCategoryService;
 import com.rent.service.EnterpriseService;
